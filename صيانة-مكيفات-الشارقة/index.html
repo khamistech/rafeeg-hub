@@ -186,6 +186,11 @@ img{max-width:100%;height:auto;display:block}
 .step-desc{font-size:14px;color:var(--muted);line-height:1.55}
 .media-section{padding:56px 0;background:var(--grey-bg)}
 .ba-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.ba-img-wrap{position:relative}
+.ba-img-labels{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;pointer-events:none}
+.ba-img-label{font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.ba-img-label.bad{background:#fee2e2;color:#b91c1c}
+.ba-img-label.good{background:#dcfce7;color:#15803d}
 .ba-split{display:grid;grid-template-columns:1fr auto 1fr}
 .ba-side{padding:20px 16px}
 .ba-before{background:#fff5f5}
@@ -596,6 +601,16 @@ details[open] summary::after{content:'−'}
     <h2 class="sec-title">شاهد نتائج رفيق في الشارقة</h2>
     <p class="sec-sub" style="margin-bottom:28px">الفرق الحقيقي الذي يصنعه فنيو رفيق في منزلك</p>
     <div class="ba-card">
+      <div class="ba-img-wrap">
+        <picture>
+          <source srcset="ac-before-after.webp" type="image/webp">
+          <img src="ac-before-after.jpg" alt="مكيف قبل وبعد الصيانة في الشارقة — رفيق" width="1024" height="576" loading="lazy" style="width:100%;height:auto;display:block;border-radius:var(--radius) var(--radius) 0 0;">
+        </picture>
+        <div class="ba-img-labels">
+          <span class="ba-img-label bad">قبل الصيانة</span>
+          <span class="ba-img-label good">بعد الصيانة</span>
+        </div>
+      </div>
       <div class="ba-split">
         <div class="ba-side ba-before">
           <div class="ba-label-badge">قبل الصيانة</div>
