@@ -94,8 +94,9 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap"></noscript>
 
 <style>
 /* ── Reset & Variables ──────────────────────────────────────────────────── */
@@ -1084,7 +1085,10 @@ function calcUpdate() {
       <!-- BEFORE / AFTER — AI-generated image + stats card -->
       <div class="ba-card">
         <div class="ba-img-wrap">
-          <img src="ac-before-after.jpg" alt="مكيف قبل وبعد الصيانة — رفيق" loading="lazy" style="width:100%;display:block;border-radius:var(--radius) var(--radius) 0 0;object-fit:cover;object-position:center;">
+          <picture>
+            <source srcset="ac-before-after.webp" type="image/webp">
+            <img src="ac-before-after.jpg" alt="مكيف قبل وبعد الصيانة — رفيق" width="1024" height="576" fetchpriority="high" loading="eager" style="width:100%;display:block;border-radius:var(--radius) var(--radius) 0 0;object-fit:cover;object-position:center;">
+          </picture>
           <div class="ba-img-labels">
             <span class="ba-img-label good">بعد الصيانة</span>
             <span class="ba-img-label bad">قبل الصيانة</span>
