@@ -20,7 +20,7 @@ if _env_path.exists():
         line = line.strip()
         if line and not line.startswith("#") and "=" in line:
             k, v = line.split("=", 1)
-            os.environ.setdefault(k.strip(), v.strip())
+            os.environ[k.strip()] = v.strip()
 
 UNDETECTABLE_KEY = os.environ.get("UNDETECTABLE_KEY", "02c2b10c-5a39-40c7-b471-7e35ef93802e")
 ANTHROPIC_KEY    = os.environ.get("ANTHROPIC_API_KEY", "")
