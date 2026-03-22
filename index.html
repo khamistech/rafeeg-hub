@@ -120,20 +120,23 @@
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* ── NAV ── */
-    nav.site-nav{background:#0057b8;color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:800;color:#fff}
-    .logo-badge{background:#ffd700;color:#003d8f;font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:.5px}
-    .nav-links{display:flex;gap:4px;list-style:none}
-    .nav-links a{color:#cce0ff;font-size:.88rem;padding:7px 11px;border-radius:6px;transition:all .2s;font-weight:600}
-    .nav-links a:hover{background:rgba(255,255,255,.18);color:#fff}
+    .site-header{background:#0057b8;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+    .logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
+    .nav-list{display:flex;align-items:center;gap:4px;list-style:none}
     .has-dropdown{position:relative}
-    .has-dropdown .dropdown{display:none;position:absolute;top:calc(100% + 4px);right:0;background:#fff;min-width:190px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);padding:8px 0;z-index:200}
+    .nav-link-drop{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;cursor:pointer;color:rgba(255,255,255,.9);font-weight:600;font-size:.9rem;transition:background .15s,color .2s;white-space:nowrap}
+    .nav-link-drop:hover{background:rgba(255,255,255,.18);color:#fff}
+    .drop-arrow{font-size:9px;transition:transform .2s;display:inline-block;margin-top:1px}
+    .has-dropdown:hover .drop-arrow{transform:rotate(180deg)}
+    .has-dropdown .dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e5e7eb;min-width:185px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px 0;z-index:300;list-style:none}
     .has-dropdown:hover .dropdown{display:block}
-    .dropdown a{display:block;color:#0057b8!important;padding:10px 18px;font-size:.85rem;font-weight:600;transition:background .15s}
-    .dropdown a:hover{background:#f0f6ff}
-    .nav-cta{background:#ffd700;color:#003d8f!important;padding:8px 18px!important;border-radius:20px!important;font-weight:800!important}
-    .nav-cta:hover{background:#ffe033!important;transform:none}
+    .dropdown li a{display:block;padding:10px 18px;color:#0057b8;font-size:.85rem;font-weight:500;transition:background .12s}
+    .dropdown li a:hover{background:#f0f6ff;color:#003d8f}
+    .nav-cta{background:#ffd700;color:#003d8f;padding:8px 18px;border-radius:20px;font-weight:800;font-size:.88rem;white-space:nowrap;transition:background .2s}
+    .nav-cta:hover{background:#ffe033}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px}
 
     /* ── HERO ── */
     .hero{background:linear-gradient(135deg,#003d8f 0%,#0057b8 50%,#0069d9 100%);color:#fff;padding:72px 0 64px;text-align:center;position:relative;overflow:hidden}
@@ -245,35 +248,48 @@
 <body>
 
 <!-- ════════════════════ NAV ════════════════════ -->
-<nav class="site-nav">
-  <div class="container nav-inner">
-    <a href="/" class="logo">
-      رفيق <span class="logo-badge">هاب</span>
-    </a>
-    <ul class="nav-links">
-      <li class="has-dropdown"><a href="#">الخدمات ▾</a>
-        <ul class="dropdown">
-          <li><a href="/صيانة-مكيفات/">صيانة مكيفات</a></li>
-          <li><a href="/ارضيات/">أرضيات وسيراميك</a></li>
-          <li><a href="/ديكور/">ديكور وجبس</a></li>
-          <li><a href="/مقاولات/">مقاولات</a></li>
-          <li><a href="/الاجهزة-المنزلية/">الأجهزة المنزلية</a></li>
-          <li><a href="/مسابح/">مسابح</a></li>
-          <li><a href="/تزيين-حدائق/">تزيين حدائق</a></li>
+<header class="site-header">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="logo" href="https://hub.rafeeg.ae/" aria-label="رفيق هاب — الرئيسية">
+        <img src="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png" alt="رفيق" width="110" height="38" loading="eager">
+      </a>
+      <nav aria-label="التنقل الرئيسي">
+        <ul class="nav-list" id="main-nav">
+          <li class="has-dropdown">
+            <a class="nav-link-drop" href="#" aria-haspopup="true">الخدمات <span class="drop-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown">
+              <li><a href="/صيانة-مكيفات/">صيانة مكيفات</a></li>
+              <li><a href="/مقاولات/">مقاولات</a></li>
+              <li><a href="/ارضيات/">ارضيات</a></li>
+              <li><a href="/ديكور/">ديكور وجبس</a></li>
+              <li><a href="/حديد-مشغول/">حديد مشغول</a></li>
+              <li><a href="/المنيوم/">ألمنيوم</a></li>
+              <li><a href="/زجاج/">زجاج</a></li>
+              <li><a href="/الاجهزة-المنزلية/">الأجهزة المنزلية</a></li>
+              <li><a href="/تنجيد/">تنجيد</a></li>
+              <li><a href="/مسابح/">مسابح</a></li>
+              <li><a href="/تزيين-حدائق/">تزيين حدائق</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a class="nav-link-drop" href="#" aria-haspopup="true">الإمارات <span class="drop-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown">
+              <li><a href="/أبوظبي/">أبوظبي</a></li>
+              <li><a href="/دبي/">دبي</a></li>
+              <li><a href="/الشارقة/">الشارقة</a></li>
+              <li><a href="/عجمان/">عجمان</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-      <li class="has-dropdown"><a href="#">الإمارات ▾</a>
-        <ul class="dropdown">
-          <li><a href="/أبوظبي/">أبوظبي</a></li>
-          <li><a href="/دبي/">دبي</a></li>
-          <li><a href="/الشارقة/">الشارقة</a></li>
-          <li><a href="/عجمان/">عجمان</a></li>
-        </ul>
-      </li>
-      <li><a href="https://ar.rafeeg.ae" class="nav-cta">📱 احجز الآن</a></li>
-    </ul>
+      </nav>
+      <a class="nav-cta" href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+خدماتكم">احجز الآن</a>
+      <button class="hamburger" id="hamburger" aria-label="قائمة التنقل" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
-</nav>
+</header>
 
 <!-- ════════════════════ HERO ════════════════════ -->
 <section class="hero">

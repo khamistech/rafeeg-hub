@@ -31,18 +31,23 @@
     body{font-family:'Cairo',sans-serif;direction:rtl;background:#f8f9fa;color:#1a1a1a}
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 16px}
-    nav{background:#0057b8;color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-    .logo{font-size:1.4rem;font-weight:700;color:#fff}
-    .logo span{color:#ffd700}
-    .nav-links{display:flex;gap:6px;list-style:none}
-    .nav-links a{color:#e8f0fe;font-size:.88rem;padding:6px 10px;border-radius:6px;transition:background .2s}
-    .nav-links a:hover{background:rgba(255,255,255,.15);color:#fff}
+    .site-header{background:#0057b8;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+    .logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
+    .nav-list{display:flex;align-items:center;gap:4px;list-style:none}
     .has-dropdown{position:relative}
-    .has-dropdown .dropdown{display:none;position:absolute;top:100%;right:0;background:#fff;min-width:180px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:6px 0;z-index:200}
+    .nav-link-drop{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;cursor:pointer;color:rgba(255,255,255,.9);font-weight:600;font-size:.9rem;transition:background .15s,color .2s;white-space:nowrap}
+    .nav-link-drop:hover{background:rgba(255,255,255,.18);color:#fff}
+    .drop-arrow{font-size:9px;transition:transform .2s;display:inline-block;margin-top:1px}
+    .has-dropdown:hover .drop-arrow{transform:rotate(180deg)}
+    .has-dropdown .dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e5e7eb;min-width:185px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px 0;z-index:300;list-style:none}
     .has-dropdown:hover .dropdown{display:block}
-    .dropdown a{display:block;color:#0057b8!important;padding:9px 16px;font-size:.85rem}
-    .dropdown a:hover{background:#f0f4ff}
+    .dropdown li a{display:block;padding:9px 16px;color:#0057b8;font-size:.85rem;font-weight:500;transition:background .12s}
+    .dropdown li a:hover{background:#f0f6ff}
+    .nav-cta{background:#ffd700;color:#003d8f;padding:8px 18px;border-radius:20px;font-weight:800;font-size:.88rem;white-space:nowrap;transition:background .2s}
+    .nav-cta:hover{background:#ffe033}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px}
     .hero{background:linear-gradient(135deg,#0057b8 0%,#003d8f 100%);color:#fff;padding:56px 0 48px;text-align:center}
     .hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;line-height:1.3;margin-bottom:14px}
     .hero .sub{font-size:1.05rem;opacity:.9;margin-bottom:24px}
@@ -103,30 +108,48 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LocalBusiness", "@id": "https://ar.rafeeg.ae/#organization", "name": "رفيق", "url": "https://ar.rafeeg.ae", "logo": "https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png", "telephone": "+971600500200", "email": "info@rafeeg.ae", "address": {"@type": "PostalAddress", "addressLocality": "دبي", "addressRegion": "دبي", "addressCountry": "AE"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "135000", "bestRating": "5"}, "sameAs": ["https://www.instagram.com/rafeegapp", "https://www.linkedin.com/company/rafeeg/", "https://www.tiktok.com/@rafeeg.ae"]}, {"@type": "Service", "name": "صيانة مكيفات في دبي", "description": "خدمة صيانة مكيفات في دبي من مقدمي خدمة معتمدين عبر تطبيق رفيق", "provider": {"@id": "https://ar.rafeeg.ae/#organization"}, "areaServed": {"@type": "City", "name": "دبي"}, "serviceType": "صيانة مكيفات", "offers": {"@type": "Offer", "priceCurrency": "AED", "priceSpecification": {"@type": "PriceSpecification", "minPrice": "100", "priceCurrency": "AED"}}}, {"@type": "HowTo", "name": "كيف تحجز خدمة صيانة مكيفات في دبي عبر رفيق", "step": [{"@type": "HowToStep", "position": 1, "name": "حمّل التطبيق وسجّل", "text": "أدخل عنوانك ونوع المكيف ووصفاً مختصراً للمشكلة."}, {"@type": "HowToStep", "position": 2, "name": "اختر الخدمة والموعد", "text": "حدد نوع الصيانة ووقتاً يناسبك — حتى في نفس اليوم."}, {"@type": "HowToStep", "position": 3, "name": "تأكيد الحجز والسعر", "text": "ستستقبل تأكيداً فورياً بتفاصيل الفني والسعر الكامل قبل أي زيارة."}, {"@type": "HowToStep", "position": 4, "name": "وصول الفني المعتمد", "text": "يصل الفني في الوقت المحدد بجميع أدواته لإتمام الفحص والصيانة."}, {"@type": "HowToStep", "position": 5, "name": "الخدمة والتقييم", "text": "بعد انتهاء الخدمة تُقيّم الفني ونضمن رضاك أو نعيد الكرّة مجاناً."}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://hub.rafeeg.ae/"}, {"@type": "ListItem", "position": 2, "name": "صيانة مكيفات", "item": "https://hub.rafeeg.ae/صيانة-مكيفات/"}, {"@type": "ListItem", "position": 3, "name": "صيانة مكيفات دبي", "item": "https://hub.rafeeg.ae/صيانة-مكيفات-دبي/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "كم تكلف صيانة المكيف في دبي؟", "acceptedAnswer": {"@type": "Answer", "text": "تتراوح تكلفة صيانة المكيفات في دبي بين 100 و350 درهم. دبي أعلى بـ15% بسبب ارتفاع الرطوبة."}}, {"@type": "Question", "name": "لماذا تحتاج مكيفات دبي صيانة أكثر تكراراً؟", "acceptedAnswer": {"@type": "Answer", "text": "الرطوبة الساحلية العالية في دبي تسبب تراكم العفن في الفلاتر بشكل أسرع، مما يستلزم تنظيفاً كل 3 أشهر."}}, {"@type": "Question", "name": "هل تتوفر خدمة صيانة مكيفات في مارينا دبي؟", "acceptedAnswer": {"@type": "Answer", "text": "نعم، يغطي تطبيق رفيق جميع مناطق دبي بما فيها مارينا وداونتاون وJBR ونخلة جميرا."}}, {"@type": "Question", "name": "ما تكلفة تنظيف مكيف سبليت في دبي؟", "acceptedAnswer": {"@type": "Answer", "text": "يبدأ تنظيف مكيف السبليت في دبي من 70 درهم للوحدة الواحدة مع مواد تنظيف معتمدة وآمنة."}}, {"@type": "Question", "name": "كيف أحجز صيانة مكيف في دبي بسرعة؟", "acceptedAnswer": {"@type": "Answer", "text": "احجز فوراً عبر تطبيق رفيق أو واتساب، ونصل إليك في أي منطقة بدبي خلال ساعتين في المتوسط."}}]}]}</script>
 </head>
 <body>
-<nav>
-  <div class="container nav-inner">
-    <a href="/" class="logo">رفيق <span>هاب</span></a>
-    <ul class="nav-links">
-      <li class="has-dropdown"><a href="#">الإمارات ▾</a>
-        <ul class="dropdown">
-          <li><a href="/أبوظبي/">أبوظبي</a></li>
-          <li><a href="/دبي/">دبي</a></li>
-          <li><a href="/الشارقة/">الشارقة</a></li>
-          <li><a href="/عجمان/">عجمان</a></li>
+<header class="site-header">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="logo" href="https://hub.rafeeg.ae/" aria-label="رفيق هاب — الرئيسية">
+        <img src="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png" alt="رفيق" width="110" height="38" loading="eager">
+      </a>
+      <nav aria-label="التنقل الرئيسي">
+        <ul class="nav-list" id="main-nav">
+          <li class="has-dropdown">
+            <a class="nav-link-drop" href="#" aria-haspopup="true">الخدمات <span class="drop-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown">
+              <li><a href="/صيانة-مكيفات/">صيانة مكيفات</a></li>
+              <li><a href="/مقاولات/">مقاولات</a></li>
+              <li><a href="/ارضيات/">ارضيات</a></li>
+              <li><a href="/ديكور/">ديكور وجبس</a></li>
+              <li><a href="/حديد-مشغول/">حديد مشغول</a></li>
+              <li><a href="/المنيوم/">ألمنيوم</a></li>
+              <li><a href="/زجاج/">زجاج</a></li>
+              <li><a href="/الاجهزة-المنزلية/">الأجهزة المنزلية</a></li>
+              <li><a href="/تنجيد/">تنجيد</a></li>
+              <li><a href="/مسابح/">مسابح</a></li>
+              <li><a href="/تزيين-حدائق/">تزيين حدائق</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a class="nav-link-drop" href="#" aria-haspopup="true">الإمارات <span class="drop-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown">
+              <li><a href="/أبوظبي/">أبوظبي</a></li>
+              <li><a href="/دبي/">دبي</a></li>
+              <li><a href="/الشارقة/">الشارقة</a></li>
+              <li><a href="/عجمان/">عجمان</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-      <li class="has-dropdown"><a href="#">الخدمات ▾</a>
-        <ul class="dropdown">
-          <li><a href="/صيانة-مكيفات/">صيانة مكيفات</a></li>
-          <li><a href="/مقاولات/">مقاولات</a></li>
-          <li><a href="/ارضيات/">أرضيات</a></li>
-          <li><a href="/ديكور/">ديكور</a></li>
-          <li><a href="/الاجهزة-المنزلية/">الأجهزة المنزلية</a></li>
-        </ul>
-      </li>
-    </ul>
+      </nav>
+      <a class="nav-cta" href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+خدماتكم">احجز الآن</a>
+      <button class="hamburger" id="hamburger" aria-label="قائمة التنقل" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
-</nav>
+</header>
 <nav aria-label="breadcrumb" class="breadcrumb">
   <div class="container"><ol><li><a href="https://hub.rafeeg.ae/">الرئيسية</a></li><li><a href="https://hub.rafeeg.ae/صيانة-مكيفات/">صيانة مكيفات</a></li><li><a href="https://hub.rafeeg.ae/صيانة-مكيفات-دبي/">صيانة مكيفات دبي</a></li></ol></div>
 </nav>
