@@ -82,10 +82,32 @@
     .reviewer-name{font-weight:700;color:#0057b8;margin-bottom:4px}
     .stars{color:#ffd700;font-size:1.1rem;margin-bottom:8px}
     .review-text{font-size:.9rem;line-height:1.7;color:#555}
-    .faq-item{border-bottom:1px solid #e8f0fe;padding:16px 0}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{font-weight:700;color:#0057b8;margin-bottom:8px}
-    .faq-a{color:#555;line-height:1.7;font-size:.95rem}
+    details.faq-item{border-bottom:1px solid #e8f0fe}
+    details.faq-item:last-child{border-bottom:none}
+    details.faq-item summary.faq-q{cursor:pointer;list-style:none;padding:16px 0;font-weight:700;color:#0057b8;display:flex;justify-content:space-between;align-items:center}
+    details.faq-item summary.faq-q::-webkit-details-marker{display:none}
+    details.faq-item summary.faq-q::after{content:"＋";font-size:1.1rem;color:#0057b8;flex-shrink:0;margin-right:8px}
+    details.faq-item[open] summary.faq-q::after{content:"－"}
+    details.faq-item .faq-a{padding:0 0 16px;color:#555;line-height:1.7;font-size:.95rem}
+    .cross-cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+    .cross-city-card{display:block;background:#f5f8ff;border:1px solid #d0e4ff;border-radius:10px;padding:16px 18px;text-align:center;transition:border-color .2s,box-shadow .2s}
+    .cross-city-card:hover{border-color:#0057b8;box-shadow:0 4px 12px rgba(0,87,184,.12)}
+    .cross-city-name{font-weight:700;color:#0057b8;font-size:1rem;margin-bottom:4px}
+    .cross-city-sub{font-size:.8rem;color:#888}
+    .tips-list{list-style:none;padding:0}
+    .tips-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f0f4ff}
+    .tips-list li:last-child{border-bottom:none}
+    .tip-icon{font-size:1.4rem;flex-shrink:0}
+    .ac-types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:12px}
+    .ac-type-card{background:#f5f8ff;border-radius:10px;padding:18px;text-align:center;border-top:3px solid #0057b8}
+    .ac-type-icon{font-size:2rem;margin-bottom:8px}
+    .ac-type-name{font-weight:700;color:#0057b8;margin-bottom:4px}
+    .ac-type-desc{font-size:.82rem;color:#666;line-height:1.5}
+    .why-pro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+    .why-pro-card{background:#fff;border:1px solid #e8f0fe;border-radius:10px;padding:18px}
+    .why-pro-icon{font-size:1.5rem;margin-bottom:8px}
+    .why-pro-title{font-weight:700;color:#0057b8;margin-bottom:6px;font-size:.95rem}
+    .why-pro-text{font-size:.85rem;color:#555;line-height:1.6}
     .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;text-align:center}
     .trust-item{padding:18px;background:#f5f8ff;border-radius:10px}
     .trust-num{font-size:1.6rem;font-weight:800;color:#0057b8}
@@ -206,7 +228,7 @@
 
 <section class="section">
   <h2>أسئلة شائعة — إصلاح مكيفات في الشارقة</h2>
-  <div class="faq-item"><div class="faq-q">كم سعر إصلاح مكيف في الشارقة؟</div><div class="faq-a">إصلاح المكيفات في الشارقة يتراوح بين 80 و1500 درهم. الشارقة من أكثر الأسعار تنافسية في الإمارات.</div></div><div class="faq-item"><div class="faq-q">هل تعملون في إصلاح مكيفات النهدة بالشارقة؟</div><div class="faq-a">نعم، نخدم النهدة والتعاون والخان وجميع مناطق الشارقة.</div></div><div class="faq-item"><div class="faq-q">ما العطل الذي يسبب انقطاع تبريد المكيف فجأة؟</div><div class="faq-a">أكثر الأسباب شيوعاً هي نقص الغاز أو تلف الكمبريسور أو تجمد الكويلات. فحصنا المجاني يحدد السبب.</div></div><div class="faq-item"><div class="faq-q">هل تتوفر قطع غيار مكيفات في الشارقة؟</div><div class="faq-a">نعم، لدينا مخزون قطع غيار أصلية لأغلب الماركات في الشارقة لتسريع عملية الإصلاح.</div></div><div class="faq-item"><div class="faq-q">كيف أحجز إصلاح مكيف طارئ في الشارقة؟</div><div class="faq-a">تواصل معنا عبر واتساب أو التطبيق لخدمة طارئة في الشارقة متاحة 7 أيام في الأسبوع.</div></div>
+  <details class="faq-item"><summary class="faq-q">كم سعر إصلاح مكيف في الشارقة؟</summary><div class="faq-a">إصلاح المكيفات في الشارقة يتراوح بين 80 و1500 درهم. الشارقة من أكثر الأسعار تنافسية في الإمارات.</div></details><details class="faq-item"><summary class="faq-q">هل تعملون في إصلاح مكيفات النهدة بالشارقة؟</summary><div class="faq-a">نعم، نخدم النهدة والتعاون والخان وجميع مناطق الشارقة.</div></details><details class="faq-item"><summary class="faq-q">ما العطل الذي يسبب انقطاع تبريد المكيف فجأة؟</summary><div class="faq-a">أكثر الأسباب شيوعاً هي نقص الغاز أو تلف الكمبريسور أو تجمد الكويلات. فحصنا المجاني يحدد السبب.</div></details><details class="faq-item"><summary class="faq-q">هل تتوفر قطع غيار مكيفات في الشارقة؟</summary><div class="faq-a">نعم، لدينا مخزون قطع غيار أصلية لأغلب الماركات في الشارقة لتسريع عملية الإصلاح.</div></details><details class="faq-item"><summary class="faq-q">كيف أحجز إصلاح مكيف طارئ في الشارقة؟</summary><div class="faq-a">تواصل معنا عبر واتساب أو التطبيق لخدمة طارئة في الشارقة متاحة 7 أيام في الأسبوع.</div></details>
 </section>
 
 <div class="cta-banner">
@@ -244,7 +266,7 @@
         <li><a href="https://ar.rafeeg.ae">الموقع الرسمي</a></li>
       </ul></div>
     </div>
-    <div class="footer-bottom"><p>© 2025 رفيق للخدمات المنزلية. جميع الحقوق محفوظة.</p></div>
+    <div class="footer-bottom"><p>© 2026 رفيق للخدمات المنزلية. جميع الحقوق محفوظة.</p></div>
   </div>
 </footer>
 </body>

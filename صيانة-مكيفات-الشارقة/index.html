@@ -82,10 +82,32 @@
     .reviewer-name{font-weight:700;color:#0057b8;margin-bottom:4px}
     .stars{color:#ffd700;font-size:1.1rem;margin-bottom:8px}
     .review-text{font-size:.9rem;line-height:1.7;color:#555}
-    .faq-item{border-bottom:1px solid #e8f0fe;padding:16px 0}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{font-weight:700;color:#0057b8;margin-bottom:8px}
-    .faq-a{color:#555;line-height:1.7;font-size:.95rem}
+    details.faq-item{border-bottom:1px solid #e8f0fe}
+    details.faq-item:last-child{border-bottom:none}
+    details.faq-item summary.faq-q{cursor:pointer;list-style:none;padding:16px 0;font-weight:700;color:#0057b8;display:flex;justify-content:space-between;align-items:center}
+    details.faq-item summary.faq-q::-webkit-details-marker{display:none}
+    details.faq-item summary.faq-q::after{content:"＋";font-size:1.1rem;color:#0057b8;flex-shrink:0;margin-right:8px}
+    details.faq-item[open] summary.faq-q::after{content:"－"}
+    details.faq-item .faq-a{padding:0 0 16px;color:#555;line-height:1.7;font-size:.95rem}
+    .cross-cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+    .cross-city-card{display:block;background:#f5f8ff;border:1px solid #d0e4ff;border-radius:10px;padding:16px 18px;text-align:center;transition:border-color .2s,box-shadow .2s}
+    .cross-city-card:hover{border-color:#0057b8;box-shadow:0 4px 12px rgba(0,87,184,.12)}
+    .cross-city-name{font-weight:700;color:#0057b8;font-size:1rem;margin-bottom:4px}
+    .cross-city-sub{font-size:.8rem;color:#888}
+    .tips-list{list-style:none;padding:0}
+    .tips-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f0f4ff}
+    .tips-list li:last-child{border-bottom:none}
+    .tip-icon{font-size:1.4rem;flex-shrink:0}
+    .ac-types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:12px}
+    .ac-type-card{background:#f5f8ff;border-radius:10px;padding:18px;text-align:center;border-top:3px solid #0057b8}
+    .ac-type-icon{font-size:2rem;margin-bottom:8px}
+    .ac-type-name{font-weight:700;color:#0057b8;margin-bottom:4px}
+    .ac-type-desc{font-size:.82rem;color:#666;line-height:1.5}
+    .why-pro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+    .why-pro-card{background:#fff;border:1px solid #e8f0fe;border-radius:10px;padding:18px}
+    .why-pro-icon{font-size:1.5rem;margin-bottom:8px}
+    .why-pro-title{font-weight:700;color:#0057b8;margin-bottom:6px;font-size:.95rem}
+    .why-pro-text{font-size:.85rem;color:#555;line-height:1.6}
     .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;text-align:center}
     .trust-item{padding:18px;background:#f5f8ff;border-radius:10px}
     .trust-num{font-size:1.6rem;font-weight:800;color:#0057b8}
@@ -175,18 +197,20 @@
 <section class="section">
   <h2>صيانة مكيفات في الشارقة — الدليل الشامل</h2>
   <p>في ظل المناخ الحار لـالشارقة، المكيف ضرورة أساسية في كل منزل. نوفر عبر تطبيق رفيق خدمة صيانة مكيفات احترافية في جميع أنحاء الشارقة بفنيين معتمدين وأسعار شفافة.</p>
-  <p>سواء كنت تحتاج <a href="/تنظيف-مكيفات-الشارقة/">تنظيفاً دورياً</a> أو <a href="/اصلاح-مكيفات-الشارقة/">إصلاح عطل</a>، فريقنا مستعد على مدار الساعة في الشارقة.</p>
+  <p>سواء كنت تحتاج <a href="/تنظيف-مكيفات-الشارقة/">تنظيفاً دورياً</a> أو <a href="/اصلاح-مكيفات-الشارقة/">إصلاح عطل</a>، فريقنا مستعد على مدار الساعة في الشارقة. مناخ الشارقة الجاف الحار يسبب تراكم الغبار في الفلاتر بسرعة. ينصح بصيانة المكيف مرتين سنوياً: قبل الصيف وبعده للحفاظ على الكفاءة القصوى.</p>
   <ul>
-    <li>✓ صيانة شاملة لجميع أنواع المكيفات (سبليت، مركزي، نافذة)</li>
+    <li>✓ صيانة شاملة لجميع أنواع المكيفات (سبليت، مركزي، نافذة، كاسيت)</li>
     <li>✓ تنظيف الفلاتر والكويلات وصينية التكثيف</li>
     <li>✓ فحص ومعالجة الغاز (الفريون)</li>
     <li>✓ إصلاح أعطال الكهرباء والميكانيكا</li>
     <li>✓ برمجة ريموت كنترول وتجديد</li>
+    <li>✓ خدمة طارئة 7 أيام في الأسبوع</li>
   </ul>
 </section>
 
 <section class="section">
-  <h2>قائمة أسعار صيانة المكيفات في الشارقة 2025</h2>
+  <h2>قائمة أسعار صيانة المكيفات في الشارقة 2026</h2>
+  <p>تقدم الشارقة من أكثر الأسعار تنافسية في الإمارات، مع جودة خدمة مضمونة لعائلات الشارقة ومجمعاتها السكنية.</p>
   <table class="price-table">
     <thead><tr><th>نوع الخدمة</th><th>نطاق السعر (درهم)</th><th>المدة المتوقعة</th></tr></thead>
     <tbody>
@@ -198,6 +222,59 @@
     </tbody>
   </table>
   <p style="margin-top:12px;font-size:.85rem;color:#888">* الأسعار تقديرية. احصل على عرض دقيق عبر التطبيق.</p>
+</section>
+
+<section class="section">
+  <h2>لماذا مكيفات الشارقة تحتاج صيانة منتظمة؟</h2>
+  <p>مناخ الشارقة الجاف الحار يسبب تراكم الغبار في الفلاتر بسرعة. ينصح بصيانة المكيف مرتين سنوياً: قبل الصيف وبعده للحفاظ على الكفاءة القصوى.</p>
+  <div class="why-pro-grid">
+    <div class="why-pro-card">
+      <div class="why-pro-icon">💸</div>
+      <div class="why-pro-title">توفير فاتورة الكهرباء</div>
+      <div class="why-pro-text">المكيف غير المُصان يستهلك حتى 25% كهرباء زيادة. الصيانة الدورية تخفّض الفاتورة بشكل ملموس.</div>
+    </div>
+    <div class="why-pro-card">
+      <div class="why-pro-icon">🌡️</div>
+      <div class="why-pro-title">تبريد أفضل وأسرع</div>
+      <div class="why-pro-text">الفلاتر المسدودة تقلل كفاءة التبريد بنسبة تصل إلى 30%. الصيانة تستعيد الأداء الكامل للجهاز.</div>
+    </div>
+    <div class="why-pro-card">
+      <div class="why-pro-icon">🫁</div>
+      <div class="why-pro-title">هواء نظيف وصحي</div>
+      <div class="why-pro-text">الفلاتر المتسخة تنشر البكتيريا والعفن في الهواء. التنظيف الدوري يحافظ على صحة الأسرة.</div>
+    </div>
+    <div class="why-pro-card">
+      <div class="why-pro-icon">🔒</div>
+      <div class="why-pro-title">ضمان 30 يوماً</div>
+      <div class="why-pro-text">كل خدمة عبر رفيق تأتي بضمان 30 يوماً على العمل. إذا لم تكن راضياً نعيد الكرّة مجاناً.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>أنواع المكيفات التي نصونها في الشارقة</h2>
+  <div class="ac-types-grid">
+    <div class="ac-type-card">
+      <div class="ac-type-icon">🌬️</div>
+      <div class="ac-type-name">مكيف سبليت</div>
+      <div class="ac-type-desc">الأكثر شيوعاً في منازل الشارقة. صيانة شاملة تشمل وحدتي الداخلية والخارجية.</div>
+    </div>
+    <div class="ac-type-card">
+      <div class="ac-type-icon">🏢</div>
+      <div class="ac-type-name">مكيف مركزي</div>
+      <div class="ac-type-desc">للأبراج والمجمعات الكبيرة. فنيون متخصصون في الأنظمة المركزية والمواسير.</div>
+    </div>
+    <div class="ac-type-card">
+      <div class="ac-type-icon">🪟</div>
+      <div class="ac-type-name">مكيف نافذة</div>
+      <div class="ac-type-desc">شائع في المباني القديمة. صيانة كاملة مع إمكانية استبدال الكمبريسور والفلاتر.</div>
+    </div>
+    <div class="ac-type-card">
+      <div class="ac-type-icon">⬛</div>
+      <div class="ac-type-name">مكيف كاسيت</div>
+      <div class="ac-type-desc">مُثبَّت في السقف للمكاتب والقاعات. صيانة متخصصة وتنظيف عميق للشبكات.</div>
+    </div>
+  </div>
 </section>
 
 <section class="section">
@@ -226,11 +303,22 @@
   <h2>خطوات حجز صيانة المكيف في الشارقة</h2>
   <ol class="steps">
     <li><span class="step-num">1</span><div><strong>حمّل التطبيق أو تواصل واتساب</strong><br>افتح رفيق واختر "صيانة مكيفات" في الشارقة</div></li>
-    <li><span class="step-num">2</span><div><strong>حدد موعدك</strong><br>اختر الوقت المناسب — نعمل 7 أيام</div></li>
-    <li><span class="step-num">3</span><div><strong>تأكيد الحجز</strong><br>ستصلك رسالة تأكيد مع بيانات الفني</div></li>
-    <li><span class="step-num">4</span><div><strong>وصول الفني</strong><br>فني معتمد يصل في الوقت المحدد</div></li>
-    <li><span class="step-num">5</span><div><strong>الصيانة والتسليم</strong><br>يشرح الفني التوصيات ويسلم مع الضمان</div></li>
+    <li><span class="step-num">2</span><div><strong>حدد موعدك</strong><br>اختر الوقت المناسب — نعمل 7 أيام في الأسبوع</div></li>
+    <li><span class="step-num">3</span><div><strong>تأكيد الحجز والسعر</strong><br>ستصلك رسالة تأكيد مع بيانات الفني والسعر الكامل قبل أي زيارة</div></li>
+    <li><span class="step-num">4</span><div><strong>وصول الفني المعتمد</strong><br>فني معتمد يصل في الوقت المحدد بكامل أدواته</div></li>
+    <li><span class="step-num">5</span><div><strong>الصيانة والتسليم بضمان</strong><br>يشرح الفني التوصيات ويسلّم الجهاز مع ضمان 30 يوماً</div></li>
   </ol>
+</section>
+
+<section class="section">
+  <h2>نصائح للحفاظ على مكيفك في الشارقة</h2>
+  <ul class="tips-list">
+    <li><span class="tip-icon">🗓️</span><div><strong>نظّف الفلاتر كل شهرين</strong> — في مناخ الشارقة، الغبار يتراكم بسرعة. الفلاتر النظيفة تُحسّن التبريد وتقلل الاستهلاك.</div></li>
+    <li><span class="tip-icon">🌡️</span><div><strong>اضبط درجة الحرارة على 24°م</strong> — كل درجة انخفاض تزيد الاستهلاك 6%. 24 درجة توازن مثالي بين الراحة والاقتصاد.</div></li>
+    <li><span class="tip-icon">🔌</span><div><strong>أوقف المكيف عند الخروج</strong> — استخدم المؤقت الزمني أو المكيف الذكي لتوفير الطاقة عند غيابك.</div></li>
+    <li><span class="tip-icon">🪟</span><div><strong>أغلق النوافذ جيداً</strong> — الهواء الخارجي الحار يجعل المكيف يعمل بشكل مكثف. التعزيل الجيد يحمي الجهاز.</div></li>
+    <li><span class="tip-icon">🔧</span><div><strong>احجز صيانة قبل الصيف</strong> — أفضل وقت لصيانة المكيف في الشارقة هو مارس-أبريل قبل ارتفاع درجات الحرارة.</div></li>
+  </ul>
 </section>
 
 <section class="section">
@@ -250,7 +338,7 @@
 
 <section class="section">
   <h2>أسئلة شائعة حول صيانة مكيفات الشارقة</h2>
-  <div class="faq-item"><div class="faq-q">كم تكلف صيانة المكيف في الشارقة؟</div><div class="faq-a">تتراوح أسعار صيانة المكيفات في الشارقة بين 70 و250 درهم، وهي من أكثر الأسعار تنافسية في الإمارات.</div></div><div class="faq-item"><div class="faq-q">هل تغطي خدمة رفيق جميع مناطق الشارقة؟</div><div class="faq-a">نعم، تغطي خدماتنا التعاون والنهدة والخان والروضة والقاسمية والمجاز وجميع أحياء الشارقة.</div></div><div class="faq-item"><div class="faq-q">ما أفضل دورية لصيانة المكيفات في الشارقة؟</div><div class="faq-a">في مناخ الشارقة الجاف الحار، يُنصح بصيانة المكيف مرتين سنوياً: قبل الصيف وبعده.</div></div><div class="faq-item"><div class="faq-q">هل تتوفر خدمة صيانة مكيفات منزلية في الشارقة؟</div><div class="faq-a">نعم، جميع خدماتنا بالزيارة المنزلية في الشارقة. الفني يصل إليك ويقوم بالعمل في موقعك.</div></div><div class="faq-item"><div class="faq-q">كيف أعرف أن مكيفي يحتاج للصيانة في الشارقة؟</div><div class="faq-a">إذا لاحظت ضعفاً في التبريد أو أصواتاً غريبة أو رائحة كريهة فمكيفك يحتاج صيانة. اطلب تقييماً مجانياً عبر رفيق.</div></div>
+  <details class="faq-item"><summary class="faq-q">كم تكلف صيانة المكيف في الشارقة؟</summary><div class="faq-a">تتراوح أسعار صيانة المكيفات في الشارقة بين 70 و250 درهم، وهي من أكثر الأسعار تنافسية في الإمارات.</div></details><details class="faq-item"><summary class="faq-q">هل تغطي خدمة رفيق جميع مناطق الشارقة؟</summary><div class="faq-a">نعم، تغطي خدماتنا التعاون والنهدة والخان والروضة والقاسمية والمجاز وجميع أحياء الشارقة.</div></details><details class="faq-item"><summary class="faq-q">ما أفضل دورية لصيانة المكيفات في الشارقة؟</summary><div class="faq-a">في مناخ الشارقة الجاف الحار، يُنصح بصيانة المكيف مرتين سنوياً: قبل الصيف وبعده.</div></details><details class="faq-item"><summary class="faq-q">هل تتوفر خدمة صيانة مكيفات منزلية في الشارقة؟</summary><div class="faq-a">نعم، جميع خدماتنا بالزيارة المنزلية في الشارقة. الفني يصل إليك ويقوم بالعمل في موقعك.</div></details><details class="faq-item"><summary class="faq-q">كيف أعرف أن مكيفي يحتاج للصيانة في الشارقة؟</summary><div class="faq-a">إذا لاحظت ضعفاً في التبريد أو أصواتاً غريبة أو رائحة كريهة فمكيفك يحتاج صيانة. اطلب تقييماً مجانياً عبر رفيق.</div></details>
 </section>
 
 <div class="cta-banner">
@@ -261,6 +349,12 @@
     <a href="https://wa.me/971600500200?text=أهلاً،+أريد+حجز+صيانة+مكيف+في+الشارقة" class="btn-wa">💬 واتساب</a>
   </div>
 </div>
+
+<section class="section">
+  <h2>صيانة مكيفات في مدن أخرى</h2>
+  <p>نغطي جميع الإمارات — اختر مدينتك للاطلاع على الأسعار والمناطق:</p>
+  <div class="cross-cities"><a href="https://hub.rafeeg.ae/صيانة-مكيفات-أبوظبي/" class="cross-city-card"><div class="cross-city-name">صيانة مكيفات أبوظبي</div><div class="cross-city-sub">اضغط للاطلاع على الأسعار والمناطق</div></a><a href="https://hub.rafeeg.ae/صيانة-مكيفات-دبي/" class="cross-city-card"><div class="cross-city-name">صيانة مكيفات دبي</div><div class="cross-city-sub">اضغط للاطلاع على الأسعار والمناطق</div></a><a href="https://hub.rafeeg.ae/صيانة-مكيفات-عجمان/" class="cross-city-card"><div class="cross-city-name">صيانة مكيفات عجمان</div><div class="cross-city-sub">اضغط للاطلاع على الأسعار والمناطق</div></a></div>
+</section>
 
 </div></main>
 <footer>
@@ -284,7 +378,7 @@
         <li><a href="https://ar.rafeeg.ae">الموقع الرسمي</a></li>
       </ul></div>
     </div>
-    <div class="footer-bottom"><p>© 2025 رفيق للخدمات المنزلية. جميع الحقوق محفوظة.</p></div>
+    <div class="footer-bottom"><p>© 2026 رفيق للخدمات المنزلية. جميع الحقوق محفوظة.</p></div>
   </div>
 </footer>
 </body>
