@@ -5,6 +5,7 @@ Run after any page is added, removed, or URL-changed.
 Usage: python3 gen_sitemap.py
 """
 import os, datetime
+from urllib.parse import quote
 
 BASE     = os.path.dirname(os.path.abspath(__file__))
 DOMAIN   = "https://hub.rafeeg.ae"
@@ -47,7 +48,8 @@ for root, dirs, files in os.walk(BASE):
     mtime = datetime.datetime.fromtimestamp(os.path.getmtime(path))
     slug  = root.replace(BASE, "").strip("/")
     priority, freq = get_priority_freq(slug)
-    url   = f"{DOMAIN}/{slug}/" if slug else f"{DOMAIN}/"
+    encoded_slug = quote(slug, safe="") if slug else ""
+    url   = f"{DOMAIN}/{encoded_slug}/" if encoded_slug else f"{DOMAIN}/"
     pages.append((priority, slug or "__home__", url, mtime.strftime("%Y-%m-%d"), freq))
 
 # Sort: priority desc, then slug alpha
@@ -56,9 +58,7 @@ pages.sort(key=lambda x: (-x[0], x[1]))
 # ── Build XML ────────────────────────────────────────────────────────────────
 lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
-    '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     f'  <!-- Generated: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")} — {len(pages)} URLs -->',
     '',
 ]
