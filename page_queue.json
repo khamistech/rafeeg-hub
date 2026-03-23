@@ -1,0 +1,74 @@
+[
+  {
+    "dir": "صيانة-مكيفات-عجمان",
+    "slug": "صيانة-مكيفات-عجمان",
+    "svc": "صيانة مكيفات",
+    "svc_url": "صيانة-مكيفات",
+    "city": "عجمان",
+    "image_prompt": "Professional AC maintenance technician servicing a split air conditioner in a modern Ajman apartment, tools visible, clean bright photo, before and after comparison"
+  },
+  {
+    "dir": "تنظيف-مكيفات-أبوظبي",
+    "slug": "تنظيف-مكيفات-أبوظبي",
+    "svc": "تنظيف مكيفات",
+    "svc_url": "تنظيف-مكيفات",
+    "city": "أبوظبي",
+    "image_prompt": "Professional AC cleaning service in Abu Dhabi, technician deep cleaning split air conditioner filter and coils, modern apartment, bright clean professional photo"
+  },
+  {
+    "dir": "تنظيف-مكيفات-دبي",
+    "slug": "تنظيف-مكيفات-دبي",
+    "svc": "تنظيف مكيفات",
+    "svc_url": "تنظيف-مكيفات",
+    "city": "دبي",
+    "image_prompt": "AC cleaning service in Dubai Marina apartment, technician washing air conditioner filter, Dubai skyline visible through window, professional clean photo"
+  },
+  {
+    "dir": "تنظيف-مكيفات-الشارقة",
+    "slug": "تنظيف-مكيفات-الشارقة",
+    "svc": "تنظيف مكيفات",
+    "svc_url": "تنظيف-مكيفات",
+    "city": "الشارقة",
+    "image_prompt": "Professional AC deep cleaning in Sharjah home, technician cleaning split air conditioner coils with foam spray, family apartment, bright professional photo"
+  },
+  {
+    "dir": "تنظيف-مكيفات-عجمان",
+    "slug": "تنظيف-مكيفات-عجمان",
+    "svc": "تنظيف مكيفات",
+    "svc_url": "تنظيف-مكيفات",
+    "city": "عجمان",
+    "image_prompt": "AC filter cleaning service in Ajman apartment, clean before and after comparison of air conditioner filter, professional technician, bright photo"
+  },
+  {
+    "dir": "اصلاح-مكيفات-أبوظبي",
+    "slug": "اصلاح-مكيفات-أبوظبي",
+    "svc": "إصلاح مكيفات",
+    "svc_url": "اصلاح-مكيفات",
+    "city": "أبوظبي",
+    "image_prompt": "AC repair technician fixing broken air conditioner compressor in Abu Dhabi apartment, diagnostic tools, professional repair service, bright clean photo"
+  },
+  {
+    "dir": "اصلاح-مكيفات-دبي",
+    "slug": "اصلاح-مكيفات-دبي",
+    "svc": "إصلاح مكيفات",
+    "svc_url": "اصلاح-مكيفات",
+    "city": "دبي",
+    "image_prompt": "AC repair service in Dubai luxury apartment, certified technician diagnosing air conditioner fault with multimeter, professional photo, Dubai interior"
+  },
+  {
+    "dir": "اصلاح-مكيفات-الشارقة",
+    "slug": "اصلاح-مكيفات-الشارقة",
+    "svc": "إصلاح مكيفات",
+    "svc_url": "اصلاح-مكيفات",
+    "city": "الشارقة",
+    "image_prompt": "AC repair technician fixing air conditioner in Sharjah residential apartment, replacing fan motor, professional tools, clean photo"
+  },
+  {
+    "dir": "اصلاح-مكيفات-عجمان",
+    "slug": "اصلاح-مكيفات-عجمان",
+    "svc": "إصلاح مكيفات",
+    "svc_url": "اصلاح-مكيفات",
+    "city": "عجمان",
+    "image_prompt": "Certified AC repair service in Ajman, technician repairing split air conditioner electrical fault, affordable professional repair, bright clean photo"
+  }
+]
