@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>صيانة مكيفات في دبي | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة صيانة مكيفات في دبي مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. تنظيف، شحن فريون، إصلاح أعطال. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/صيانة-مكيفات-دبي/">
@@ -644,6 +644,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -849,6 +898,159 @@ function calcUpdate() {
 }
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">كيف يُسعّر رفيق صيانة المكيفات في دبي؟</h2>
+    <p class="sec-sub">10 حالات تعكس التنوع السكاني والتجاري في دبي — من المارينا إلى ديرة</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏙️</span>
+          <div>
+            <div class="persona-name">ستيف هاريسون</div>
+            <div class="persona-role">مقيم أجنبي — دبي مارينا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">يسكن في شقة مفروشة، المكيف يصدر ضوضاء عند بدء التشغيل. الصيانة كشفت رقاصة المروحة محتاجة تشحيم.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة دورية + تشحيم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍💼</span>
+          <div>
+            <div class="persona-name">نور الرشيد</div>
+            <div class="persona-role">مديرة تنفيذية — داونتاون دبي</div>
+          </div>
+        </div>
+        <p class="persona-scenario">أبلغت الإدارة عن ارتفاع درجة حرارة الغرف. الصيانة أظهرت فلاتر مسدودة بالكامل أضعفت التبريد 40%.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة + تنظيف فلاتر عميق</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏨</span>
+          <div>
+            <div class="persona-name">فندق بالم ريزيدنس</div>
+            <div class="persona-role">مدير صيانة — نخلة الجميرا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">عقد ربع سنوي لصيانة 120 وحدة سبليت في الشقق الفندقية. يشمل فحص الفريون وتقارير أداء دورية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">عقد ربع سنوي — فندقي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍👧</span>
+          <div>
+            <div class="persona-name">مروان جمال</div>
+            <div class="persona-role">مستأجر — جميرا بيتش</div>
+          </div>
+        </div>
+        <p class="persona-scenario">يسكن مع طفلة صغيرة، قلق من جودة الهواء. الصيانة شملت فحص الفلاتر والتعقيم مجاناً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة + فحص جودة هواء</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🛍️</span>
+          <div>
+            <div class="persona-name">متاجر الجولدن مول</div>
+            <div class="persona-role">مدير — ديرة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">4 مكيفات شباك في المتجر تحتاج صيانة قبل موسم الصيف. الفني أنجز الجميع في زيارة واحدة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">450 درهم</span>
+          <span class="persona-price-what">صيانة 4 شبابيك (مبلغ خاص)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍🔬</span>
+          <div>
+            <div class="persona-name">د. علي العوضي</div>
+            <div class="persona-role">طبيب أسنان — قرية الجميرا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مستوصف خاص يتطلب تهوية ممتازة. صيانة 3 وحدات مع فحص معدل تدفق الهواء الطبي.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">370 درهم</span>
+          <span class="persona-price-what">صيانة 3 وحدات تخصصية</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">ريم المزروعي</div>
+            <div class="persona-role">ربة منزل — البرشاء</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يقطّر مياه من الوحدة الداخلية أحياناً. الصيانة كشفت انسداداً جزئياً في خط الصرف ونقصاً طفيفاً في الفريون.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">صيانة + إصلاح صرف</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏗️</span>
+          <div>
+            <div class="persona-name">شركة الاتحاد للتطوير</div>
+            <div class="persona-role">مشروع سكني — دبي هيلز</div>
+          </div>
+        </div>
+        <p class="persona-scenario">صيانة 20 شقة جديدة قبل التسليم للمستأجرين. فحص وتوثيق حالة كل وحدة مع تقرير سلامة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">صيانة استلام مشاريع</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💻</span>
+          <div>
+            <div class="persona-name">كريم الزهراني</div>
+            <div class="persona-role">مستقل — Business Bay</div>
+          </div>
+        </div>
+        <p class="persona-scenario">يعمل من المنزل ويحتاج مكيفاً موثوقاً. طلب الصيانة الوقائية قبل بدء الصيف مباشرةً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة دورية — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👴</span>
+          <div>
+            <div class="persona-name">حسن البلوشي</div>
+            <div class="persona-role">مقيم قديم — ديرة، منطقة الغرير</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف عمره 8 سنوات، الصيانة وجدت مشاكل متراكمة حُلّت دفعة واحدة بدلاً من الاستبدال.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">250 درهم</span>
+          <span class="persona-price-what">صيانة شاملة + توصيات</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -886,6 +1088,52 @@ function calcUpdate() {
         </div>
         <p class="review-text" itemprop="reviewBody">كان مكيف غرفة النوم يُصدر صوت طقطقة غريباً. كنت أخشى التكلفة، لكن الفني شخَّص المشكلة وقدَّر السعر قبل أن يبدأ. الإصلاح لم يأخذ ساعة كاملة والضمان 30 يوماً — قيمة حقيقية مقابل المال.</p>
         <span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة صيانة المكيفات في دبي</h2>
+    <p class="sec-sub">من شبكة رفيق المعتمدة — فنيون اختارهم آلاف المقيمين في دبي</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🥇 الأعلى تقييماً</div>
+        <div class="provider-name">دبي كول تك</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">من أقدم وأكبر شركات صيانة المكيفات في دبي. يغطون جميع مناطق دبي بفريق من 25 فنياً. اشتهروا بالالتزام بالمواعيد والأسعار الشفافة. لديهم تطبيق مستقل لتتبع الفني.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 منطقة القوز الصناعية، دبي — يخدمون: المارينا، JBR، داونتاون، البرشاء</div>
+          <div class="provider-jobs">✅ 4,500+ طلب مكتمل</div>
+          <span class="provider-tag">متاح 24 ساعة</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">⚡ الأسرع استجابة</div>
+        <div class="provider-name">برايم AC سيرفيس دبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">متخصصون في صيانة المكيفات في مجمعات دبي الراقية. يقدمون ضماناً 45 يوماً على أعمال الصيانة ولديهم تقييم ممتاز من مجمعات نخلة الجميرا ودبي هيلز.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 دبي مارينا يوث هوستل، مارينا — يخدمون: النخلة، المارينا، الجميرا، الوصل</div>
+          <div class="provider-jobs">✅ 3,100+ طلب مكتمل</div>
+          <span class="provider-tag">ضمان 45 يوم</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏢 خبراء التجاري</div>
+        <div class="provider-name">إيليت HVAC دبي</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">شركة متخصصة في صيانة أنظمة التكييف المركزي والكاسيت للفنادق والمكاتب في دبي. يقدمون عقود صيانة سنوية شاملة مع تقارير إلكترونية لكل زيارة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 Business Bay، برج كابيتال بلازا — يخدمون: وسط دبي، ديرة، الجداف، مردف</div>
+          <div class="provider-jobs">✅ 2,200+ طلب مكتمل</div>
+          <span class="provider-tag">عقود سنوية</span>
+        </div>
       </div>
     </div>
   </div>

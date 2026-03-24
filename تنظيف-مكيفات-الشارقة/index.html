@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>تنظيف مكيفات في الشارقة | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة تنظيف مكيفات في الشارقة مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/تنظيف-مكيفات-الشارقة/">
@@ -580,6 +580,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -754,6 +803,159 @@ details[open] summary::after { content: '−'; }
 function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم';}
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">ماذا يدفع سكان الشارقة مقابل تنظيف المكيف؟</h2>
+    <p class="sec-sub">10 حالات واقعية من مناطق مختلفة — شفافية تامة في الأسعار</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">وليد إبراهيم</div>
+            <div class="persona-role">موظف — التعاون</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف الغرفة الرئيسية يُسبّب عطاساً متكرراً. تنظيف الفلاتر والكويل أزال الغبار المتراكم.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">أميرة جمال</div>
+            <div class="persona-role">ربة منزل — النهدة 2</div>
+          </div>
+        </div>
+        <p class="persona-scenario">5 مكيفات في الشقة، لجأت لعرض الجملة. وفّرت 100 درهم مقارنة بالتنظيف المنفصل.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">250 درهم</span>
+          <span class="persona-price-what">تنظيف 5 وحدات (50 × 5)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏢</span>
+          <div>
+            <div class="persona-name">برج الشارقة للأعمال</div>
+            <div class="persona-role">مدير المرافق — الخان</div>
+          </div>
+        </div>
+        <p class="persona-scenario">22 مكيف مركزي في أدوار المكاتب. عقد ربع سنوي بسعر 40 درهم للوحدة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">880 درهم</span>
+          <span class="persona-price-what">تنظيف 22 وحدة ربع سنوي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍🍳</span>
+          <div>
+            <div class="persona-name">أم سعود</div>
+            <div class="persona-role">ربة منزل — القادسية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">دخان المطبخ يدخل لقناة المكيف. الفني نظّف الكويل الداخلي المتشرّب بزيت المطبخ.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف خاص بدخان المطبخ</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏫</span>
+          <div>
+            <div class="persona-name">مدرسة الرسالة الخاصة</div>
+            <div class="persona-role">مدير — الرحمانية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">16 وحدة في الفصول. التنظيف الدوري شرط من شروط اعتماد الوزارة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">720 درهم</span>
+          <span class="persona-price-what">تنظيف 16 وحدة (45 × 16)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">ياسر القحطاني</div>
+            <div class="persona-role">مستأجر — بحيرة خالد</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يُصدر صوتاً رطباً عند بدء التشغيل. التنظيف أزال تراكمات المياه من الوحدة الداخلية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف + تسليك الصرف</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏥</span>
+          <div>
+            <div class="persona-name">عيادة الشفاء</div>
+            <div class="persona-role">مشرف التعقيم — المجاز</div>
+          </div>
+        </div>
+        <p class="persona-scenario">4 وحدات في عيادة طب الأسنان. التنظيف بمواد طبية معقّمة مع تقرير كيميائي.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">320 درهم</span>
+          <span class="persona-price-what">تنظيف طبي 4 وحدات</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍💼</span>
+          <div>
+            <div class="persona-name">نادين الأشقر</div>
+            <div class="persona-role">صاحبة صالون — غبيبة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">العملاء يشكون من رائحة كريهة في الصالون. التنظيف أزال تراكم الكيراتين والمنتجات في الفلاتر.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف خاص بالصالونات</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍👩‍👧</span>
+          <div>
+            <div class="persona-name">عائلة الشيخ</div>
+            <div class="persona-role">أصحاب فيلا — الحليو</div>
+          </div>
+        </div>
+        <p class="persona-scenario">فيلا ذات 3 طوابق بها 7 مكيفات. عرض مجمّع أنجز الجميع خلال يوم واحد.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">315 درهم</span>
+          <span class="persona-price-what">تنظيف 7 وحدات (45 × 7)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🎓</span>
+          <div>
+            <div class="persona-name">حسام مراد</div>
+            <div class="persona-role">طالب — النهدة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">يستأجر غرفة مشتركة. طلب تنظيف مكيف الغرفة بشكل مستقل عن باقي الشقة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف وحدة واحدة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -779,6 +981,52 @@ function calcUpdate(){var s=document.getElementById('calc-service').value.split(
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
         <div class="review-top"><img class="review-avatar" src="https://ar.rafeeg.ae/wp-content/uploads/2025/04/man.png" alt="عبدالله البلوشي" width="44" height="44" loading="lazy"><div><div class="review-name" itemprop="author">عبدالله البلوشي</div><div class="review-stars">★★★★★</div></div></div>
         <p class="review-text" itemprop="reviewBody">خدمة احترافية ومريحة — حجزت أونلاين، الفني جاء بالوقت المحدد، ونظّف وحدتين داخلية وخارجية بشكل ممتاز. سأحجز كل 3 أشهر بكل تأكيد.</p><span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة تنظيف المكيفات في الشارقة</h2>
+    <p class="sec-sub">أفضل فنيو التنظيف في شبكة رفيق بالشارقة</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🧹 الأفضل في الشارقة</div>
+        <div class="provider-name">شاين كلين الشارقة</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">متخصصون في التنظيف العميق للمكيفات في الشارقة منذ 2018. يغطون جميع المناطق السكنية والتجارية بفريق من 14 متخصصاً. يقدمون ضماناً 21 يوماً على نتائج التنظيف.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 شارع الاتحاد، بجوار دانة مول، الشارقة — يخدمون: التعاون، النهدة، القادسية، المجاز</div>
+          <div class="provider-jobs">✅ 3,400+ وحدة نُظّفت</div>
+          <span class="provider-tag">ضمان 21 يوماً</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🌬️ هواء نقي</div>
+        <div class="provider-name">ير بيور الشارقة</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">يتخصصون في معالجة مشاكل جودة الهواء الناتجة عن المكيفات. يقدمون قياساً لجودة الهواء قبل وبعد التنظيف. خيارهم الأول للعائلات التي تعاني من الحساسية والربو في الشارقة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 بحيرة خالد، الشارقة — يخدمون: بحيرة خالد، الخان، المجاز، ضاحية القاسمية</div>
+          <div class="provider-jobs">✅ 1,900+ طلب صحي</div>
+          <span class="provider-tag">قياس جودة هواء</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏭 خبراء الصناعي</div>
+        <div class="provider-name">إندستريال كول كلين</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">متخصصون في تنظيف مكيفات البيئات الصناعية والتجارية في الشارقة. يستخدمون معدات احترافية لتنظيف الوحدات المثبتة في المصانع والمستودعات في ظروف الغبار الصناعي.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 المنطقة الصناعية 12، الشارقة — يخدمون: المناطق الصناعية، المنطقة التجارية، الرحمانية</div>
+          <div class="provider-jobs">✅ 1,100+ طلب صناعي</div>
+          <span class="provider-tag">تنظيف صناعي متخصص</span>
+        </div>
       </div>
     </div>
   </div>

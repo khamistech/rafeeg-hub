@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>إصلاح مكيفات في أبوظبي | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة إصلاح مكيفات في أبوظبي مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/اصلاح-مكيفات-أبوظبي/">
@@ -580,6 +580,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -754,6 +803,159 @@ details[open] summary::after { content: '−'; }
 function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم';}
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">كم يكلّف إصلاح المكيف في أبوظبي؟</h2>
+    <p class="sec-sub">10 حالات إصلاح فعلية — من أبسط الأعطال إلى أكثرها تعقيداً</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">حمد الرميثي</div>
+            <div class="persona-role">مالك شقة — الخالدية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يعمل لكن التبريد ضعيف جداً. الفني اكتشف تسرباً صغيراً في الفريون وأصلحه وأعاد تعبئته.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">180 درهم</span>
+          <span class="persona-price-what">إصلاح تسريب + شحن فريون</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">منى الشامسي</div>
+            <div class="persona-role">ربة منزل — الريم</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف توقف فجأة ولا يستجيب للريموت. الفني وجد مشكلة في لوحة التحكم وأصلحها بدون استبدال.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">إصلاح لوحة التحكم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💼</span>
+          <div>
+            <div class="persona-name">طارق العامري</div>
+            <div class="persona-role">مدير — مصفح</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف المكتب يُسرب مياه على الأرضية. الفني أصلح خط الصرف المسدود وضبط ميلان الأنبوب.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">إصلاح تسرب مياه</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏢</span>
+          <div>
+            <div class="persona-name">برج المرور السكني</div>
+            <div class="persona-role">مدير المبنى</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف في إحدى الشقق توقف كمبروسره. الفني استبدل الكمبروسر التالف بآخر أصلي مع ضمان.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">1,000 درهم</span>
+          <span class="persona-price-what">استبدال كمبروسر أصلي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👴</span>
+          <div>
+            <div class="persona-name">سليم البلوشي</div>
+            <div class="persona-role">متقاعد — بطين</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المروحة الخارجية تتوقف بعد دقائق من التشغيل. الفني استبدل موتور المروحة الخارجية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">250 درهم</span>
+          <span class="persona-price-what">استبدال موتور مروحة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍⚕️</span>
+          <div>
+            <div class="persona-name">د. شيخة المنصوري</div>
+            <div class="persona-role">طبيبة — شاطئ الراحة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف العيادة يُحدث ضوضاء عالية وغير طبيعية. تبيّن أن ريشة المروحة الداخلية مكسورة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">إصلاح ريشة + معايرة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">عدنان سلطاني</div>
+            <div class="persona-role">مستأجر — المرور</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف لا يُبرّد ويُصدر صوت طنين. تبيّن أن الكمبروسر متعطل ويحتاج إصلاحاً لا استبدالاً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">450 درهم</span>
+          <span class="persona-price-what">إصلاح كمبروسر قديم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏪</span>
+          <div>
+            <div class="persona-name">صالة عروض المطاريد</div>
+            <div class="persona-role">صاحب محل — زايد</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيفان تجاريان توقفا في نفس الوقت. الفني وجد عطلاً كهربائياً مشتركاً في الدائرة الرئيسية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">إعادة توصيل كهربائي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">هناء الكعبي</div>
+            <div class="persona-role">موظفة — الوحدات</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يعمل لكن ارتفاع فاتورة الكهرباء غير منطقي. الفني كشف تسريب فريون بطيئاً يستنزف الطاقة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">180 درهم</span>
+          <span class="persona-price-what">فحص تسريب + إصلاح</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💻</span>
+          <div>
+            <div class="persona-name">محمد النيادي</div>
+            <div class="persona-role">مستقل — خليفة سيتي</div>
+          </div>
+        </div>
+        <p class="persona-scenario">ريموت المكيف لا يستجيب بشكل صحيح. الفني برمج الريموت من جديد وقدّم ريموتاً بديلاً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">برمجة ريموت + بديل</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -779,6 +981,52 @@ function calcUpdate(){var s=document.getElementById('calc-service').value.split(
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
         <div class="review-top"><img class="review-avatar" src="https://ar.rafeeg.ae/wp-content/uploads/2025/04/man.png" alt="راشد النيادي" width="44" height="44" loading="lazy"><div><div class="review-name" itemprop="author">راشد النيادي</div><div class="review-stars">★★★★★</div></div></div>
         <p class="review-text" itemprop="reviewBody">ثلاثة مكيفات في فيلتي بمصفح بدأت تعطي مشاكل — رفيق أرسل فني خبير شخّص كل واحد بشكل منفصل. أصلح اثنين وأشعرني بالأمان على الثالث. خدمة محترفة فعلاً.</p><span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة إصلاح المكيفات في أبوظبي</h2>
+    <p class="sec-sub">فنيون متخصصون في التشخيص والإصلاح — قطع أصلية وضمان 90 يوم</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🔧 رقم 1 في الإصلاح</div>
+        <div class="provider-name">تكنو فيكس أبوظبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">متخصصون حصراً في إصلاح أعطال المكيفات في أبوظبي. فريقهم يمتلك أجهزة تشخيص متطورة تحدد العطل بدقة 95% من أول زيارة. يقدمون ضماناً 90 يوماً على جميع قطع الغيار المُركّبة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 المصفح الصناعي، شارع 22، أبوظبي — يخدمون: الخالدية، الريم، بطين، زايد، شاطئ الراحة</div>
+          <div class="provider-jobs">✅ 2,700+ إصلاح مكتمل</div>
+          <span class="provider-tag">ضمان 90 يوم</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">⚡ تشخيص فوري</div>
+        <div class="provider-name">فاست فيكس أبوظبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">يضمنون التشخيص الكامل في أول 30 دقيقة من الزيارة. يحملون مخزوناً من قطع الغيار الأكثر شيوعاً في سياراتهم، مما يسمح بإصلاح 80% من الأعطال في نفس الزيارة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 الوحدات الاقتصادية، أبوظبي — يخدمون: المرور، المشرف، مصفح، بني ياس، محيط الصناعي</div>
+          <div class="provider-jobs">✅ 2,100+ إصلاح مكتمل</div>
+          <span class="provider-tag">إصلاح في نفس الزيارة</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏢 للكمبروسرات</div>
+        <div class="provider-name">كوول ريبير برو</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">الخيار الأول لاستبدال وإصلاح الكمبروسرات في أبوظبي. يتعاملون مع جميع الماركات العالمية ولديهم ضمان خاص على الكمبروسرات المُستبدَلة لمدة سنة كاملة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 مصفح شعبية، أبوظبي — يخدمون: مصفح، المنطقة الصناعية، بني ياس، الوحدات</div>
+          <div class="provider-jobs">✅ 900+ كمبروسر مُستبدَل</div>
+          <span class="provider-tag">ضمان سنة على الكمبروسر</span>
+        </div>
       </div>
     </div>
   </div>

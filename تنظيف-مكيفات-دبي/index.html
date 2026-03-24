@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>تنظيف مكيفات في دبي | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة تنظيف مكيفات في دبي مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/تنظيف-مكيفات-دبي/">
@@ -580,6 +580,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -754,6 +803,159 @@ details[open] summary::after { content: '−'; }
 function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم';}
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">ماذا يدفع سكان دبي مقابل تنظيف المكيف؟</h2>
+    <p class="sec-sub">10 حالات من مارينا حتى ديرة — كيف تتحدد التكلفة بالضبط</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏖️</span>
+          <div>
+            <div class="persona-name">آنا فيليبيسكو</div>
+            <div class="persona-role">مقيمة — JBR، دبي</div>
+          </div>
+        </div>
+        <p class="persona-scenario">رائحة رطوبة من المكيف في شقتها الساحلية. التنظيف كشف عفناً متراكماً بسبب رطوبة البحر.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">130 درهم</span>
+          <span class="persona-price-what">تنظيف + إزالة عفن ساحلي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">رامي الأحمد</div>
+            <div class="persona-role">موظف — دبي مارينا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">5 مكيفات في شقة كبيرة. حصل على سعر مخفوض للجملة بدلاً من دفع 80 درهم × 5 منفردة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">290 درهم</span>
+          <span class="persona-price-what">تنظيف 5 وحدات (50 × 5 + 40)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏨</span>
+          <div>
+            <div class="persona-name">تاون سكوير ريزيدنس</div>
+            <div class="persona-role">مدير مرافق</div>
+          </div>
+        </div>
+        <p class="persona-scenario">تنظيف دوري لـ 50 وحدة سكنية بين المستأجرين. اتفقوا على 40 درهم لكل وحدة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">40 درهم/وحدة</span>
+          <span class="persona-price-what">عقد تنظيف مجمّع — 50+ وحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍👧</span>
+          <div>
+            <div class="persona-name">ليلى خوري</div>
+            <div class="persona-role">أم — داونتاون دبي</div>
+          </div>
+        </div>
+        <p class="persona-scenario">ابنتها تعاني من ربو. أوصى الطبيب بتنظيف المكيف شهرياً. تعاقدت على تنظيف شهري.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">79 درهم/شهر</span>
+          <span class="persona-price-what">تنظيف شهري — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏢</span>
+          <div>
+            <div class="persona-name">مكاتب فيناكل ليجل</div>
+            <div class="persona-role">مدير إداري — DIFC</div>
+          </div>
+        </div>
+        <p class="persona-scenario">10 مكيفات في المكاتب. التنظيف كشف تلوثاً غير متوقع في وحدتين بسبب قِدَم الفلاتر.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">500 درهم</span>
+          <span class="persona-price-what">تنظيف 10 وحدات + تعقيم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">جابر السهلي</div>
+            <div class="persona-role">مستأجر — البرشاء</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يوزّع غباراً أثناء التشغيل. الفني نظّف الفلاتر المسدودة وقنوات التوزيع الداخلية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🍽️</span>
+          <div>
+            <div class="persona-name">مطعم زعفران</div>
+            <div class="persona-role">مدير — قرية الجميرا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">8 وحدات مركزية في المطعم تحتاج تنظيفاً إجبارياً لمتطلبات بلدية دبي.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">360 درهم</span>
+          <span class="persona-price-what">تنظيف 8 وحدات مطعم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍💻</span>
+          <div>
+            <div class="persona-name">سانا مرزوقي</div>
+            <div class="persona-role">مستقلة — Silicon Oasis</div>
+          </div>
+        </div>
+        <p class="persona-scenario">تعمل من المنزل ولاحظت ضعف التبريد. التنظيف أعاد الكفاءة لـ 95% بدلاً من شراء وحدة جديدة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏫</span>
+          <div>
+            <div class="persona-name">أكاديمية الأمل</div>
+            <div class="persona-role">مدير البنية التحتية — المرقبات</div>
+          </div>
+        </div>
+        <p class="persona-scenario">تنظيف سنوي إجباري لـ 25 وحدة في الفصول والممرات. العقد السنوي وفّر 30% من تكلفة الزيارات المنفردة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">عقد سنوي — 25 وحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">فيصل الدوسري</div>
+            <div class="persona-role">مستأجر — ديرة، المرقبات</div>
+          </div>
+        </div>
+        <p class="persona-scenario">يستأجر شقة قديمة، المكيفات لم تُنظّف منذ 3 سنوات. أخرج الفني كمية كبيرة من الغبار المتراكم.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">130 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — وحدتان</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -779,6 +981,52 @@ function calcUpdate(){var s=document.getElementById('calc-service').value.split(
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
         <div class="review-top"><img class="review-avatar" src="https://ar.rafeeg.ae/wp-content/uploads/2025/04/man.png" alt="سعيد المزروعي" width="44" height="44" loading="lazy"><div><div class="review-name" itemprop="author">سعيد المزروعي</div><div class="review-stars">★★★★★</div></div></div>
         <p class="review-text" itemprop="reviewBody">فيلتني في داونتاون عندي 5 مكيفات — رفيق أرسل فريق اثنين وأنجزوا كل شيء في 3 ساعات. جداً راضي عن النتيجة وحتماً سأحجز معهم مجدداً.</p><span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة تنظيف المكيفات في دبي</h2>
+    <p class="sec-sub">فنيون معتمدون للتنظيف العميق في مناطق دبي المختلفة</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🧹 رقم 1 في دبي</div>
+        <div class="provider-name">دبي ديب كلين AC</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">الأكثر تقييماً في خدمة تنظيف المكيفات بدبي. يستخدمون تقنية البخار عالي الضغط لإزالة 99% من الجراثيم والعفن. فريق مكوّن من 20 متخصصاً في التنظيف يغطون دبي بالكامل.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 القوز، الصناعية 4، دبي — يخدمون: مارينا، JBR، النخلة، داونتاون، البرشاء</div>
+          <div class="provider-jobs">✅ 5,100+ وحدة نُظّفت</div>
+          <span class="provider-tag">تقنية بخار عالي الضغط</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🌿 صديق الصحة</div>
+        <div class="provider-name">كلين إير دبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">متخصصون في تنظيف المكيفات الصحي للعائلات والأطفال. يستخدمون مواد نباتية معتمدة من FDA. موثوقون من المستشفيات والمستوصفات الخاصة في دبي.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 ديسكفري جاردنز، دبي — يخدمون: جي بي آر، مدينة دبي الطبية، مردف، السيليكون</div>
+          <div class="provider-jobs">✅ 2,600+ طلب صحي</div>
+          <span class="provider-tag">معتمد للمستشفيات</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏢 للتجاري والفندقي</div>
+        <div class="provider-name">ماكس كلين سيرفيس دبي</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">الشريك المفضل للفنادق والمطاعم والمجمعات التجارية في دبي. يعملون خارج ساعات الدوام لتجنب إزعاج العملاء. لديهم عقود مع أكثر من 40 فندقاً في دبي.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 بر دبي، منطقة المنا — يخدمون: ديرة، بر دبي، الجداف، عود ميثاء، القرهود</div>
+          <div class="provider-jobs">✅ 3,300+ طلب تجاري</div>
+          <span class="provider-tag">للفنادق والمطاعم</span>
+        </div>
       </div>
     </div>
   </div>

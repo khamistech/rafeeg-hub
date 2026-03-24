@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g fill="none" stroke="#3C3CB8" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Head outline -->
+    <path stroke-width="5.5"
+      d="M18,36 C18,14 82,14 82,36 L82,64 C82,87 18,87 18,64 Z"/>
+
+    <!-- Hat brim line -->
+    <path stroke-width="5.5"
+      d="M18,36 Q50,29 82,36"/>
+
+    <!-- Left ear -->
+    <path stroke-width="5"
+      d="M18,54 C9,54 9,66 18,66"/>
+
+    <!-- Right ear -->
+    <path stroke-width="5"
+      d="M82,54 C91,54 91,66 82,66"/>
+
+    <!-- Goggles — top wavy edge -->
+    <path stroke-width="5"
+      d="M22,51 C30,42 40,46 48,51 C50,52 50,52 52,51 C60,46 70,42 78,51"/>
+
+    <!-- Goggles — bottom wavy edge -->
+    <path stroke-width="5"
+      d="M22,58 C30,66 40,62 48,58 C50,57 50,57 52,58 C60,62 70,66 78,58"/>
+
+    <!-- Beard — filled solid -->
+    <rect fill="#3C3CB8" stroke="#3C3CB8" stroke-width="5"
+      x="27" y="63" width="46" height="22" rx="10"/>
+
+    <!-- Smile inside beard — white cutout -->
+    <path stroke="white" stroke-width="4.5" stroke-linecap="round"
+      d="M37,72 Q50,82 63,72"/>
+
+  </g>
+</svg>

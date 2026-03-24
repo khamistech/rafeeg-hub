@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>إصلاح مكيفات في عجمان | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة إصلاح مكيفات في عجمان مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/اصلاح-مكيفات-عجمان/">
@@ -580,6 +580,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -754,6 +803,159 @@ details[open] summary::after { content: '−'; }
 function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم';}
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">كم يكلّف إصلاح المكيف في عجمان؟</h2>
+    <p class="sec-sub">10 حالات إصلاح من عجمان — الأسعار الأكثر تنافسية في الإمارات</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">علي الهاملي</div>
+            <div class="persona-role">موظف — النعيمية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يُصدر صوت طقطقة قوياً. الفني وجد أن ريشة المروحة الداخلية تتلامس مع الحاجز.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">109 درهم</span>
+          <span class="persona-price-what">إصلاح ريشة — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">سلمى الظاهري</div>
+            <div class="persona-role">ربة منزل — الراشدية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">التبريد ضعيف رغم تشغيل المكيف لساعات. الفني شخّص نقصاً شديداً في الفريون وشحنه.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">180 درهم</span>
+          <span class="persona-price-what">شحن فريون R-22</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏪</span>
+          <div>
+            <div class="persona-name">محل الأجهزة الكهربائية</div>
+            <div class="persona-role">صاحب محل — الكورنيش</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف تجاري كبير توقف في موسم الصيف. الفني أصلح لوحة التحكم في ساعتين.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">إصلاح لوحة التحكم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍👩‍👧‍👦</span>
+          <div>
+            <div class="persona-name">عائلة المنصوري</div>
+            <div class="persona-role">أصحاب شقة — العليا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف يسرب مياه كثيرة على الجدار. الأنبوب المسدود أدى لانسكاب المياه. تم الحل فورياً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">إصلاح تسرب مياه</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏫</span>
+          <div>
+            <div class="persona-name">مركز تدريب التقنية</div>
+            <div class="persona-role">مشرف الصيانة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">3 مكيفات في قاعات التدريب توقفت في نفس الوقت. مشكلة في التوصيل الكهربائي المشترك.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">300 درهم</span>
+          <span class="persona-price-what">إصلاح كهربائي 3 وحدات</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">باسم خوري</div>
+            <div class="persona-role">مستأجر — الزاهية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يعمل بشكل عشوائي، يتوقف ويشتغل. الفني وجد ترموستاتاً يعطي قراءات متذبذبة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">معايرة ترموستات</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍💼</span>
+          <div>
+            <div class="persona-name">ميرة الشامسي</div>
+            <div class="persona-role">موظفة — المويهات</div>
+          </div>
+        </div>
+        <p class="persona-scenario">ريموت المكيف لا يتحكم بدرجة الحرارة. الفني أعاد برمجته وضبط الإعدادات المصنعية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">50 درهم</span>
+          <span class="persona-price-what">برمجة ريموت</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏢</span>
+          <div>
+            <div class="persona-name">فندق كورنيش عجمان</div>
+            <div class="persona-role">مدير الهندسة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">6 غرف شكت من ضعف التبريد. الفني كشف تسرب فريون في الخط الرئيسي وأصلحه.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">500 درهم</span>
+          <span class="persona-price-what">إصلاح خط فريون مركزي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👴</span>
+          <div>
+            <div class="persona-name">خميس الكعبي</div>
+            <div class="persona-role">متقاعد — الرميلة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف عمره 12 سنة، الفني أصلح الكمبروسر بدلاً من استبداله وأطال عمره سنتين.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">100 درهم</span>
+          <span class="persona-price-what">إصلاح كمبروسر قديم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">وفاء الجسمي</div>
+            <div class="persona-role">مستأجرة — الحميدية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">صوت همهمة عالٍ من الوحدة الخارجية. الفني وجد أن المكثف (كابسيتور) بدأ يتلف.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">استبدال مكثف</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -779,6 +981,52 @@ function calcUpdate(){var s=document.getElementById('calc-service').value.split(
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
         <div class="review-top"><img class="review-avatar" src="https://ar.rafeeg.ae/wp-content/uploads/2025/04/man.png" alt="يوسف الجابري" width="44" height="44" loading="lazy"><div><div class="review-name" itemprop="author">يوسف الجابري</div><div class="review-stars">★★★★★</div></div></div>
         <p class="review-text" itemprop="reviewBody">رفيق أفضل خيار للإصلاح في عجمان — أسعار تنافسية، فنيون مرخصون، وضمان مكتوب. المكيف عاد للعمل أسرع مما توقعت وبسعر أقل من المنافسين.</p><span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة إصلاح المكيفات في عجمان</h2>
+    <p class="sec-sub">أفضل فنيو الإصلاح في شبكة رفيق بعجمان — أسعار تنافسية وضمان حقيقي</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🔧 الأعلى تقييماً</div>
+        <div class="provider-name">ريبير تيك عجمان</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">الأكثر تقييماً في إصلاح المكيفات بعجمان. يمتلكون أجهزة تشخيص حديثة ومخزوناً كاملاً من قطع الغيار. يقدمون ضماناً 60 يوماً على الإصلاح وتواصلاً مستمراً مع العميل حتى يطمئن.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 النعيمية 2، شارع الشيخ حميد، عجمان — يخدمون: النعيمية، الراشدية، الكورنيش، الحميدية</div>
+          <div class="provider-jobs">✅ 1,900+ إصلاح مكتمل</div>
+          <span class="provider-tag">ضمان 60 يوماً</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">💰 الأوفر قيمة</div>
+        <div class="provider-name">بيست فيكس عجمان</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">يقدمون نفس جودة الإصلاح بأسعار أقل من المنافسين في عجمان. يتميزون بالشفافية التامة في التسعير قبل البدء في أي إصلاح. لا توجد تكاليف مخفية أو مفاجآت في الفاتورة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 الزاهية، بالقرب من جامعة عجمان — يخدمون: الزاهية، المويهات، الرميلة، مدينة الإمارات</div>
+          <div class="provider-jobs">✅ 1,300+ إصلاح مكتمل</div>
+          <span class="provider-tag">شفافية تامة</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🚀 أسرع استجابة</div>
+        <div class="provider-name">كويك فيكس عجمان</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">يعملون على مدار الساعة في عجمان ويضمنون الوصول خلال ساعة للحالات الطارئة. متخصصون في إصلاح أعطال الصيف المفاجئة ولديهم فريق ليلي مخصص.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 العليا، عجمان — يخدمون: كامل عجمان وأجزاء من الشارقة الحدودية</div>
+          <div class="provider-jobs">✅ 800+ إصلاح طارئ</div>
+          <span class="provider-tag">24 ساعة / 7 أيام</span>
+        </div>
       </div>
     </div>
   </div>

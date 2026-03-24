@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>صيانة مكيفات في الشارقة — تبدأ من 70 درهم | رفيق</title>
 <meta name="description" content="احجز صيانة مكيفات في الشارقة مع رفيق. فنيون معتمدون في التعاون والنهدة والخان وجميع أحياء الشارقة. أسعار من 70 درهم، ضمان 30 يوم. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/صيانة-مكيفات-الشارقة/">
@@ -258,6 +258,55 @@ details[open] summary::after{content:'−'}
 @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}.steps-grid{grid-template-columns:repeat(3,1fr)}.infographic-grid{grid-template-columns:repeat(2,1fr)}.links-grid{grid-template-columns:repeat(2,1fr)}.steps-grid::before{display:none}}
 @media(max-width:768px){.nav-list{display:none}.hamburger{display:flex}.nav-list.open{display:flex;flex-direction:column;position:fixed;top:68px;right:0;left:0;background:var(--white);padding:16px 20px;border-top:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:199;gap:0}.nav-list.open .has-dropdown{width:100%}.nav-list.open .nav-link-drop{padding:12px 4px;width:100%;justify-content:space-between;border-radius:0;border-bottom:1px solid var(--border)}.nav-list.open .dropdown{display:block;position:static;box-shadow:none;border:none;border-radius:0;padding:4px 0 8px;background:var(--grey-bg)}.nav-list.open .dropdown li a{padding:9px 20px;font-size:14px}.hero{grid-template-columns:1fr;min-height:auto}.hero-text{padding:28px 20px 16px}.hero-image{height:220px}.footer-grid{grid-template-columns:1fr;gap:28px}.steps-grid{grid-template-columns:repeat(2,1fr)}.links-grid{grid-template-columns:1fr}.float-wa{bottom:16px;right:16px}.ba-split{grid-template-columns:1fr}.ba-divider{display:none}}
 @media(max-width:480px){.stats-grid{grid-template-columns:repeat(2,1fr)}.hero-image{height:190px}}
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -431,6 +480,159 @@ details[open] summary::after{content:'−'}
 </section>
 <script>function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم'}</script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">كيف يُسعّر رفيق صيانة المكيفات في الشارقة؟</h2>
+    <p class="sec-sub">10 حالات من مناطق الشارقة المختلفة — تسعير واضح بلا مفاجآت</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">عمر الخطيب</div>
+            <div class="persona-role">موظف — التعاون</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيفان في الشقة، طلب صيانة دورية للاثنين قبل موسم الصيف بشكل مبكر.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">280 درهم</span>
+          <span class="persona-price-what">صيانة 2 وحدة (150+130)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">سارة يوسف</div>
+            <div class="persona-role">معلمة — النهدة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يُصدر رائحة كريهة عند التشغيل. الصيانة كشفت تراكم عفن في الوحدة الداخلية بسبب الرطوبة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة + فحص عفن</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏭</span>
+          <div>
+            <div class="persona-name">مصنع النسيج الخليجي</div>
+            <div class="persona-role">مدير تقني — المنطقة الصناعية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">صيانة ربع سنوية لـ 15 وحدة تجارية في المصنع. البيئة الصناعية تستهلك الفلاتر أسرع.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">عقد ربع سنوي صناعي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍👩‍👦</span>
+          <div>
+            <div class="persona-name">عائلة الشريف</div>
+            <div class="persona-role">أصحاب فيلا — الخان</div>
+          </div>
+        </div>
+        <p class="persona-scenario">فيلا بها 5 مكيفات، الصيانة السنوية أنقذتهم من إصلاح مكلف اكتُشف مبكراً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">550 درهم</span>
+          <span class="persona-price-what">صيانة 5 وحدات (تسعير مجمّع)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏫</span>
+          <div>
+            <div class="persona-name">مدرسة الرحمة الخاصة</div>
+            <div class="persona-role">مدير مالي — الرحمانية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">12 مكيف في الفصول الدراسية تحتاج صيانة إجبارية قبل العام الدراسي الجديد.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">عقد مدرسي سنوي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💼</span>
+          <div>
+            <div class="persona-name">بلال الشامي</div>
+            <div class="persona-role">صاحب عمل — المجاز</div>
+          </div>
+        </div>
+        <p class="persona-scenario">طلب صيانة وحدة واحدة في المكتب وكان خائفاً من الأسعار. تفاجأ بوضوح التسعير.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة وحدة مكتبية واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍🍳</span>
+          <div>
+            <div class="persona-name">أم أحمد</div>
+            <div class="persona-role">ربة منزل — القادسية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">فاتورة الكهرباء ارتفعت 35%. الصيانة أظهرت أن الكمبروسر يعمل بجهد مضاعف بسبب الفلاتر.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة + تنظيف فلاتر</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏥</span>
+          <div>
+            <div class="persona-name">مستوصف النور</div>
+            <div class="persona-role">مدير إداري — المشرف 3</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المستوصف يشترط صيانة دورية موثقة للمكيفات الطبية. 6 وحدات مع تقارير شهرية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">عقد صيانة طبية موثقة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">حمدان القاسمي</div>
+            <div class="persona-role">مستأجر — مجمع سكني — الغوير</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المالك طلب منه إجراء صيانة المكيفات. الفني أصلح مشكلة صغيرة في الفريون أثناء الصيانة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">صيانة + تعبئة فريون جزئية</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🎓</span>
+          <div>
+            <div class="persona-name">طلال السعيد</div>
+            <div class="persona-role">طالب — جامعة الشارقة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">يستأجر غرفة، المالك رفض الصيانة. دفع من ماله الخاص وأرسل الفاتورة للمالك لاحقاً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة طارئة — وحدة واحدة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="proof-section">
   <div class="container">
     <p class="sec-label">أرقامنا تتحدث</p>
@@ -463,6 +665,52 @@ details[open] summary::after{content:'−'}
           <div><div class="review-name">عبدالله المنصوري</div><div class="review-stars">★★★★★</div></div>
         </div>
         <p class="review-text">تعاملت مع رفيق مرتين في الشارقة — تنظيف ثم إصلاح. الفنيون مختلفون بس نفس مستوى الاحترافية. يبدو إن الشركة عندها معايير تدريب واضحة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة صيانة المكيفات في الشارقة</h2>
+    <p class="sec-sub">فنيون معتمدون اختارهم سكان الشارقة عبر رفيق</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🥇 الأعلى تقييماً</div>
+        <div class="provider-name">الشارقة كول ماسترز</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">رائدون في صيانة المكيفات بالشارقة منذ 2016. فريق من 18 فنياً يغطون جميع مناطق الإمارة. عُرفوا بالوضوح التام في الفواتير وعدم وجود رسوم مخفية. يقدمون تقريراً رقمياً فورياً بعد كل زيارة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 التعاون، بجوار سيتي سنتر الشارقة — يخدمون: النهدة، الغوير، القادسية، المجاز</div>
+          <div class="provider-jobs">✅ 2,800+ طلب مكتمل</div>
+          <span class="provider-tag">تقرير رقمي فوري</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏭 خبراء الصناعي</div>
+        <div class="provider-name">تقنيات التبريد الخليجي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">الخيار الأول لصيانة مكيفات المصانع والمستودعات في الشارقة. يتعاملون مع الأنظمة الصناعية الكبيرة ولديهم فنيون معتمدون على أنظمة Daikin وYork وCarrier.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 المنطقة الصناعية 13، الشارقة — يخدمون: المنطقة الصناعية، الرحمانية، الخان</div>
+          <div class="provider-jobs">✅ 1,600+ طلب صناعي</div>
+          <span class="provider-tag">خبراء أنظمة كبرى</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">⚡ الأسرع وصولاً</div>
+        <div class="provider-name">سريع كول الشارقة</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">يضمنون الوصول خلال ساعتين في الشارقة الكبرى. فريق متنقل دائماً في المناطق السكنية الرئيسية. مشهورون بين مستأجري المجمعات السكنية لسرعة الاستجابة والأسعار التنافسية.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 النهدة، شارع الإتحاد، الشارقة — يخدمون: النهدة، التعاون، بحيرة الخان، القادسية</div>
+          <div class="provider-jobs">✅ 1,900+ طلب مكتمل</div>
+          <span class="provider-tag">وصول خلال ساعتين</span>
+        </div>
       </div>
     </div>
   </div>

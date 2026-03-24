@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>إصلاح مكيفات في دبي | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة إصلاح مكيفات في دبي مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/اصلاح-مكيفات-دبي/">
@@ -580,6 +580,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -754,6 +803,159 @@ details[open] summary::after { content: '−'; }
 function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم';}
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">كم يكلّف إصلاح المكيف في دبي؟</h2>
+    <p class="sec-sub">10 حالات إصلاح من مناطق دبي — شفافية كاملة في التسعير</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏙️</span>
+          <div>
+            <div class="persona-name">فيكتور أندراوس</div>
+            <div class="persona-role">مقيم — دبي مارينا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يُبرّد لساعة ثم يتوقف تلقائياً. الفني شخّص مشكلة في ترموستات يعطي قراءة خاطئة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">معايرة ترموستات</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">نوال الشامي</div>
+            <div class="persona-role">مديرة — داونتاون</div>
+          </div>
+        </div>
+        <p class="persona-scenario">صوت طقطقة من الوحدة الخارجية. الفني وجد ريشة المروحة تلامس الإطار بسبب برغي محلول.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">إصلاح ميكانيكي بسيط</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">أشوك ميهتا</div>
+            <div class="persona-role">رجل أعمال — DIFC</div>
+          </div>
+        </div>
+        <p class="persona-scenario">مكيف المكتب يفقد برودته كل أسبوع. تبيّن تسرب فريون متكرر في وصلة الأنبوب يحتاج لحاماً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">لحام تسريب + فريون</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏨</span>
+          <div>
+            <div class="persona-name">بالم هوتيل</div>
+            <div class="persona-role">مدير الهندسة — نخلة الجميرا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">14 وحدة في الطابق 8 تعاني من ضعف تبريد. الفري شخّص مشكلة في خط الفريون الرئيسي.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">تسعير خاص</span>
+          <span class="persona-price-what">تشخيص وإصلاح خط فريون مركزي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍👦</span>
+          <div>
+            <div class="persona-name">ميسون خليل</div>
+            <div class="persona-role">أم — البرشاء</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يُسرب مياه على الجدار. الفني أصلح حوض التجميع المكسور وسلّك خط الصرف.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">300 درهم</span>
+          <span class="persona-price-what">إصلاح حوض + تسليك</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💻</span>
+          <div>
+            <div class="persona-name">راجيف غوبتا</div>
+            <div class="persona-role">مستقل — Silicon Oasis</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يعمل لكن يُخرج هواء غير بارد. الفريون انتهى تماماً. الفني شحن وتحقق من عدم وجود تسريب.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">180 درهم</span>
+          <span class="persona-price-what">شحن فريون R-410A</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🍽️</span>
+          <div>
+            <div class="persona-name">مطعم لا روزا</div>
+            <div class="persona-role">مدير — قرية الجميرا</div>
+          </div>
+        </div>
+        <p class="persona-scenario">كمبروسر المكيف الرئيسي في المطبخ تعطّل. استُبدل بكمبروسر بديل عالي الجودة في ظرف 4 ساعات.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">700 درهم</span>
+          <span class="persona-price-what">استبدال كمبروسر (بديل عالي)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👴</span>
+          <div>
+            <div class="persona-name">حمد البلوشي</div>
+            <div class="persona-role">مقيم قديم — ديرة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">لوحة التحكم تعطّلت وصاحبها أراد الاستبدال الكامل. الفني أصلحها بدلاً من الاستبدال.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">200 درهم</span>
+          <span class="persona-price-what">إصلاح لوحة التحكم</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏢</span>
+          <div>
+            <div class="persona-name">برج إنفينيتي</div>
+            <div class="persona-role">مدير المرافق — Business Bay</div>
+          </div>
+        </div>
+        <p class="persona-scenario">5 شقق في نفس الطابق تشتكي من المكيف. تبيّن مشكلة في الدائرة الكهربائية المشتركة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">350 درهم</span>
+          <span class="persona-price-what">إعادة توصيل كهربائي مركزي</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">دانا الحوسني</div>
+            <div class="persona-role">مستأجرة — مدينة دبي الرياضية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يعمل لكن يُصدر رائحة محترقة. الفني وجد مقاومة كهربائية محترقة في لوحة التحكم.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">300 درهم</span>
+          <span class="persona-price-what">إصلاح دائرة كهربائية</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -779,6 +981,52 @@ function calcUpdate(){var s=document.getElementById('calc-service').value.split(
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
         <div class="review-top"><img class="review-avatar" src="https://ar.rafeeg.ae/wp-content/uploads/2025/04/man.png" alt="سعيد المزروعي" width="44" height="44" loading="lazy"><div><div class="review-name" itemprop="author">سعيد المزروعي</div><div class="review-stars">★★★★★</div></div></div>
         <p class="review-text" itemprop="reviewBody">الفني من رفيق حضر للداونتاون وعنده معرفة عميقة بجميع الماركات. شخّص عطل في لوحة التحكم لجهاز DAIKIN وأصلحها بقطعة أصلية. ثقة عالية بهذه الشركة.</p><span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة إصلاح المكيفات في دبي</h2>
+    <p class="sec-sub">من شبكة رفيق — فنيون اختصاصيون في التشخيص والإصلاح</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🔧 الأفضل تشخيصاً</div>
+        <div class="provider-name">تيك فيكس دبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">يملكون أحدث أجهزة التشخيص الرقمية في دبي. يُحددون العطل خلال 20 دقيقة ويُقدمون تقريراً مفصلاً قبل البدء بالإصلاح. لا يتقاضون شيئاً إذا لم يتمكنوا من الإصلاح.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 القوز الصناعية، دبي — يخدمون: المارينا، JBR، داونتاون، البرشاء، قرية الجميرا</div>
+          <div class="provider-jobs">✅ 3,800+ إصلاح مكتمل</div>
+          <span class="provider-tag">لا دفع إذا لم يُصلح</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🚀 استجابة فورية</div>
+        <div class="provider-name">ريبير ناو دبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">يضمنون وصول الفني خلال ساعة واحدة في دبي. يحملون سيارات مجهزة بقطع الغيار الأكثر طلباً. متخصصون في الإصلاحات الطارئة للفنادق والشركات.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 بر دبي، منطقة الكفاف — يخدمون: ديرة، البر، الجداف، مردف، السيليكون أوآسيس</div>
+          <div class="provider-jobs">✅ 2,500+ إصلاح طارئ</div>
+          <span class="provider-tag">وصول خلال ساعة</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏆 ضمان الأطول</div>
+        <div class="provider-name">غارانتي فيكس دبي</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">يقدمون أطول ضمان في السوق على الإصلاحات — 120 يوماً على قطع الغيار و60 يوماً على العمالة. يتخصصون في إصلاح الكمبروسرات ولوحات التحكم بقطع أصلية فقط.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 دبي مارينا، بالقرب من مول الإمارات — يخدمون: المارينا، النخلة، الوصل، جميرا</div>
+          <div class="provider-jobs">✅ 1,700+ إصلاح بضمان</div>
+          <span class="provider-tag">ضمان 120 يوماً</span>
+        </div>
       </div>
     </div>
   </div>

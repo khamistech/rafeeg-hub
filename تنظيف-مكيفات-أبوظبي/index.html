@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>تنظيف مكيفات في أبوظبي | رفيق — خدمة معتمدة</title>
 <meta name="description" content="احجز خدمة تنظيف مكيفات في أبوظبي مع رفيق. +4,500 مقدم خدمة معتمد، تقييم 4.8/5، شهادات ISO. احجز الآن!">
 <link rel="canonical" href="https://hub.rafeeg.ae/تنظيف-مكيفات-أبوظبي/">
@@ -580,6 +580,55 @@ details[open] summary::after { content: '−'; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
 }
+
+/* ── PERSONA SECTION ─────────────────────────────────────────────────────── */
+.persona-section { padding: 56px 0; background: var(--grey-bg); }
+.persona-intro { max-width: 680px; margin: 0 auto 36px; text-align: center; }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.persona-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.persona-emoji { font-size: 28px; flex-shrink: 0; }
+.persona-name { font-size: 15px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+.persona-role { font-size: 12px; color: var(--green); font-weight: 600; }
+.persona-scenario { font-size: 13px; color: var(--text); line-height: 1.65; flex: 1; }
+.persona-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+.persona-price-tag { background: var(--dark); color: var(--green); font-size: 15px; font-weight: 900; padding: 5px 14px; border-radius: 8px; }
+.persona-price-what { font-size: 11px; color: var(--muted); text-align: left; max-width: 55%; line-height: 1.4; }
+
+/* ── TOP PROVIDERS SECTION ───────────────────────────────────────────────── */
+.providers-section { padding: 56px 0; background: var(--white); }
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.provider-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.provider-card:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(24,159,24,.1); }
+.provider-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef9c3; color: #854d0e;
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 12px;
+}
+.provider-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.provider-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+.provider-rating-num { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.provider-desc { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 14px; }
+.provider-meta { display: flex; flex-direction: column; gap: 6px; }
+.provider-address { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+.provider-jobs { font-size: 12px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 5px; }
+.provider-tag { font-size: 11px; background: var(--hero-bg); color: var(--green); padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; margin-top: 6px; }
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .providers-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
@@ -754,6 +803,159 @@ details[open] summary::after { content: '−'; }
 function calcUpdate(){var s=document.getElementById('calc-service').value.split(',');var u=parseInt(document.getElementById('calc-units').value);document.getElementById('calc-output').textContent='من '+(parseInt(s[0])*u)+' حتى '+(parseInt(s[1])*u)+' درهم';}
 </script>
 
+
+<!-- ═══ PERSONA PRICING EXAMPLES -->
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">ماذا يدفع سكان أبوظبي مقابل تنظيف المكيف؟</h2>
+    <p class="sec-sub">10 حالات تبيّن كيف تتفاوت التكلفة حسب عدد الوحدات والخدمات الإضافية</p>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">نجلاء الفلاسي</div>
+            <div class="persona-role">ربة منزل — الريم آيلاند</div>
+          </div>
+        </div>
+        <p class="persona-scenario">طلبت تنظيف مكيف واحد مع التعقيم لوجود طفل صغير في المنزل. الفني استخدم مواد آمنة معتمدة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">130 درهم</span>
+          <span class="persona-price-what">تنظيف + تعقيم — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">سيف الشحي</div>
+            <div class="persona-role">مستأجر — مصفح السكني</div>
+          </div>
+        </div>
+        <p class="persona-scenario">3 مكيفات لم تُنظّف منذ سنة. تسعيرة الجملة وفّرت عليه مقارنةً بالتنظيف المنفصل.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">215 درهم</span>
+          <span class="persona-price-what">تنظيف 3 وحدات (55 × 3 + 50)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏨</span>
+          <div>
+            <div class="persona-name">شقق الكورنيش السياحية</div>
+            <div class="persona-role">مدير الوحدات — أبوظبي</div>
+          </div>
+        </div>
+        <p class="persona-scenario">تنظيف دوري لـ 20 شقة مفروشة بين كل مستأجر. تعاقدوا على 20+ مكيف بسعر 40 درهم للوحدة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">40 درهم/وحدة</span>
+          <span class="persona-price-what">عقد تنظيف — 20 وحدة فأكثر</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍⚕️</span>
+          <div>
+            <div class="persona-name">د. منى الكعبي</div>
+            <div class="persona-role">طبيبة — مستشفى خاص — زايد</div>
+          </div>
+        </div>
+        <p class="persona-scenario">تعاني من حساسية مزمنة. بعد تنظيف المكيفات اختفت أعراض الحساسية الليلية تماماً.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — وحدة واحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏢</span>
+          <div>
+            <div class="persona-name">مكاتب نافيكو</div>
+            <div class="persona-role">مدير إداري — الخالدية</div>
+          </div>
+        </div>
+        <p class="persona-scenario">10 مكيفات في المكاتب تُنظّف كل 3 أشهر. وفّروا 35% بالعقد السنوي مقارنة بكل زيارة منفردة.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">450 درهم</span>
+          <span class="persona-price-what">تنظيف 10 وحدات (45 × 10)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨</span>
+          <div>
+            <div class="persona-name">كريم حداد</div>
+            <div class="persona-role">مستأجر جديد — بطين</div>
+          </div>
+        </div>
+        <p class="persona-scenario">تسلّم شقة جديدة، أراد تنظيف المكيفات القديمة قبل السكن. وجدوا عفناً أسود في الكويل.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">130 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — 2 وحدة</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🏫</span>
+          <div>
+            <div class="persona-name">مركز تعليم الخالدية</div>
+            <div class="persona-role">مسؤول الصحة والسلامة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">12 وحدة في قاعات الدراسة. التنظيف الدوري جزء من اشتراطات الترخيص الصحي.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">540 درهم</span>
+          <span class="persona-price-what">تنظيف 12 وحدة (45 × 12)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩</span>
+          <div>
+            <div class="persona-name">هيا الزعابي</div>
+            <div class="persona-role">موظفة — شاطئ الراحة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المكيف يُحدث رائحة بعد تشغيله. التنظيف كشف تراكم فطريات في الفلاتر سبّبتها الرطوبة الساحلية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">130 درهم</span>
+          <span class="persona-price-what">تنظيف + إزالة فطريات</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💼</span>
+          <div>
+            <div class="persona-name">مازن سعد</div>
+            <div class="persona-role">مدير فرع — المرور</div>
+          </div>
+        </div>
+        <p class="persona-scenario">5 مكيفات في الفرع التجاري، أراد توثيق التنظيف لمتطلبات شهادة الجودة الداخلية.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">275 درهم</span>
+          <span class="persona-price-what">تنظيف 5 وحدات + تقرير</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">🎓</span>
+          <div>
+            <div class="persona-name">سلمى حسن</div>
+            <div class="persona-role">طالبة — استوديو — خليفة سيتي</div>
+          </div>
+        </div>
+        <p class="persona-scenario">ميزانيتها محدودة، طلبت تنظيف فلتر واحد فقط. الفني نصحها وأنجز الأساسي بالسعر القياسي.</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف عميق — وحدة واحدة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SOCIAL PROOF -->
 <section class="proof-section" aria-labelledby="proof-title">
   <div class="container">
@@ -779,6 +981,52 @@ function calcUpdate(){var s=document.getElementById('calc-service').value.split(
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
         <div class="review-top"><img class="review-avatar" src="https://ar.rafeeg.ae/wp-content/uploads/2025/04/man.png" alt="راشد النيادي" width="44" height="44" loading="lazy"><div><div class="review-name" itemprop="author">راشد النيادي</div><div class="review-stars">★★★★★</div></div></div>
         <p class="review-text" itemprop="reviewBody">حجزت تنظيف 3 مكيفات في مصفح وطلبت في الصباح وجاءوا الظهر. سرعة وكفاءة واحترافية عالية. فاتورة ADDC الشهر التالي انخفضت 22%.</p><span class="review-flag">[NEEDS_MANUAL_REVIEW]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TOP SERVICE PROVIDERS -->
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أبرز مقدمي خدمة تنظيف المكيفات في أبوظبي</h2>
+    <p class="sec-sub">فنيون معتمدون متخصصون في التنظيف العميق والتعقيم</p>
+    <div class="providers-grid">
+
+      <div class="provider-card">
+        <div class="provider-badge">🧹 الأفضل في التنظيف</div>
+        <div class="provider-name">كلين كول أبوظبي</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.9</span></div>
+        <p class="provider-desc">متخصصون حصراً في التنظيف العميق للمكيفات بالبخار. يستخدمون معدات احترافية ومواد تعقيم معتمدة من وزارة الصحة. لديهم فريق تنظيف منفصل لكل منطقة من مناطق أبوظبي الكبرى.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 الوحدات الاقتصادية، أبوظبي — يخدمون: الريم، الخالدية، المرور، زايد، المصفح</div>
+          <div class="provider-jobs">✅ 2,900+ وحدة نُظّفت</div>
+          <span class="provider-tag">بخار معتمد</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🌿 صديق للصحة</div>
+        <div class="provider-name">نقي للتنظيف والتعقيم</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">4.8</span></div>
+        <p class="provider-desc">يتخصصون في التنظيف الصحي للمكيفات في المنازل التي بها أطفال أو أشخاص يعانون من الحساسية. جميع موادهم طبيعية ومعتمدة، ولا تُخلّف رائحة بعد الاستخدام.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 الخالدية، أبوظبي — يخدمون: الريم، بطين، شاطئ الراحة، بني ياس، الكراريس</div>
+          <div class="provider-jobs">✅ 1,800+ طلب مكتمل</div>
+          <span class="provider-tag">آمن للأطفال</span>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-badge">🏢 عقود مجمّعة</div>
+        <div class="provider-name">برايم كلين سيرفيسز</div>
+        <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.7</span></div>
+        <p class="provider-desc">الخيار الأول للمجمعات السكنية والفنادق في أبوظبي. يقدمون عقود تنظيف ربع سنوية بأسعار مخفّضة وفريق مخصص لكل مجمع. يوفرون تقارير إلكترونية لكل وحدة.</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 مصفح، المنطقة الصناعية M14، أبوظبي — يخدمون: المصفح، شاطئ الراحة، محيط الصناعي</div>
+          <div class="provider-jobs">✅ 1,400+ طلب مؤسسي</div>
+          <span class="provider-tag">عقود ربع سنوية</span>
+        </div>
       </div>
     </div>
   </div>
