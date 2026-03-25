@@ -510,7 +510,7 @@ details[open] summary::after{{content:'−'}}
 .social-links a{{color:#6b7280;transition:color .2s}}
 .social-links a:hover{{color:var(--green)}}
 .social-links svg{{width:20px;height:20px;fill:currentColor;display:block}}
-.float-wa{{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.5);transition:transform .2s,box-shadow .2s;cursor:pointer}}
+.float-wa{{position:fixed;bottom:90px;right:24px;z-index:999;width:56px;height:56px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.5);transition:transform .2s,box-shadow .2s;cursor:pointer}}
 .float-wa:hover{{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.6)}}
 .float-wa svg{{width:28px;height:28px;fill:#fff}}
 .float-wa-label{{position:absolute;left:66px;right:auto;top:50%;transform:translateY(-50%);background:var(--dark);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;font-family:'Cairo',sans-serif}}
@@ -522,7 +522,7 @@ details[open] summary::after{{content:'−'}}
 .sticky-cta .btn-whatsapp-solid{{flex:1;max-width:220px;justify-content:center;font-size:15px;padding:12px 16px}}
 .sticky-cta .btn-green{{flex:1;max-width:200px;justify-content:center;font-size:15px;padding:12px 16px}}
 @media(max-width:768px){{.sticky-cta{{display:flex}}body{{padding-bottom:72px}}}}
-.ai-summary{{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border:1px solid #bbf7d0;border-radius:var(--radius);padding:20px 24px;max-width:740px;margin:16px auto 8px}}
+.ai-summary{{background:linear-gradient(135deg,#dcfce7,#d1fae5);border:2px solid #86efac;border-radius:var(--radius);padding:20px 24px;max-width:740px;margin:16px auto 8px}}
 .ai-summary-title{{font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}}
 .ai-summary-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}}
 .ai-fact{{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--dark)}}
@@ -609,7 +609,7 @@ def build_hero(c):
     wa_text = f"أهلاً+رفيق،+أريد+تركيب+سيراميك+في+{city}.+المساحة+تقريباً"
     return f'''
 <div class="urgency-strip" role="alert">
-  ⚡ <strong>فنيون متاحون اليوم في {city}</strong> — احجز قبل الساعة 2 ظهراً واحصل على موعد نفس اليوم
+  ⚡ <strong>فنيون متاحون اليوم في {city}</strong> — احجز الآن واحصل على موعد نفس اليوم
 </div>
 
 <div class="container">
@@ -680,7 +680,7 @@ def build_pricing(c):
     <h2 class="sec-title" id="pricing-title">أسعار تركيب السيراميك في {city}</h2>
     <p class="sec-sub">أسعار رفيق الرسمية — أجور التركيب فقط، المواد محسوبة بشكل منفصل</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto 20px">
+    <div style="display:grid;grid-template-columns:1fr;gap:20px;max-width:620px;margin:0 auto 20px">
 
       <div class="pricing-box" style="margin:0">
         <table class="pricing-table">
