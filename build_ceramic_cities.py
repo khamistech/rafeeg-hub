@@ -647,10 +647,7 @@ def build_hero(c):
       </div>
     </div>
     <div class="hero-image" aria-hidden="true">
-      <picture>
-        <source srcset="hero.webp" type="image/webp">
-        <img src="hero.jpg" alt="تركيب سيراميك في {city} — رفيق" width="340" height="380" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
-      </picture>
+      <img src="hero.jpg" alt="تركيب سيراميك في {city} — رفيق" width="340" height="380" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
     </div>
   </section>
 </div>'''
@@ -1053,11 +1050,8 @@ def build_before_after(c):
     <h2 class="sec-title" id="media-title">شاهد نتائج رفيق في {city}</h2>
     <p class="sec-sub" style="margin-bottom:28px">الفرق الحقيقي الذي يصنعه فنيو رفيق في منزلك</p>
     <div class="ba-card">
-      <div class="ba-img-wrap">
-        <picture>
-          <source srcset="ceramic-before-after.webp" type="image/webp">
-          <img src="ceramic-before-after.jpg" alt="تركيب سيراميك في {city} — قبل وبعد خدمة رفيق" width="1024" height="576" loading="eager" style="width:100%;height:auto;display:block;border-radius:var(--radius) var(--radius) 0 0;">
-        </picture>
+      <div class="ba-img-wrap" style="position:relative;overflow:hidden">
+        <img src="ceramic-before-after.jpg" alt="تركيب سيراميك في {city} — قبل وبعد خدمة رفيق" width="1024" height="576" loading="eager" style="width:100%;height:auto;display:block">
         <div class="ba-img-labels" style="direction:ltr">
           <span class="ba-img-label bad">قبل التركيب</span>
           <span class="ba-img-label good">بعد التركيب</span>
