@@ -1058,13 +1058,13 @@ def build_before_after(c):
           <source srcset="ceramic-before-after.webp" type="image/webp">
           <img src="ceramic-before-after.jpg" alt="تركيب سيراميك في {city} — قبل وبعد خدمة رفيق" width="1024" height="576" loading="eager" style="width:100%;height:auto;display:block;border-radius:var(--radius) var(--radius) 0 0;">
         </picture>
-        <div class="ba-img-labels">
+        <div class="ba-img-labels" style="direction:ltr">
           <span class="ba-img-label bad">قبل التركيب</span>
           <span class="ba-img-label good">بعد التركيب</span>
         </div>
       </div>
-      <div class="ba-split">
-        <div class="ba-side ba-before">
+      <div class="ba-split" style="direction:ltr">
+        <div class="ba-side ba-before" style="direction:rtl">
           <div class="ba-label-badge">قبل التركيب</div>
           <div class="ba-icon-row">
             <div class="ba-stat bad"><span class="ba-ico">❌</span><strong>أرضية قديمة</strong><small>سيراميك مكسور وبالٍ</small></div>
@@ -1073,8 +1073,8 @@ def build_before_after(c):
           </div>
           <div class="ba-desc">سيراميك قديم متشقق يُقلّل قيمة المنزل ويشكّل خطراً على السلامة.</div>
         </div>
-        <div class="ba-divider">←</div>
-        <div class="ba-side ba-after">
+        <div class="ba-divider">→</div>
+        <div class="ba-side ba-after" style="direction:rtl">
           <div class="ba-label-badge after">بعد التركيب</div>
           <div class="ba-icon-row">
             <div class="ba-stat good"><span class="ba-ico">✅</span><strong>أرضية جديدة</strong><small>سيراميك فاخر مستوٍ</small></div>
