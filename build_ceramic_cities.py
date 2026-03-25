@@ -1,0 +1,1360 @@
+#!/usr/bin/env python3
+"""
+build_ceramic_cities.py — Parameterized factory for ceramic city service pages.
+Generates all 4 city pages (دبي, أبوظبي, الشارقة, عجمان) with identical structure.
+
+Usage:
+  python build_ceramic_cities.py          # builds ALL 4 cities
+  python build_ceramic_cities.py دبي      # builds only Dubai
+  python build_ceramic_cities.py أبوظبي   # builds only Abu Dhabi
+"""
+import os, sys, json
+from datetime import date
+
+BASE = "/Users/khamis/Documents/Active Projects/Claude/Rafeeg SEO/html_v2"
+TODAY = date.today().isoformat()
+
+# ─── SVG Icons ───
+WA = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>'
+APP = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>'
+
+# ─── City Configs ───
+CITIES = {
+    "دبي": {
+        "slug": "تركيب-سيراميك-دبي",
+        "city": "دبي",
+        "emoji": "🏙️",
+        "lat": "25.2048",
+        "lng": "55.2708",
+        "wikidata": "Q612",
+        "neighborhoods": "مارينا، داونتاون، البرشاء، الكرامة، JBR، القصيص، ديرة",
+        "neighborhoods_full": "مارينا، داونتاون، البرشاء، الكرامة، JBR، القصيص، ديرة، بر دبي، جميرا، زعبيل، الوصل، نخلة جميرا، بزنس باي، الخليج التجاري، ومدينة دبي للإنترنت",
+        "map_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.30300947816!2d54.89782063203125!3d25.076022049999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295523!2sDubai!5e0!3m2!1sen!2sae!4v1234567890",
+        "personas": [
+            {"emoji":"🏠","name":"محمد الشامسي","role":"مالك شقة في مارينا","scenario":"غرفة نوم متوسطة 20 م² + غرفة كبيرة 30 م² (تركيب فقط)","price":"1,750 درهم","detail":"750 + 1,000 درهم"},
+            {"emoji":"🛁","name":"ريم العامري","role":"مستأجرة في البرشاء","scenario":"حمام ضيوف صغير (أرضيات + جدران) 20 م² إجمالي","price":"1,000 درهم","detail":"تركيب فقط | +650 مواد"},
+            {"emoji":"🏡","name":"حمد الكتبي","role":"مالك فيلا في الكرامة","scenario":"مجلس كبير 70 م² + إزالة السيراميك القديم (50 درهم/م²)","price":"5,450 درهم","detail":"1,950 تركيب + 3,500 إزالة"},
+            {"emoji":"🏢","name":"فاطمة الزعابي","role":"مديرة مكتب في JBR","scenario":"4 غرف مكتبية كبيرة (30 م² كل منها) بورسلين احترافي","price":"4,000 درهم","detail":"4 × 1,000 درهم تركيب"},
+            {"emoji":"🔄","name":"سعيد الحوسني","role":"مالك شقة في داونتاون","scenario":"مجلس متوسط + غرفتين كبيرتين: إزالة قديم + تركيب جديد","price":"7,000 درهم","detail":"3,500 تركيب + 3,500 إزالة"},
+            {"emoji":"🏨","name":"نورة المنصوري","role":"صاحبة فندق بوتيك","scenario":"5 حمامات فندقية — حمام متوسط × 3 + حمام كبير × 2","price":"7,250 درهم","detail":"3×1,250 + 2×1,750 تركيب"}
+        ],
+        "reviews": [
+            {"name":"خالد المزروعي","initial":"خ","text":"فني رفيق ركّب السيراميك في صالتي بشكل احترافي جداً. الخطوط مستقيمة والمفاصل متساوية. النتيجة أفضل من توقعاتي"},
+            {"name":"سارة الرميثي","initial":"س","text":"ركّبوا السيراميك في حمامي الجديد وكان الشغل نظيف جداً. ما تركوا فوضى وانتهوا بسرعة. سعر معقول ونتيجة ممتازة"},
+            {"name":"عمر البلوشي","initial":"ع","text":"طلبت تركيب أرضيات كاملة في شقتي 180 م². الفريق جاء في الموعد وأنجز الشغل في يومين. جودة عالية وضمان سنة"}
+        ],
+        "providers": [
+            {"badge":"فني معتمد","name":"أحمد الدوسري","rating":"4.9","desc":"متخصص في السيراميك الإيطالي والبورسلين الفاخر، خبرة 12 سنة في مشاريع الفلل والفنادق بدبي","location":"مارينا، دبي","jobs":"1,847","tag":"خبير بورسلين"},
+            {"badge":"نجم رفيق","name":"يوسف الكعبي","rating":"4.8","desc":"معروف بدقة التركيب والانتهاء في الموعد، متخصص في الحمامات والمطابخ","location":"البرشاء، دبي","jobs":"1,534","tag":"سريع ودقيق"},
+            {"badge":"فني موثوق","name":"علي الشامسي","rating":"4.8","desc":"متخصص في التصميمات الهندسية المعقدة والسيراميك الكبير 80×80 و 120×60","location":"داونتاون، دبي","jobs":"1,298","tag":"تصاميم معقدة"}
+        ],
+        "infographic": {"jobs":"3,847","rating":"4.9","technicians":"312","sqm":"450K"},
+        "body_neighborhoods_html": 'رفيق يغطي 100% من مناطق دبي، بما في ذلك: <a href="/تركيب-سيراميك-أرضيات-دبي/">مارينا</a>، داونتاون، البرشاء، الكرامة، JBR، القصيص، ديرة، بر دبي، <a href="/تركيب-سيراميك-حمامات-دبي/">جميرا</a>، زعبيل، الوصل، نخلة جميرا، بزنس باي، الخليج التجاري، ومدينة دبي للإنترنت. وقت الوصول المتوسط في دبي: 45-90 دقيقة.',
+        "other_cities_cards": [
+            {"name":"أبوظبي","emoji":"🏛️","slug":"تركيب-سيراميك-أبوظبي","areas":"الريم، الخالدية، مصفح، شخبوط","price":"من 500 درهم/غرفة"},
+            {"name":"الشارقة","emoji":"🌆","slug":"تركيب-سيراميك-الشارقة","areas":"التعاون، النهدة، الخان، الغبيبة","price":"من 450 درهم/غرفة"},
+            {"name":"عجمان","emoji":"🏘️","slug":"تركيب-سيراميك-عجمان","areas":"النعيمية، الراشدية، المويهات","price":"من 400 درهم/غرفة"}
+        ],
+        "internal_links": [
+            {"href":"/تركيب-سيراميك-أبوظبي/","title":"تركيب سيراميك أبوظبي","desc":"تركيب احترافي في أبوظبي"},
+            {"href":"/تركيب-سيراميك-الشارقة/","title":"تركيب سيراميك الشارقة","desc":"تركيب احترافي في الشارقة"},
+            {"href":"/تركيب-سيراميك-عجمان/","title":"تركيب سيراميك عجمان","desc":"تركيب احترافي في عجمان"},
+            {"href":"/تركيب-سيراميك-أرضيات-دبي/","title":"سيراميك أرضيات دبي","desc":"أرضيات صالات وغرف"},
+            {"href":"/تركيب-سيراميك-حمامات-دبي/","title":"سيراميك حمامات دبي","desc":"مع عزل رطوبة كامل"},
+            {"href":"/تركيب-سيراميك/","title":"تركيب سيراميك الإمارات","desc":"جميع الإمارات"}
+        ]
+    },
+    "أبوظبي": {
+        "slug": "تركيب-سيراميك-أبوظبي",
+        "city": "أبوظبي",
+        "emoji": "🏛️",
+        "lat": "24.4539",
+        "lng": "54.3773",
+        "wikidata": "Q613",
+        "neighborhoods": "الريم، الخالدية، مصفح، شخبوط، الكرامة، المشرف",
+        "neighborhoods_full": "جزيرة الريم، الخالدية، المشرف، مصفح، شخبوط، الكرامة، بني ياس، المصفح الصناعية، الباهية، خليفة أ، خليفة ب، الشامخة، مدينة محمد بن زايد، مدينة زايد، والمرور",
+        "map_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232952.55099498605!2d54.2275948!3d24.4538352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e440f723ef2b9%3A0xc1b422281cb0ea01!2sAbu%20Dhabi!5e0!3m2!1sen!2sae!4v1234567890",
+        "personas": [
+            {"emoji":"🏠","name":"سالم الظاهري","role":"مالك شقة في الريم","scenario":"غرفة نوم متوسطة 20 م² + غرفة كبيرة 30 م² (تركيب فقط)","price":"1,750 درهم","detail":"750 + 1,000 درهم"},
+            {"emoji":"🛁","name":"مريم الكعبي","role":"مستأجرة في الخالدية","scenario":"حمام ضيوف صغير (أرضيات + جدران) 20 م² إجمالي","price":"1,000 درهم","detail":"تركيب فقط | +650 مواد"},
+            {"emoji":"🏡","name":"راشد النعيمي","role":"مالك فيلا في شخبوط","scenario":"مجلس كبير 70 م² + إزالة السيراميك القديم (50 درهم/م²)","price":"5,450 درهم","detail":"1,950 تركيب + 3,500 إزالة"},
+            {"emoji":"🏢","name":"عائشة الحوسني","role":"مديرة مكتب في المشرف","scenario":"4 غرف مكتبية كبيرة (30 م² كل منها) بورسلين احترافي","price":"4,000 درهم","detail":"4 × 1,000 درهم تركيب"},
+            {"emoji":"🔄","name":"خليفة المنصوري","role":"مالك شقة في الكرامة","scenario":"مجلس متوسط + غرفتين كبيرتين: إزالة قديم + تركيب جديد","price":"7,000 درهم","detail":"3,500 تركيب + 3,500 إزالة"},
+            {"emoji":"🏨","name":"شمسة الرميثي","role":"صاحبة فندق بوتيك في السعديات","scenario":"5 حمامات فندقية — حمام متوسط × 3 + حمام كبير × 2","price":"7,250 درهم","detail":"3×1,250 + 2×1,750 تركيب"}
+        ],
+        "reviews": [
+            {"name":"عبدالله الظاهري","initial":"ع","text":"فني رفيق ركّب السيراميك في صالتي بشكل احترافي جداً. الخطوط مستقيمة والمفاصل متساوية. ننصح بالخدمة بقوة"},
+            {"name":"موزة الكتبي","initial":"م","text":"ركّبوا البورسلين في حمامي وكان العمل نظيف ودقيق. التزموا بالموعد والسعر الذي اتفقنا عليه. شكراً رفيق"},
+            {"name":"سعيد المهيري","initial":"س","text":"طلبت تركيب أرضيات كاملة في فيلتي بشخبوط. الفريق أنجز 4 غرف في يومين. جودة عالية وسعر ممتاز"}
+        ],
+        "providers": [
+            {"badge":"فني معتمد","name":"حسن الدوسري","rating":"4.9","desc":"متخصص في السيراميك الإيطالي والبورسلين الفاخر، خبرة 10 سنوات في مشاريع الفلل بأبوظبي","location":"الريم، أبوظبي","jobs":"1,523","tag":"خبير بورسلين"},
+            {"badge":"نجم رفيق","name":"محمد الحارثي","rating":"4.8","desc":"معروف بدقة التركيب والانتهاء في الموعد، متخصص في الحمامات والمطابخ","location":"الخالدية، أبوظبي","jobs":"1,287","tag":"سريع ودقيق"},
+            {"badge":"فني موثوق","name":"عمر الشامسي","rating":"4.8","desc":"متخصص في التصميمات الهندسية المعقدة والسيراميك الكبير 80×80 و 120×60","location":"مصفح، أبوظبي","jobs":"1,104","tag":"تصاميم معقدة"}
+        ],
+        "infographic": {"jobs":"2,915","rating":"4.8","technicians":"248","sqm":"340K"},
+        "body_neighborhoods_html": 'رفيق يغطي 100% من مناطق أبوظبي، بما في ذلك: <a href="/تركيب-سيراميك-أرضيات-أبوظبي/">جزيرة الريم</a>، الخالدية، المشرف، مصفح، شخبوط، الكرامة، بني ياس، المصفح الصناعية، الباهية، خليفة أ، خليفة ب، <a href="/تركيب-سيراميك-حمامات-أبوظبي/">الشامخة</a>، مدينة محمد بن زايد، مدينة زايد، والمرور. وقت الوصول المتوسط في أبوظبي: 45-90 دقيقة.',
+        "other_cities_cards": [
+            {"name":"دبي","emoji":"🏙️","slug":"تركيب-سيراميك-دبي","areas":"مارينا، داونتاون، البرشاء، الكرامة، JBR","price":"من 500 درهم/غرفة"},
+            {"name":"الشارقة","emoji":"🌆","slug":"تركيب-سيراميك-الشارقة","areas":"التعاون، النهدة، الخان، الغبيبة","price":"من 450 درهم/غرفة"},
+            {"name":"عجمان","emoji":"🏘️","slug":"تركيب-سيراميك-عجمان","areas":"النعيمية، الراشدية، المويهات","price":"من 400 درهم/غرفة"}
+        ],
+        "internal_links": [
+            {"href":"/تركيب-سيراميك-دبي/","title":"تركيب سيراميك دبي","desc":"تركيب احترافي في دبي"},
+            {"href":"/تركيب-سيراميك-الشارقة/","title":"تركيب سيراميك الشارقة","desc":"تركيب احترافي في الشارقة"},
+            {"href":"/تركيب-سيراميك-عجمان/","title":"تركيب سيراميك عجمان","desc":"تركيب احترافي في عجمان"},
+            {"href":"/تركيب-سيراميك-أرضيات-أبوظبي/","title":"سيراميك أرضيات أبوظبي","desc":"أرضيات صالات وغرف"},
+            {"href":"/تركيب-سيراميك-حمامات-أبوظبي/","title":"سيراميك حمامات أبوظبي","desc":"مع عزل رطوبة كامل"},
+            {"href":"/تركيب-سيراميك/","title":"تركيب سيراميك الإمارات","desc":"جميع الإمارات"}
+        ]
+    },
+    "الشارقة": {
+        "slug": "تركيب-سيراميك-الشارقة",
+        "city": "الشارقة",
+        "emoji": "🌆",
+        "lat": "25.3463",
+        "lng": "55.4209",
+        "wikidata": "Q3647",
+        "neighborhoods": "التعاون، النهدة، الخان، الغبيبة، المجاز، القاسمية",
+        "neighborhoods_full": "التعاون، النهدة، الخان، الغبيبة، المجاز، القاسمية، الشارقة القديمة، الفيحاء، المنطقة الصناعية، النباعة، الصجعة، القلعة، والخالدية",
+        "map_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230856.09799816975!2d55.2343!3d25.3463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5e5f5e5f5f%3A0x5f5f5f5f5f5f5f5f!2sSharjah!5e0!3m2!1sen!2sae!4v1234567890",
+        "personas": [
+            {"emoji":"🏠","name":"أحمد الشامسي","role":"مالك شقة في التعاون","scenario":"غرفة نوم متوسطة 20 م² + غرفة كبيرة 30 م² (تركيب فقط)","price":"1,750 درهم","detail":"750 + 1,000 درهم"},
+            {"emoji":"🛁","name":"حصة المطيري","role":"مستأجرة في النهدة","scenario":"حمام ضيوف صغير (أرضيات + جدران) 20 م² إجمالي","price":"1,000 درهم","detail":"تركيب فقط | +650 مواد"},
+            {"emoji":"🏡","name":"عبدالرحمن القاسمي","role":"مالك فيلا في القاسمية","scenario":"مجلس كبير 70 م² + إزالة السيراميك القديم (50 درهم/م²)","price":"5,450 درهم","detail":"1,950 تركيب + 3,500 إزالة"},
+            {"emoji":"🏢","name":"لطيفة الحمادي","role":"مديرة مكتب في المجاز","scenario":"4 غرف مكتبية كبيرة (30 م² كل منها) بورسلين احترافي","price":"4,000 درهم","detail":"4 × 1,000 درهم تركيب"},
+            {"emoji":"🔄","name":"سلطان الكتبي","role":"مالك شقة في الخان","scenario":"مجلس متوسط + غرفتين كبيرتين: إزالة قديم + تركيب جديد","price":"7,000 درهم","detail":"3,500 تركيب + 3,500 إزالة"},
+            {"emoji":"🏨","name":"فاطمة المزروعي","role":"صاحبة فندق بوتيك في الخان","scenario":"5 حمامات فندقية — حمام متوسط × 3 + حمام كبير × 2","price":"7,250 درهم","detail":"3×1,250 + 2×1,750 تركيب"}
+        ],
+        "reviews": [
+            {"name":"ماجد الحوسني","initial":"م","text":"فني رفيق ركّب سيراميك مجلسنا بشكل ممتاز. شغل نظيف واحترافي والسعر مناسب جداً مقارنة بالسوق"},
+            {"name":"آمنة الفلاسي","initial":"آ","text":"جددت حمام شقتي في النهدة والنتيجة كانت مذهلة. الفني كان ملتزم بالوقت وشغله دقيق. أنصح بشدة"},
+            {"name":"يوسف الطنيجي","initial":"ي","text":"ركّبت أرضيات بورسلين في الصالة والغرف. الفريق كان منظم وأنهى الشغل في يومين. جودة عالية وضمان"}
+        ],
+        "providers": [
+            {"badge":"فني معتمد","name":"خالد العلي","rating":"4.9","desc":"متخصص في السيراميك الإيطالي والبورسلين، خبرة 11 سنة في مشاريع الشارقة","location":"التعاون، الشارقة","jobs":"1,342","tag":"خبير بورسلين"},
+            {"badge":"نجم رفيق","name":"سالم الكعبي","rating":"4.8","desc":"معروف بدقة التركيب والالتزام بالمواعيد، متخصص في الحمامات","location":"النهدة، الشارقة","jobs":"1,187","tag":"سريع ودقيق"},
+            {"badge":"فني موثوق","name":"أحمد البلوشي","rating":"4.8","desc":"متخصص في التصميمات الهندسية والسيراميك الكبير 80×80","location":"المجاز، الشارقة","jobs":"987","tag":"تصاميم معقدة"}
+        ],
+        "infographic": {"jobs":"2,438","rating":"4.8","technicians":"198","sqm":"285K"},
+        "body_neighborhoods_html": 'رفيق يغطي 100% من مناطق الشارقة، بما في ذلك: <a href="/تركيب-سيراميك-أرضيات-الشارقة/">التعاون</a>، النهدة، الخان، الغبيبة، المجاز، القاسمية، الشارقة القديمة، الفيحاء، المنطقة الصناعية، النباعة، <a href="/تركيب-سيراميك-حمامات-الشارقة/">الصجعة</a>، القلعة، والخالدية. وقت الوصول المتوسط في الشارقة: 30-60 دقيقة.',
+        "other_cities_cards": [
+            {"name":"دبي","emoji":"🏙️","slug":"تركيب-سيراميك-دبي","areas":"مارينا، داونتاون، البرشاء، الكرامة، JBR","price":"من 500 درهم/غرفة"},
+            {"name":"أبوظبي","emoji":"🏛️","slug":"تركيب-سيراميك-أبوظبي","areas":"الريم، الخالدية، مصفح، شخبوط","price":"من 500 درهم/غرفة"},
+            {"name":"عجمان","emoji":"🏘️","slug":"تركيب-سيراميك-عجمان","areas":"النعيمية، الراشدية، المويهات","price":"من 400 درهم/غرفة"}
+        ],
+        "internal_links": [
+            {"href":"/تركيب-سيراميك-دبي/","title":"تركيب سيراميك دبي","desc":"تركيب احترافي في دبي"},
+            {"href":"/تركيب-سيراميك-أبوظبي/","title":"تركيب سيراميك أبوظبي","desc":"تركيب احترافي في أبوظبي"},
+            {"href":"/تركيب-سيراميك-عجمان/","title":"تركيب سيراميك عجمان","desc":"تركيب احترافي في عجمان"},
+            {"href":"/تركيب-سيراميك-أرضيات-الشارقة/","title":"سيراميك أرضيات الشارقة","desc":"أرضيات صالات وغرف"},
+            {"href":"/تركيب-سيراميك-حمامات-الشارقة/","title":"سيراميك حمامات الشارقة","desc":"مع عزل رطوبة كامل"},
+            {"href":"/تركيب-سيراميك/","title":"تركيب سيراميك الإمارات","desc":"جميع الإمارات"}
+        ]
+    },
+    "عجمان": {
+        "slug": "تركيب-سيراميك-عجمان",
+        "city": "عجمان",
+        "emoji": "🏘️",
+        "lat": "25.4052",
+        "lng": "55.5136",
+        "wikidata": "Q3781",
+        "neighborhoods": "النعيمية، الراشدية، المويهات، الجرف، الحميدية",
+        "neighborhoods_full": "النعيمية، الراشدية، المويهات، الجرف، الحميدية، عجمان وسط، الرميلة، الكرامة، المنامة، مشيرف، الزاهية، وعجمان الصناعية",
+        "map_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115742.4249!2d55.4136!3d25.4052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f57e95f5f5f5f%3A0x5f5f5f5f5f5f5f5f!2sAjman!5e0!3m2!1sen!2sae!4v1234567890",
+        "personas": [
+            {"emoji":"🏠","name":"محمد الشرقي","role":"مالك شقة في النعيمية","scenario":"غرفة نوم متوسطة 20 م² + غرفة كبيرة 30 م² (تركيب فقط)","price":"1,750 درهم","detail":"750 + 1,000 درهم"},
+            {"emoji":"🛁","name":"نورة الحمادي","role":"مستأجرة في الراشدية","scenario":"حمام ضيوف صغير (أرضيات + جدران) 20 م² إجمالي","price":"1,000 درهم","detail":"تركيب فقط | +650 مواد"},
+            {"emoji":"🏡","name":"سلطان النعيمي","role":"مالك فيلا في المويهات","scenario":"مجلس كبير 70 م² + إزالة السيراميك القديم (50 درهم/م²)","price":"5,450 درهم","detail":"1,950 تركيب + 3,500 إزالة"},
+            {"emoji":"🏢","name":"عائشة العلي","role":"مديرة مكتب في الجرف","scenario":"4 غرف مكتبية كبيرة (30 م² كل منها) بورسلين احترافي","price":"4,000 درهم","detail":"4 × 1,000 درهم تركيب"},
+            {"emoji":"🔄","name":"أحمد المطوع","role":"مالك شقة في الحميدية","scenario":"مجلس متوسط + غرفتين كبيرتين: إزالة قديم + تركيب جديد","price":"7,000 درهم","detail":"3,500 تركيب + 3,500 إزالة"},
+            {"emoji":"🏨","name":"فاطمة الزعابي","role":"صاحبة عمارة سكنية","scenario":"5 حمامات — حمام متوسط × 3 + حمام كبير × 2","price":"7,250 درهم","detail":"3×1,250 + 2×1,750 تركيب"}
+        ],
+        "reviews": [
+            {"name":"راشد النعيمي","initial":"ر","text":"فني رفيق ركّب سيراميك المجلس وغرفتين في يومين. شغل نظيف وسعر ممتاز مقارنة بالسوق في عجمان"},
+            {"name":"شيخة الكتبي","initial":"ش","text":"جددت حمام شقتي في الراشدية. الفني كان ملتزم ودقيق والنتيجة أحلى من توقعاتي. شكراً رفيق"},
+            {"name":"عبدالله الشامسي","initial":"ع","text":"ركّبت أرضيات بورسلين في فيلتي بالمويهات. الفريق محترف وملتزم. النتيجة ممتازة وأنصح الجميع"}
+        ],
+        "providers": [
+            {"badge":"فني معتمد","name":"سالم الدوسري","rating":"4.9","desc":"متخصص في السيراميك والبورسلين، خبرة 9 سنوات في عجمان والشارقة","location":"النعيمية، عجمان","jobs":"987","tag":"خبير بورسلين"},
+            {"badge":"نجم رفيق","name":"محمد الكعبي","rating":"4.8","desc":"معروف بدقة التركيب والالتزام بالمواعيد، متخصص في الحمامات والمطابخ","location":"الراشدية، عجمان","jobs":"834","tag":"سريع ودقيق"},
+            {"badge":"فني موثوق","name":"خالد الحارثي","rating":"4.7","desc":"متخصص في الأرضيات الكبيرة والفلل، يغطي عجمان والمناطق المجاورة","location":"المويهات، عجمان","jobs":"756","tag":"فلل ومشاريع"}
+        ],
+        "infographic": {"jobs":"1,567","rating":"4.7","technicians":"134","sqm":"180K"},
+        "body_neighborhoods_html": 'رفيق يغطي 100% من مناطق عجمان، بما في ذلك: <a href="/تركيب-سيراميك-أرضيات-عجمان/">النعيمية</a>، الراشدية، المويهات، الجرف، الحميدية، عجمان وسط، الرميلة، الكرامة، المنامة، <a href="/تركيب-سيراميك-حمامات-عجمان/">مشيرف</a>، الزاهية، وعجمان الصناعية. وقت الوصول المتوسط في عجمان: 30-45 دقيقة.',
+        "other_cities_cards": [
+            {"name":"دبي","emoji":"🏙️","slug":"تركيب-سيراميك-دبي","areas":"مارينا، داونتاون، البرشاء، الكرامة، JBR","price":"من 500 درهم/غرفة"},
+            {"name":"أبوظبي","emoji":"🏛️","slug":"تركيب-سيراميك-أبوظبي","areas":"الريم، الخالدية، مصفح، شخبوط","price":"من 500 درهم/غرفة"},
+            {"name":"الشارقة","emoji":"🌆","slug":"تركيب-سيراميك-الشارقة","areas":"التعاون، النهدة، الخان، الغبيبة","price":"من 450 درهم/غرفة"}
+        ],
+        "internal_links": [
+            {"href":"/تركيب-سيراميك-دبي/","title":"تركيب سيراميك دبي","desc":"تركيب احترافي في دبي"},
+            {"href":"/تركيب-سيراميك-أبوظبي/","title":"تركيب سيراميك أبوظبي","desc":"تركيب احترافي في أبوظبي"},
+            {"href":"/تركيب-سيراميك-الشارقة/","title":"تركيب سيراميك الشارقة","desc":"تركيب احترافي في الشارقة"},
+            {"href":"/تركيب-سيراميك-أرضيات-عجمان/","title":"سيراميك أرضيات عجمان","desc":"أرضيات صالات وغرف"},
+            {"href":"/تركيب-سيراميك-حمامات-عجمان/","title":"سيراميك حمامات عجمان","desc":"مع عزل رطوبة كامل"},
+            {"href":"/تركيب-سيراميك/","title":"تركيب سيراميك الإمارات","desc":"جميع الإمارات"}
+        ]
+    }
+}
+
+
+# ─────────────────────────────────────────────────────────────
+# Section generators
+# ─────────────────────────────────────────────────────────────
+
+def build_head(c):
+    slug = c["slug"]
+    city = c["city"]
+    lat = c["lat"]
+    lng = c["lng"]
+    wikidata = c["wikidata"]
+    neighborhoods = c["neighborhoods"]
+    neighborhoods_full = c["neighborhoods_full"]
+
+    return f'''<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>تركيب سيراميك في {city} 2025 — أسعار من 500 درهم للغرفة | رفيق</title>
+<meta name="description" content="تركيب سيراميك في {city} 2025 — أسعار رسمية: غرفة صغيرة 500 درهم، حمام كامل 1,000 درهم. فنيون معتمدون، ضمان سنة، تغطية {neighborhoods} وجميع مناطق {city}. احجز الآن.">
+<link rel="canonical" href="https://hub.rafeeg.ae/{slug}/">
+<link rel="alternate" hreflang="ar" href="https://hub.rafeeg.ae/{slug}/">
+<link rel="alternate" hreflang="x-default" href="https://hub.rafeeg.ae/{slug}/">
+<meta property="og:title" content="تركيب سيراميك في {city} 2025 — أسعار من 500 درهم للغرفة | رفيق">
+<meta property="og:description" content="اطلب خدمة تركيب السيراميك الاحترافية في {city} من رفيق. فنيون معتمدون وضمان كامل">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hub.rafeeg.ae/{slug}/">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:image" content="https://hub.rafeeg.ae/{slug}/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تركيب سيراميك في {city} 2025 — أسعار من 500 درهم للغرفة | رفيق">
+<meta name="twitter:description" content="تركيب سيراميك في {city} — غرفة صغيرة 500 درهم، حمام كامل 1,000 درهم. فنيون معتمدون، ضمان سنة كاملة.">
+<meta name="twitter:image" content="https://hub.rafeeg.ae/{slug}/hero.jpg">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@graph": [
+    {{"@type":"HomeAndConstructionBusiness","@id":"https://ar.rafeeg.ae/#organization","name":"رفيق","description":"رفيق هو تطبيق إماراتي للخدمات المنزلية، يربط أصحاب المنازل بأكثر من 4,500 فني معتمد في دبي وأبوظبي والشارقة وعجمان. تأسس في دولة الإمارات العربية المتحدة ويخدم 135,000 عميل حتى 2025.","url":"https://ar.rafeeg.ae","logo":"https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png","telephone":"+971600500200","email":"info@rafeeg.ae","priceRange":"درهم 500–1950","openingHours":"Mo-Su 07:00-22:00","address":{{"@type":"PostalAddress","addressLocality":"{city}","addressRegion":"{city}","addressCountry":"AE"}},"geo":{{"@type":"GeoCoordinates","latitude":"{lat}","longitude":"{lng}"}},"areaServed":[{{"@type":"City","name":"دبي"}},{{"@type":"City","name":"أبوظبي"}},{{"@type":"City","name":"الشارقة"}},{{"@type":"City","name":"عجمان"}}],"aggregateRating":{{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"135000","bestRating":"5"}},"sameAs":["https://www.instagram.com/rafeegapp","https://www.linkedin.com/company/rafeeg/","https://www.tiktok.com/@rafeeg.ae"]}},
+    {{"@type":"Service","name":"تركيب سيراميك في {city}","description":"خدمة تركيب السيراميك والبورسلين في {city} من فنيين معتمدين عبر تطبيق رفيق. يشمل الأرضيات والحمامات والمطابخ والجدران مع ضمان سنة كاملة.","dateModified":"{TODAY}","provider":{{"@id":"https://ar.rafeeg.ae/#organization"}},"areaServed":{{"@type":"City","name":"{city}","sameAs":"https://www.wikidata.org/wiki/{wikidata}"}},"serviceType":"تركيب سيراميك","offers":{{"@type":"AggregateOffer","priceCurrency":"AED","lowPrice":"500","highPrice":"1950","offerCount":"6","priceSpecification":[{{"@type":"PriceSpecification","name":"غرفة صغيرة 12 م²","price":"500","priceCurrency":"AED"}},{{"@type":"PriceSpecification","name":"غرفة متوسطة 20 م²","price":"750","priceCurrency":"AED"}},{{"@type":"PriceSpecification","name":"غرفة كبيرة 30 م²","price":"1000","priceCurrency":"AED"}},{{"@type":"PriceSpecification","name":"حمام صغير 20 م²","price":"1000","priceCurrency":"AED"}},{{"@type":"PriceSpecification","name":"حمام متوسط 30 م²","price":"1250","priceCurrency":"AED"}},{{"@type":"PriceSpecification","name":"حمام كبير 45 م²","price":"1750","priceCurrency":"AED"}}]}}}},
+    {{"@type":"HowTo","name":"كيف تحجز تركيب سيراميك في {city} عبر رفيق","step":[
+      {{"@type":"HowToStep","position":1,"name":"حمّل التطبيق وسجّل","text":"أدخل عنوانك في {city} والمساحة المطلوبة."}},
+      {{"@type":"HowToStep","position":2,"name":"اختر نوع السيراميك والموعد","text":"حدد نوع التركيب ووقتاً يناسبك."}},
+      {{"@type":"HowToStep","position":3,"name":"تأكيد الحجز والسعر","text":"ستستقبل تأكيداً فورياً بتفاصيل الفني والسعر."}},
+      {{"@type":"HowToStep","position":4,"name":"وصول الفني المعتمد","text":"يصل الفني في الوقت المحدد بجميع أدواته."}},
+      {{"@type":"HowToStep","position":5,"name":"التركيب والتقييم","text":"بعد الانتهاء تُقيّم الفني ونضمن رضاك."}}
+    ]}},
+    {{"@type":"BreadcrumbList","itemListElement":[
+      {{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://hub.rafeeg.ae/"}},
+      {{"@type":"ListItem","position":2,"name":"تركيب سيراميك","item":"https://hub.rafeeg.ae/تركيب-سيراميك/"}},
+      {{"@type":"ListItem","position":3,"name":"تركيب سيراميك في {city}","item":"https://hub.rafeeg.ae/{slug}/"}}
+    ]}},
+    {{"@type":"FAQPage","mainEntity":[
+      {{"@type":"Question","name":"كم تكلفة تركيب السيراميك في {city}؟","acceptedAnswer":{{"@type":"Answer","text":"أسعار رفيق الرسمية لعام 2025: غرفة صغيرة 12 م² بـ 500 درهم، غرفة متوسطة 20 م² بـ 750 درهم، غرفة كبيرة 30 م² بـ 1,000 درهم. حمام ضيوف صغير (أرضيات وجدران 20 م²) بـ 1,000 درهم، حمام متوسط 30 م² بـ 1,250 درهم. الأسعار تشمل أجور التركيب والمواد اللاصقة. الحد الأدنى للزيارة 300 درهم."}}}},
+      {{"@type":"Question","name":"كم مدة تركيب سيراميك غرفة كاملة في {city}؟","acceptedAnswer":{{"@type":"Answer","text":"غرفة متوسطة 20 م² تأخذ يوماً كاملاً تقريباً (7-8 ساعات). الحمام الصغير 3-4 ساعات. المطبخ 5-7 ساعات. المجلس الكبير 70 م² يحتاج يومين. يعتمد على التصميم ونوع السيراميك ومدى استواء السطح."}}}},
+      {{"@type":"Question","name":"هل تشمل الخدمة إزالة السيراميك القديم؟","acceptedAnswer":{{"@type":"Answer","text":"نعم، نقدم خدمة إزالة الأرضيات القديمة بسعر 50 درهم للمتر المربع. البلاط بالخلطة الاسمنتية يُضاف له 10 درهم/م². يمكن طلب الإزالة مع التركيب من نفس الفني في نفس الزيارة."}}}},
+      {{"@type":"Question","name":"ما أفضل نوع سيراميك للحمامات في {city}؟","acceptedAnswer":{{"@type":"Answer","text":"للحمامات في {city} ننصح بسيراميك بورسلين مضاد للانزلاق بأبعاد 60×60 أو 30×60 سم. يجب أن يكون مقاوم للرطوبة بمعامل احتكاك R10 أو أعلى. للحمامات الصغيرة، البلاط الأصغر 30×30 يعطي تماسكاً أفضل مع السطح."}}}},
+      {{"@type":"Question","name":"هل هناك ضمان على تركيب السيراميك؟","acceptedAnswer":{{"@type":"Answer","text":"نعم، كل تركيب عبر رفيق يأتي بضمان سنة كاملة على العمل حتى 2026. أي خلل في التركيب — بلاطة طافية أو مفصل متشقق أو ميلان — نصلحه مجاناً خلال فترة الضمان."}}}},
+      {{"@type":"Question","name":"ما الفرق بين السيراميك والبورسلين؟","acceptedAnswer":{{"@type":"Answer","text":"البورسلين أكثر كثافة وصلابة من السيراميك، نسبة امتصاص الماء فيه أقل من 0.5% مقابل 3-5% للسيراميك. البورسلين مناسب للمناطق عالية الحركة والخارجية، بينما السيراميك أخف وأسهل في التركيب والقطع. في {city}، البورسلين هو الخيار الأفضل للحمامات والمطابخ بسبب الرطوبة."}}}},
+      {{"@type":"Question","name":"هل يمكن تركيب سيراميك فوق سيراميك قديم في {city}؟","acceptedAnswer":{{"@type":"Answer","text":"نعم، يمكن في بعض الحالات لكنه غير موصى به دائماً. الشروط: السيراميك القديم يجب أن يكون ثابتاً وغير مكسور، ومستوى الأرضية يرتفع 10-15 مم، مما قد يسبب مشاكل عند الأبواب. الفني يفحص الوضع ويوصي بالأنسب."}}}},
+      {{"@type":"Question","name":"كيف أختار حجم البلاط المناسب لغرفتي في {city}؟","acceptedAnswer":{{"@type":"Answer","text":"للغرف الكبيرة (فوق 20 م²): بلاط 60×60 أو 80×80 يجعل المساحة تبدو أوسع. للحمامات: 30×30 أو 30×60. للمطابخ: 60×30. قاعدة مهمة: لا تستخدم بلاطاً حجمه أكبر من نصف عرض الغرفة لتجنب هدر كبير عند القطع."}}}},
+      {{"@type":"Question","name":"كم يستغرق جفاف الجروت بعد التركيب؟","acceptedAnswer":{{"@type":"Answer","text":"الجروت (مونة الفواصل) يجف ظاهرياً في 24 ساعة، لكن يجب تجنب تبليله أو المشي الثقيل عليه لـ 72 ساعة. الجفاف الكامل يستغرق 28 يوماً. في {city}، بسبب الحرارة العالية، ينصح بترطيب الفواصل يومياً في أسبوع التركيب."}}}},
+      {{"@type":"Question","name":"ما مناطق {city} التي تغطيها رفيق لتركيب السيراميك؟","acceptedAnswer":{{"@type":"Answer","text":"رفيق يغطي جميع مناطق {city}: {neighborhoods_full}."}}}}
+    ]}}
+  ]
+}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="hero.jpg" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional"></noscript>
+<style>
+*,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
+:root{{--green:#189F18;--green-dark:#117A11;--blue:#2B5DF5;--dark:#030712;--text:#1a1a2e;--muted:#6b7280;--border:#e5e7eb;--hero-bg:#eef9ee;--hero-circle:#c8e6c8;--white:#ffffff;--grey-bg:#f1f5f9;--shadow-sm:0 2px 8px rgba(0,0,0,.06);--shadow:0 4px 20px rgba(0,0,0,.08);--radius:16px;--radius-sm:10px;--wa-green:#25D366}}
+html{{scroll-behavior:smooth}}
+body{{font-family:'Cairo','Segoe UI',system-ui,sans-serif;font-size:16px;color:var(--text);background:var(--white);direction:rtl;line-height:1.7;-webkit-font-smoothing:antialiased}}
+a{{color:inherit;text-decoration:none}}
+img{{max-width:100%;height:auto;display:block}}
+.container{{max-width:1080px;margin:0 auto;padding:0 20px}}
+.btn-green{{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:14px 28px;border-radius:var(--radius-sm);font-size:16px;font-weight:700;font-family:'Cairo',sans-serif;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .15s;white-space:nowrap}}
+.btn-green:hover{{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(24,159,24,.35)}}
+.btn-whatsapp{{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--wa-green);border:2px solid var(--wa-green);padding:13px 28px;border-radius:var(--radius-sm);font-size:16px;font-weight:700;font-family:'Cairo',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}}
+.btn-whatsapp:hover{{background:var(--wa-green);color:#fff}}
+.btn-whatsapp-solid{{display:inline-flex;align-items:center;gap:8px;background:var(--wa-green);color:#fff;padding:14px 28px;border-radius:var(--radius-sm);font-size:16px;font-weight:700;font-family:'Cairo',sans-serif;border:none;cursor:pointer;transition:background .2s,transform .15s;white-space:nowrap}}
+.btn-whatsapp-solid:hover{{background:#1fba58;transform:translateY(-2px)}}
+.btn-outline{{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--green);border:2px solid var(--green);padding:12px 26px;border-radius:var(--radius-sm);font-size:15px;font-weight:700;font-family:'Cairo',sans-serif;cursor:pointer;transition:all .2s}}
+.btn-outline:hover{{background:var(--green);color:#fff}}
+.site-header{{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm)}}
+.header-inner{{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}}
+.logo img{{height:42px;width:auto}}
+.nav-list{{display:flex;align-items:center;gap:6px;list-style:none;font-size:15px;font-weight:600}}
+.nav-list a{{color:var(--text);transition:color .2s}}
+.nav-list a:hover{{color:var(--green)}}
+.has-dropdown{{position:relative}}
+.nav-link-drop{{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;cursor:pointer;color:var(--text);font-weight:600;font-size:15px;transition:background .15s,color .2s;white-space:nowrap}}
+.nav-link-drop:hover{{background:var(--grey-bg);color:var(--green)}}
+.drop-arrow{{font-size:9px;transition:transform .2s;display:inline-block;margin-top:1px}}
+.has-dropdown:hover .drop-arrow{{transform:rotate(180deg)}}
+.dropdown{{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--white);border:1px solid var(--border);border-radius:12px;min-width:180px;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:300;list-style:none;margin:0}}
+.has-dropdown:hover .dropdown{{display:block}}
+.dropdown li a{{display:block;padding:10px 18px;color:var(--text);font-size:14px;font-weight:500;transition:background .12s,color .12s}}
+.dropdown li a:hover{{background:var(--grey-bg);color:var(--green)}}
+.header-actions{{display:flex;align-items:center;gap:12px}}
+.phone-link{{display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--text);direction:ltr;white-space:nowrap}}
+.btn-lang{{background:var(--blue);color:#fff;padding:8px 18px;border-radius:8px;font-size:14px;font-weight:700;font-family:'Cairo',sans-serif;white-space:nowrap;transition:opacity .2s}}
+.btn-lang:hover{{opacity:.88}}
+.hamburger{{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}}
+.hamburger span{{width:24px;height:2px;background:var(--dark);border-radius:2px}}
+.breadcrumb{{background:#f3f4f8;padding:10px 0;font-size:13px;color:var(--muted);border-bottom:1px solid var(--border)}}
+.breadcrumb-inner{{display:flex;align-items:center;justify-content:space-between;gap:16px}}
+.breadcrumb a{{color:var(--muted);transition:color .2s}}
+.breadcrumb a:hover{{color:var(--green)}}
+.breadcrumb .sep{{margin:0 6px}}
+.reading-time{{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}}
+.hero-wrap{{padding:16px 20px 8px;max-width:1080px;margin:0 auto}}
+.hero{{background:var(--hero-bg);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:1fr 340px;min-height:380px;align-items:center}}
+.hero-text{{padding:48px 40px 48px 20px}}
+.hero-badge{{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.9);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:700;color:var(--text);margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.08)}}
+.hero-badge svg{{width:14px;height:14px;fill:#f59e0b}}
+.hero h2{{font-size:clamp(26px,3.5vw,40px);font-weight:900;line-height:1.2;color:var(--dark);margin-bottom:10px;letter-spacing:-.02em;text-wrap:balance}}
+.hero-sub{{font-size:clamp(15px,1.8vw,20px);font-weight:700;color:var(--green);margin-bottom:22px}}
+.hero-bullets{{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px;align-items:flex-start}}
+.hero-bullets li{{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600}}
+.chk{{width:20px;height:20px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:900;flex-shrink:0}}
+.hero-ctas{{display:flex;gap:12px;flex-wrap:wrap}}
+.hero-image{{position:relative;height:380px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}}
+.hero-image::before{{content:'';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:var(--hero-circle);border-radius:50%}}
+.hero-image img{{position:relative;height:100%;width:auto;object-fit:cover;object-position:top center}}
+.sec-label{{text-align:center;font-size:12px;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}}
+.sec-label::before{{content:'◆ ';font-size:7px;vertical-align:2px}}
+.sec-title{{text-align:center;font-size:clamp(22px,2.6vw,28px);font-weight:800;color:var(--dark);margin-bottom:8px;letter-spacing:-.02em}}
+.sec-sub{{text-align:center;color:var(--muted);font-size:15px;margin-bottom:36px}}
+.features-section{{padding:52px 0 44px;background:var(--white)}}
+.features-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}}
+.feat-card{{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}}
+.feat-card:hover{{transform:translateY(-3px);box-shadow:var(--shadow)}}
+.feat-icon{{width:48px;height:48px;background:var(--grey-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}}
+.feat-title{{font-size:15px;font-weight:700;margin-bottom:3px}}
+.feat-desc{{font-size:13px;color:var(--muted);line-height:1.5}}
+.pricing-section{{padding:56px 0;background:var(--grey-bg)}}
+.pricing-box{{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:580px;margin:0 auto 20px}}
+.pricing-table{{width:100%;border-collapse:collapse;font-size:15px}}
+.pricing-table th{{background:var(--dark);color:#fff;padding:15px 22px;text-align:center;font-size:14px;font-weight:700}}
+.pricing-table td{{padding:14px 22px;text-align:center;border-bottom:1px solid var(--border);font-weight:600}}
+.pricing-table tr:last-child td{{border-bottom:none}}
+.pricing-table tr:nth-child(even) td{{background:#f9fafb}}
+.pricing-note{{text-align:center;font-size:13px;color:var(--muted);margin-top:10px;margin-bottom:24px}}
+.pricing-cta{{text-align:center}}
+.calc-section{{padding:56px 0;background:var(--white)}}
+.calc-box{{max-width:580px;margin:0 auto;background:var(--grey-bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px}}
+.calc-field{{margin-bottom:22px}}
+.calc-label{{display:block;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--dark)}}
+.calc-select{{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:15px;font-weight:600;color:var(--dark);background:var(--white);cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 16px center}}
+.calc-slider-wrap{{display:flex;align-items:center;gap:12px}}
+.calc-slider{{flex:1;-webkit-appearance:none;appearance:none;height:6px;background:var(--border);border-radius:3px;direction:ltr;cursor:pointer}}
+.calc-slider::-webkit-slider-thumb{{-webkit-appearance:none;width:22px;height:22px;background:var(--green);border-radius:50%;cursor:pointer;box-shadow:0 2px 6px rgba(24,159,24,.4)}}
+.calc-units-val{{min-width:36px;text-align:center;font-size:20px;font-weight:900;color:var(--dark)}}
+.calc-result{{background:var(--dark);color:#fff;border-radius:var(--radius-sm);padding:20px 24px;text-align:center;margin-top:8px}}
+.calc-result-label{{font-size:13px;color:#9ca3af;margin-bottom:6px}}
+.calc-result-range{{font-size:26px;font-weight:900;color:var(--green)}}
+.calc-result-note{{font-size:12px;color:#6b7280;margin-top:6px}}
+.persona-section{{padding:56px 0;background:var(--grey-bg)}}
+.persona-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}}
+.persona-card{{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;display:flex;flex-direction:column;gap:8px;transition:box-shadow .2s,transform .2s}}
+.persona-card:hover{{box-shadow:var(--shadow);transform:translateY(-2px)}}
+.persona-top{{display:flex;align-items:center;gap:12px;margin-bottom:4px}}
+.persona-emoji{{font-size:28px;flex-shrink:0}}
+.persona-name{{font-size:15px;font-weight:800;color:var(--dark);line-height:1.2}}
+.persona-role{{font-size:12px;color:var(--green);font-weight:600}}
+.persona-scenario{{font-size:13px;color:var(--text);line-height:1.65;flex:1}}
+.persona-price-row{{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:10px;border-top:1px solid var(--border)}}
+.persona-price-tag{{background:var(--dark);color:var(--green);font-size:15px;font-weight:900;padding:5px 14px;border-radius:8px}}
+.persona-price-what{{font-size:11px;color:var(--muted);text-align:left;max-width:55%;line-height:1.4}}
+.proof-section{{padding:56px 0;background:var(--grey-bg)}}
+.stats-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:48px}}
+.stat-card{{text-align:center;padding:28px 16px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border)}}
+.stat-num{{font-size:38px;font-weight:900;color:var(--dark);line-height:1;margin-bottom:6px}}
+.stat-num em{{color:var(--green);font-style:normal}}
+.stat-label{{font-size:13px;color:var(--muted);font-weight:600}}
+.reviews-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}}
+.review-card{{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}}
+.review-top{{display:flex;align-items:center;gap:12px;margin-bottom:12px}}
+.review-avatar{{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}}
+.review-name{{font-weight:700;font-size:15px}}
+.review-stars{{color:#f59e0b;font-size:13px;letter-spacing:1px}}
+.review-text{{font-size:14px;color:var(--text);line-height:1.65}}
+.providers-section{{padding:56px 0;background:var(--white)}}
+.providers-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}}
+.provider-card{{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 22px;transition:border-color .2s,box-shadow .2s}}
+.provider-card:hover{{border-color:var(--green);box-shadow:0 6px 24px rgba(24,159,24,.1)}}
+.provider-badge{{display:inline-flex;align-items:center;gap:5px;background:#fef9c3;color:#854d0e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px}}
+.provider-name{{font-size:18px;font-weight:800;color:var(--dark);margin-bottom:4px}}
+.provider-stars{{color:#f59e0b;font-size:13px;letter-spacing:1px;margin-bottom:10px}}
+.provider-rating-num{{font-size:12px;color:var(--muted);font-weight:600;margin-right:4px}}
+.provider-desc{{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px}}
+.provider-meta{{display:flex;flex-direction:column;gap:6px}}
+.provider-address{{font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:6px;line-height:1.4}}
+.provider-jobs{{font-size:12px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:5px}}
+.provider-tag{{font-size:11px;background:var(--hero-bg);color:var(--green);padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;margin-top:6px}}
+.compare-section{{padding:56px 0;background:var(--white)}}
+.compare-table-wrap{{max-width:680px;margin:0 auto;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}}
+.compare-table{{width:100%;border-collapse:collapse;font-size:15px}}
+.compare-table th{{padding:14px 20px;font-size:14px;font-weight:700;text-align:center}}
+.compare-table th:first-child{{background:#f1f5f9;color:var(--dark);text-align:right}}
+.compare-table th.pro{{background:var(--green);color:#fff}}
+.compare-table th.diy{{background:#64748b;color:#fff}}
+.compare-table td{{padding:13px 20px;border-top:1px solid var(--border);text-align:center;font-weight:600}}
+.compare-table td:first-child{{text-align:right;font-weight:700;color:var(--dark)}}
+.compare-table tr:nth-child(even) td{{background:#fafafa}}
+.ico-yes{{color:var(--green);font-size:18px}}
+.ico-no{{color:#64748b;font-size:18px}}
+.infographic-section{{padding:56px 0;background:var(--dark);color:#fff;border-top:4px solid var(--green)}}
+.infographic-section .sec-label{{color:#fff}}
+.infographic-section .sec-title{{color:#fff}}
+.infographic-section .sec-sub{{color:#9ca3af}}
+.infographic-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}}
+.info-card{{text-align:center;padding:28px 16px;background:rgba(255,255,255,.06);border-radius:var(--radius);border:1px solid rgba(255,255,255,.1)}}
+.info-icon{{font-size:36px;margin-bottom:12px;display:block}}
+.info-num{{font-size:42px;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px}}
+.info-label{{font-size:13px;color:#9ca3af;font-weight:600;line-height:1.5}}
+.city-section{{padding:56px 0;background:var(--white)}}
+.city-cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}}
+.city-card{{border:2px solid var(--border);border-radius:var(--radius);padding:22px 20px;background:var(--white);transition:border-color .2s,box-shadow .2s}}
+.city-card.active{{border-color:var(--green);box-shadow:0 0 0 3px rgba(24,159,24,.12)}}
+.city-card-name{{font-size:18px;font-weight:800;color:var(--dark);margin-bottom:4px}}
+.city-card-tag{{font-size:12px;font-weight:700;color:var(--green);margin-bottom:12px;display:block}}
+.city-card.active .city-card-tag::before{{content:'● ';font-size:9px;vertical-align:1px}}
+.city-card-areas{{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px}}
+.city-card-price{{font-size:15px;font-weight:700;color:var(--dark)}}
+.content-section{{padding:64px 0;background:var(--grey-bg)}}
+.content-body h2{{font-size:clamp(20px,2.5vw,26px);font-weight:800;color:var(--dark);margin:36px 0 12px;letter-spacing:-.02em}}
+.content-body h2:first-child{{margin-top:0}}
+.content-body h3{{font-size:18px;font-weight:700;color:var(--text);margin:24px 0 8px}}
+.content-body p{{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:14px}}
+.content-body ul{{margin:10px 0 16px;padding-right:22px}}
+.content-body ul li{{font-size:15px;color:var(--text);margin-bottom:8px;line-height:1.6}}
+.content-body strong{{color:var(--dark)}}
+.steps-section{{padding:56px 0;background:var(--white)}}
+.steps-grid{{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative}}
+.steps-grid::before{{content:'';position:absolute;top:50px;right:10%;left:10%;height:2px;background:repeating-linear-gradient(to left,#e5e7eb 0,#e5e7eb 8px,transparent 8px,transparent 16px);z-index:0}}
+.step-card{{text-align:center;padding:24px 12px;position:relative;z-index:1}}
+.step-num{{width:52px;height:52px;background:var(--dark);color:#fff;border-radius:50%;font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;z-index:1;box-shadow:0 0 0 4px var(--white)}}
+.step-title{{font-size:15px;font-weight:700;margin-bottom:7px;color:var(--dark)}}
+.step-desc{{font-size:14px;color:var(--muted);line-height:1.55}}
+.media-section{{padding:56px 0;background:var(--grey-bg)}}
+.ba-card{{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}}
+.ba-split{{display:grid;grid-template-columns:1fr auto 1fr}}
+.ba-side{{padding:20px 16px}}
+.ba-before{{background:#fff5f5}}
+.ba-after{{background:#f0faf0}}
+.ba-label-badge{{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px;background:#fee2e2;color:#b91c1c}}
+.ba-label-badge.after{{background:#dcfce7;color:#15803d}}
+.ba-icon-row{{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}}
+.ba-stat{{display:flex;align-items:center;gap:8px;font-size:13px}}
+.ba-stat strong{{font-size:15px;font-weight:700}}
+.ba-stat small{{color:var(--muted);font-size:11px;line-height:1.3}}
+.ba-stat.bad strong{{color:#dc2626}}
+.ba-stat.good strong{{color:var(--green)}}
+.ba-ico{{font-size:18px;width:24px;flex-shrink:0}}
+.ba-desc{{font-size:11px;color:var(--muted);line-height:1.5}}
+.ba-divider{{display:flex;align-items:center;justify-content:center;padding:0 10px;font-size:20px;color:var(--muted);background:var(--border)}}
+.ba-footer{{display:flex;justify-content:space-around;gap:12px;padding:12px 16px;background:var(--grey-bg);font-size:12px;color:var(--muted);border-top:1px solid var(--border)}}
+.ba-footer strong{{color:var(--dark)}}
+.ba-img-wrap{{position:relative}}
+.ba-img-labels{{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;pointer-events:none}}
+.ba-img-label{{font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}}
+.ba-img-label.bad{{background:#fee2e2;color:#b91c1c}}
+.ba-img-label.good{{background:#dcfce7;color:#15803d}}
+.map-section{{padding:56px 0;background:var(--white)}}
+.map-wrap{{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}}
+.map-wrap iframe{{display:block;width:100%;height:360px;border:0}}
+.faq-section{{padding:56px 0;background:var(--grey-bg)}}
+.faq-list{{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:12px}}
+details{{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}}
+details[open]{{border-color:var(--green)}}
+summary{{padding:18px 22px;font-size:16px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none}}
+summary::-webkit-details-marker{{display:none}}
+summary::after{{content:'+';font-size:22px;color:var(--green);font-weight:400;flex-shrink:0;line-height:1}}
+details[open] summary::after{{content:'−'}}
+.faq-answer{{padding:0 22px 18px;font-size:15px;color:var(--muted);line-height:1.75}}
+.whatsapp-share-section{{padding:40px 0;background:var(--white)}}
+.whatsapp-share-box{{max-width:560px;margin:0 auto;background:var(--grey-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;text-align:center}}
+.whatsapp-share-box h3{{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:8px}}
+.whatsapp-share-box p{{font-size:14px;color:var(--muted);margin-bottom:18px}}
+.links-section{{padding:48px 0;background:var(--grey-bg)}}
+.links-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}}
+.link-card{{display:block;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:border-color .2s,transform .2s,box-shadow .2s}}
+.link-card:hover{{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow-sm)}}
+.link-card-title{{font-weight:700;font-size:15px;color:var(--dark);margin-bottom:5px}}
+.link-card-desc{{font-size:13px;color:var(--muted);line-height:1.5}}
+.cta-banner{{background:#0d2b0d;padding:56px 0;text-align:center}}
+.cta-banner h2{{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin-bottom:12px}}
+.cta-banner p{{color:#9ca3af;font-size:16px;margin-bottom:28px}}
+.cta-buttons{{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}}
+.cta-banner .btn-whatsapp{{color:var(--wa-green);border-color:var(--wa-green);background:transparent}}
+.cta-banner .btn-whatsapp:hover{{background:var(--wa-green);color:#fff}}
+.site-footer{{background:#050b1a;color:#9ca3af;padding:52px 0 24px}}
+.footer-grid{{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}}
+.footer-logo-img{{height:40px;width:auto;margin-bottom:16px;filter:brightness(0) invert(1)}}
+.footer-about{{font-size:14px;line-height:1.7;margin-bottom:20px}}
+.footer-col-title{{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}}
+.footer-links{{list-style:none;display:flex;flex-direction:column;gap:10px}}
+.footer-links a{{font-size:14px;color:#9ca3af;transition:color .2s}}
+.footer-links a:hover{{color:var(--green)}}
+.footer-bottom{{border-top:1px solid #111827;padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}}
+.footer-copy{{font-size:13px}}
+.social-links{{display:flex;gap:16px}}
+.social-links a{{color:#6b7280;transition:color .2s}}
+.social-links a:hover{{color:var(--green)}}
+.social-links svg{{width:20px;height:20px;fill:currentColor;display:block}}
+.float-wa{{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.5);transition:transform .2s,box-shadow .2s;cursor:pointer}}
+.float-wa:hover{{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.6)}}
+.float-wa svg{{width:28px;height:28px;fill:#fff}}
+.float-wa-label{{position:absolute;left:66px;right:auto;top:50%;transform:translateY(-50%);background:var(--dark);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;font-family:'Cairo',sans-serif}}
+.float-wa:hover .float-wa-label{{opacity:1}}
+@media(max-width:900px){{.stats-grid{{grid-template-columns:repeat(2,1fr)}}.steps-grid{{grid-template-columns:repeat(3,1fr)}}.infographic-grid{{grid-template-columns:repeat(2,1fr)}}.links-grid{{grid-template-columns:repeat(2,1fr)}}.steps-grid::before{{display:none}}}}
+@media(max-width:768px){{.nav-list{{display:none}}.hamburger{{display:flex}}.nav-list.open{{display:flex;flex-direction:column;position:fixed;top:68px;right:0;left:0;background:var(--white);padding:16px 20px;border-top:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:199;gap:0}}.hero{{grid-template-columns:1fr;min-height:auto}}.hero-text{{padding:28px 20px 16px}}.hero-image{{height:220px}}.footer-grid{{grid-template-columns:1fr;gap:28px}}.steps-grid{{grid-template-columns:repeat(2,1fr)}}.links-grid{{grid-template-columns:1fr}}.float-wa{{bottom:16px;right:16px}}.providers-grid{{grid-template-columns:1fr}}}}
+@media(max-width:480px){{.stats-grid{{grid-template-columns:repeat(2,1fr)}}.hero-image{{height:190px}}}}
+.sticky-cta{{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:var(--dark);padding:12px 20px;gap:10px;align-items:center;justify-content:center;box-shadow:0 -4px 20px rgba(0,0,0,.25)}}
+.sticky-cta .btn-whatsapp-solid{{flex:1;max-width:220px;justify-content:center;font-size:15px;padding:12px 16px}}
+.sticky-cta .btn-green{{flex:1;max-width:200px;justify-content:center;font-size:15px;padding:12px 16px}}
+@media(max-width:768px){{.sticky-cta{{display:flex}}body{{padding-bottom:72px}}}}
+.ai-summary{{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border:1px solid #bbf7d0;border-radius:var(--radius);padding:20px 24px;max-width:740px;margin:16px auto 8px}}
+.ai-summary-title{{font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}}
+.ai-summary-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}}
+.ai-fact{{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--dark)}}
+.ai-fact span{{font-size:16px;flex-shrink:0}}
+.urgency-strip{{background:#fef3c7;border-bottom:2px solid #f59e0b;padding:8px 0;text-align:center;font-size:13px;font-weight:700;color:#92400e}}
+.urgency-strip strong{{color:#78350f}}
+.guarantee-seal{{display:inline-flex;align-items:center;gap:8px;background:#dcfce7;border:2px solid var(--green);border-radius:12px;padding:10px 18px;font-size:14px;font-weight:700;color:var(--green-dark);margin-top:12px}}
+.guarantee-seal svg{{width:20px;height:20px;fill:var(--green);flex-shrink:0}}
+.calc-cta-reveal{{display:none;margin-top:16px;text-align:center}}
+.calc-cta-reveal.show{{display:block}}
+.calc-cta-reveal .price-confirm{{font-size:14px;color:#9ca3af;margin-bottom:10px}}
+.calc-cta-reveal .price-confirm strong{{color:#fff}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QSFZS28PT"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','G-1QSFZS28PT');</script>
+</head>
+<body>'''
+
+
+def build_header(c):
+    city = c["city"]
+    slug = c["slug"]
+    return f'''
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="https://hub.rafeeg.ae/" aria-label="رفيق — الرئيسية">
+      <img src="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png" alt="تطبيق رفيق" width="110" height="42" loading="eager">
+    </a>
+    <nav aria-label="التنقل الرئيسي">
+      <ul class="nav-list" id="main-nav">
+        <li class="has-dropdown">
+          <a class="nav-link-drop" href="#" aria-haspopup="true">الإمارات <span class="drop-arrow">▾</span></a>
+          <ul class="dropdown" role="menu">
+            <li><a href="https://hub.rafeeg.ae/خدمات-أبوظبي/">أبوظبي</a></li>
+            <li><a href="https://hub.rafeeg.ae/خدمات-دبي/">دبي</a></li>
+            <li><a href="https://hub.rafeeg.ae/خدمات-الشارقة/">الشارقة</a></li>
+            <li><a href="https://hub.rafeeg.ae/خدمات-عجمان/">عجمان</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a class="nav-link-drop" href="#" aria-haspopup="true">الخدمات <span class="drop-arrow">▾</span></a>
+          <ul class="dropdown" role="menu">
+            <li><a href="https://hub.rafeeg.ae/تركيب-سيراميك/">تركيب سيراميك</a></li>
+            <li><a href="https://hub.rafeeg.ae/صيانة-مكيفات-دبي/">صيانة مكيفات</a></li>
+            <li><a href="https://hub.rafeeg.ae/تسليك-مواسير/">تسليك مواسير</a></li>
+            <li><a href="https://hub.rafeeg.ae/أعمال-كهربائية/">أعمال كهربائية</a></li>
+            <li><a href="https://hub.rafeeg.ae/دهان/">دهان</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="phone-link" href="tel:+971600500200">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        600-500-200
+      </a>
+      <a class="btn-lang" href="https://en.rafeeg.ae/">English</a>
+      <button class="hamburger" aria-label="القائمة" onclick="const n=document.getElementById('main-nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">تركيب سيراميك في {city} — رفيق</h1>
+
+<nav class="breadcrumb" aria-label="مسار التنقل">
+  <div class="container breadcrumb-inner">
+    <div>
+      <a href="https://hub.rafeeg.ae/">الرئيسية</a>
+      <span class="sep">›</span>
+      <a href="https://hub.rafeeg.ae/تركيب-سيراميك/">تركيب سيراميك</a>
+      <span class="sep">›</span>
+      <span aria-current="page">تركيب سيراميك في {city}</span>
+    </div>
+    <div class="reading-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 9 دقائق للقراءة</div>
+  </div>
+</nav>'''
+
+
+def build_hero(c):
+    city = c["city"]
+    slug = c["slug"]
+    wa_text = f"أهلاً+رفيق،+أريد+تركيب+سيراميك+في+{city}.+المساحة+تقريباً"
+    return f'''
+<div class="urgency-strip" role="alert">
+  ⚡ <strong>فنيون متاحون اليوم في {city}</strong> — احجز قبل الساعة 2 ظهراً واحصل على موعد نفس اليوم
+</div>
+
+<div class="container">
+  <div class="ai-summary" role="note" aria-label="ملخص سريع">
+    <div class="ai-summary-title">📋 ملخص سريع — تركيب سيراميك في {city} 2025</div>
+    <div class="ai-summary-grid">
+      <div class="ai-fact"><span>💰</span> أقل سعر: <b>500 درهم</b> (12 م²)</div>
+      <div class="ai-fact"><span>🚿</span> حمام كامل: <b>1,000 درهم</b></div>
+      <div class="ai-fact"><span>🗑️</span> إزالة قديم: <b>50 درهم/م²</b></div>
+      <div class="ai-fact"><span>⏱️</span> مدة التركيب: <b>يوم واحد</b></div>
+      <div class="ai-fact"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div>
+      <div class="ai-fact"><span>📞</span> الحد الأدنى: <b>300 درهم</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-wrap">
+  <section class="hero" aria-label="قسم الترحيب">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        رفيق — خدمة معتمدة
+      </div>
+      <h2>تركيب سيراميك احترافي في {city} يبدأ من 500 درهم للغرفة</h2>
+      <p class="hero-sub">فنيون معتمدون، تركيب دقيق، ضمان سنة كاملة</p>
+      <ul class="hero-bullets">
+        <li><span class="chk">✓</span> تركيب دقيق بمعايير احترافية</li>
+        <li><span class="chk">✓</span> فنيون متخصصون بخبرة أكثر من 8 سنوات</li>
+        <li><span class="chk">✓</span> جميع أنواع السيراميك والبورسلين</li>
+        <li><span class="chk">✓</span> ضمان سنة كاملة على التركيب</li>
+      </ul>
+      <div class="hero-ctas">
+        <a class="btn-whatsapp-solid" href="https://wa.me/971600500200?text={wa_text}" target="_blank" rel="noopener">{WA} واتساب — احجز الآن</a>
+        <a class="btn-green" href="https://rafeeggoogle.onelink.me/C8Hp/news">{APP} حمّل التطبيق الآن</a>
+      </div>
+    </div>
+    <div class="hero-image" aria-hidden="true">
+      <picture>
+        <source srcset="hero.webp" type="image/webp">
+        <img src="hero.jpg" alt="تركيب سيراميك في {city} — رفيق" width="340" height="380" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
+      </picture>
+    </div>
+  </section>
+</div>'''
+
+
+def build_features(c):
+    return '''
+<section class="features-section">
+  <div class="container">
+    <p class="sec-label">مميزات رفيق</p>
+    <div class="features-grid">
+      <div class="feat-card"><div class="feat-icon">👆</div><div><div class="feat-title">ضغطة زر</div><div class="feat-desc">نصلك من دون الحاجة لمغادرة منزلك</div></div></div>
+      <div class="feat-card"><div class="feat-icon">💳</div><div><div class="feat-title">تقسيط بدون فوائد</div><div class="feat-desc">مع Tabby — ادفع على دفعات مريحة</div></div></div>
+      <div class="feat-card"><div class="feat-icon">🕐</div><div><div class="feat-title">دعم على مدار الساعة</div><div class="feat-desc">مستشارو رفيق يتابعون حتى الإنجاز</div></div></div>
+      <div class="feat-card"><div class="feat-icon">🛡️</div><div><div class="feat-title">ضمان الخدمة</div><div class="feat-desc">كل تركيب مضمون 100% أو نعيد الكرّة</div></div></div>
+    </div>
+  </div>
+</section>'''
+
+
+def build_pricing(c):
+    city = c["city"]
+    return f'''
+<section class="pricing-section" aria-labelledby="pricing-title">
+  <div class="container">
+    <p class="sec-label">قائمة الأسعار</p>
+    <h2 class="sec-title" id="pricing-title">أسعار تركيب السيراميك في {city}</h2>
+    <p class="sec-sub">أسعار رفيق الرسمية — أجور التركيب فقط، المواد محسوبة بشكل منفصل</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto 20px">
+
+      <div class="pricing-box" style="margin:0">
+        <table class="pricing-table">
+          <thead><tr><th colspan="2">🪵 أرضيات (تركيب فقط)</th></tr>
+          <tr><th>الحجم / المساحة</th><th>السعر</th></tr></thead>
+          <tbody>
+            <tr><td>غرفة صغيرة — 12 م²</td><td>500 درهم</td></tr>
+            <tr><td>غرفة متوسطة — 20 م²</td><td>750 درهم</td></tr>
+            <tr><td>غرفة كبيرة — 30 م²</td><td>1,000 درهم</td></tr>
+            <tr><td>مجلس صغير — 35 م²</td><td>1,100 درهم</td></tr>
+            <tr><td>مجلس متوسط — 50 م²</td><td>1,500 درهم</td></tr>
+            <tr><td>مجلس كبير — 70 م²</td><td>1,950 درهم</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pricing-box" style="margin:0">
+        <table class="pricing-table">
+          <thead><tr><th colspan="2">🚿 حمامات (أرضيات + جدران)</th></tr>
+          <tr><th>الحجم / المساحة</th><th>السعر</th></tr></thead>
+          <tbody>
+            <tr><td>حمام ضيوف صغير — 20 م²</td><td>1,000 درهم</td></tr>
+            <tr><td>حمام متوسط — 30 م²</td><td>1,250 درهم</td></tr>
+            <tr><td>حمام كبير — 45 م²</td><td>1,750 درهم</td></tr>
+            <tr style="background:#f0faf0"><td>+ توريد مواد التركيب</td><td>+650–1,150 درهم</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pricing-box" style="max-width:580px;margin:0 auto 20px">
+      <table class="pricing-table">
+        <thead><tr><th colspan="2">🔧 إزالة وإصلاح</th></tr>
+        <tr><th>الخدمة</th><th>السعر</th></tr></thead>
+        <tbody>
+          <tr><td>إزالة أرضيات قديمة</td><td>50 درهم/م²</td></tr>
+          <tr><td>إصلاح بلاطة مكسورة</td><td>250 درهم/بلاطة</td></tr>
+          <tr><td>صيانة الفواصل (Grout)</td><td>50 درهم/م²</td></tr>
+          <tr><td>تسوية الأرضيات</td><td>50 درهم/م²</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pricing-note">✅ الأسعار تشمل أجور التركيب والمواد اللاصقة القياسية | السيراميك والمواد الإضافية تُحتسب منفصلة | الحد الأدنى للزيارة 300 درهم</p>
+    <div class="pricing-cta"><a class="btn-outline" href="https://wa.me/971600500200?text=أهلاً،+أريد+تركيب+سيراميك+في+{city}">تواصل معنا — احجز الآن</a></div>
+  </div>
+</section>'''
+
+
+def build_calc(c):
+    city = c["city"]
+    wa_text = f"أهلاً+رفيق،+أريد+تركيب+سيراميك+في+{city}.+التكلفة+المبدئية+حسب+الحاسبة:"
+    return f'''
+<section class="calc-section" aria-labelledby="calc-title">
+  <div class="container">
+    <p class="sec-label">احسب تكلفتك</p>
+    <h2 class="sec-title" id="calc-title">حاسبة تكلفة تركيب السيراميك في {city}</h2>
+    <p class="sec-sub">أسعار رفيق الرسمية — اختر نوع المساحة وعدد الغرف</p>
+    <div class="calc-box">
+      <div class="calc-field">
+        <label class="calc-label" for="calc-type">نوع المساحة</label>
+        <select class="calc-select" id="calc-type" onchange="calcUpdate()">
+          <optgroup label="🪵 أرضيات">
+            <option value="500">غرفة صغيرة — 12 م² (500 درهم)</option>
+            <option value="750" selected>غرفة متوسطة — 20 م² (750 درهم)</option>
+            <option value="1000">غرفة كبيرة — 30 م² (1,000 درهم)</option>
+            <option value="1100">مجلس صغير — 35 م² (1,100 درهم)</option>
+            <option value="1500">مجلس متوسط — 50 م² (1,500 درهم)</option>
+            <option value="1950">مجلس كبير — 70 م² (1,950 درهم)</option>
+          </optgroup>
+          <optgroup label="🚿 حمامات (أرضيات + جدران)">
+            <option value="1000">حمام ضيوف صغير — 20 م² (1,000 درهم)</option>
+            <option value="1250">حمام متوسط — 30 م² (1,250 درهم)</option>
+            <option value="1750">حمام كبير — 45 م² (1,750 درهم)</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label class="calc-label" for="calc-rooms">عدد الغرف / المساحات: <span id="rooms-display">1</span></label>
+        <div class="calc-slider-wrap">
+          <span style="font-size:12px;color:var(--muted)">8</span>
+          <input class="calc-slider" type="range" id="calc-rooms" min="1" max="8" value="1" oninput="document.getElementById('rooms-display').textContent=this.value;calcUpdate()">
+          <span style="font-size:12px;color:var(--muted)">1</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <input type="checkbox" id="calc-materials" onchange="calcUpdate()" style="width:18px;height:18px;cursor:pointer;accent-color:var(--green)">
+        <label for="calc-materials" style="font-size:14px;font-weight:600;cursor:pointer">أضف توريد مواد التركيب (رمل، اسمنت، تشوين)</label>
+      </div>
+      <div class="calc-result" aria-live="polite">
+        <div class="calc-result-label">التكلفة التقديرية المبدئية</div>
+        <div class="calc-result-range" id="calc-output">750 درهم</div>
+        <div class="calc-result-note">يشمل أجور التركيب | السيراميك يُحسب منفصلاً | السعر الفعلي بعد المعاينة</div>
+      </div>
+      <div class="calc-cta-reveal" id="calc-cta">
+        <p class="price-confirm">تكلفتك التقديرية: <strong id="calc-confirm-price">750 درهم</strong> — احجز الآن وسنؤكد السعر مجاناً</p>
+        <a class="btn-whatsapp-solid" href="https://wa.me/971600500200?text={wa_text}" id="calc-wa-btn" target="_blank" rel="noopener" style="width:100%;justify-content:center">واتساب — احجز بهذا السعر</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+var MATERIALS = {{500:400,750:600,1000:750,1100:850,1500:1000,1950:1250,1250:850,1750:1150}};
+function calcUpdate(){{
+  var base=parseInt(document.getElementById('calc-type').value);
+  var rooms=parseInt(document.getElementById('calc-rooms').value);
+  var withMat=document.getElementById('calc-materials').checked;
+  var mat=withMat?(MATERIALS[base]||0)*rooms:0;
+  var total=base*rooms+mat;
+  var txt=total.toLocaleString('ar-EG')+' درهم'+(withMat?' (شامل المواد)':' (تركيب فقط)');
+  document.getElementById('calc-output').textContent=txt;
+  document.getElementById('calc-confirm-price').textContent=txt;
+  var waBtn=document.getElementById('calc-wa-btn');
+  waBtn.href='https://wa.me/971600500200?text=أهلاً+رفيق،+أريد+تركيب+سيراميك+في+{city}.+التكلفة+المبدئية+حسب+الحاسبة:+'+encodeURIComponent(txt);
+  document.getElementById('calc-cta').classList.add('show');
+}}
+</script>'''
+
+
+def build_personas(c):
+    city = c["city"]
+    cards = ""
+    for p in c["personas"]:
+        cards += f'''
+      <div class="persona-card">
+        <div class="persona-top"><span class="persona-emoji">{p["emoji"]}</span><div><div class="persona-name">{p["name"]}</div><div class="persona-role">{p["role"]}</div></div></div>
+        <p class="persona-scenario">{p["scenario"]}</p>
+        <div class="persona-price-row"><span class="persona-price-tag">{p["price"]}</span><span class="persona-price-what">{p["detail"]}</span></div>
+      </div>'''
+    return f'''
+<section class="persona-section" aria-labelledby="persona-title">
+  <div class="container">
+    <p class="sec-label">أمثلة تسعير حقيقية</p>
+    <h2 class="sec-title" id="persona-title">من يحتاج تركيب سيراميك في {city}؟</h2>
+    <p class="sec-sub">حالات حقيقية من عملاء رفيق في {city}</p>
+    <div class="persona-grid">{cards}
+    </div>
+  </div>
+</section>'''
+
+
+def build_proof(c):
+    avatars = [
+        "https://ar.rafeeg.ae/wp-content/uploads/2024/06/avatar-m1.jpg",
+        "https://ar.rafeeg.ae/wp-content/uploads/2024/06/avatar-f1.jpg",
+        "https://ar.rafeeg.ae/wp-content/uploads/2024/06/avatar-m2.jpg"
+    ]
+    review_cards = ""
+    for i, r in enumerate(c["reviews"]):
+        avatar_url = avatars[i] if i < len(avatars) else avatars[0]
+        svg_fallback = f"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 44 44%22%3E%3Ccircle cx=%2222%22 cy=%2222%22 r=%2222%22 fill=%22%23189F18%22/%3E%3Ctext x=%2222%22 y=%2228%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-family=%22Cairo%22%3E{r['initial']}%3C/text%3E%3C/svg%3E"
+        onerror = f"this.style.background='#189F18';this.style.borderRadius='50%';this.src='{svg_fallback}'" if i == 0 else f"this.style.background='#189F18';this.src='{svg_fallback}'" if i == 1 else f"this.src='{svg_fallback}'"
+        review_cards += f'''
+      <div class="review-card">
+        <div class="review-top">
+          <img class="review-avatar" src="{avatar_url}" alt="{r['name']}" width="44" height="44" loading="lazy" onerror="{onerror}">
+          <div><div class="review-name">{r['name']}</div><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">{r['text']}</p>
+      </div>'''
+    return f'''
+<section class="proof-section" aria-labelledby="proof-title">
+  <div class="container">
+    <p class="sec-label">أرقامنا تتحدث</p>
+    <h2 class="sec-title" id="proof-title">نفتخر بخدمة 135,000 صاحب منزل</h2>
+    <p class="sec-sub">في دولة الإمارات العربية المتحدة</p>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">135<em>,000</em></div><div class="stat-label">صاحب منزل يثق برفيق</div></div>
+      <div class="stat-card"><div class="stat-num"><em>+</em>4,500</div><div class="stat-label">مقدم خدمة معتمد</div></div>
+      <div class="stat-card"><div class="stat-num">4.8<em>/5</em></div><div class="stat-label">متوسط تقييم العملاء</div></div>
+      <div class="stat-card"><div class="stat-num"><em>+</em>7</div><div class="stat-label">سنوات من التميّز</div></div>
+    </div>
+    <div class="reviews-grid">{review_cards}
+    </div>
+  </div>
+</section>'''
+
+
+def build_providers(c):
+    city = c["city"]
+    cards = ""
+    for p in c["providers"]:
+        cards += f'''
+      <div class="provider-card">
+        <div class="provider-badge">{p["badge"]}</div>
+        <div class="provider-name">{p["name"]}</div>
+        <div class="provider-stars">★★★★★ <span class="provider-rating-num">{p["rating"]}</span></div>
+        <p class="provider-desc">{p["desc"]}</p>
+        <div class="provider-meta">
+          <div class="provider-address">📍 {p["location"]}</div>
+          <div class="provider-jobs">✅ {p["jobs"]} مهمة</div>
+          <span class="provider-tag">{p["tag"]}</span>
+        </div>
+      </div>'''
+    return f'''
+<section class="providers-section" aria-labelledby="providers-title">
+  <div class="container">
+    <p class="sec-label">مقدمو الخدمة المميزون</p>
+    <h2 class="sec-title" id="providers-title">أفضل فنيي السيراميك عند رفيق في {city}</h2>
+    <p class="sec-sub">فنيون معتمدون متخصصون في تركيب السيراميك والبورسلين</p>
+    <div class="providers-grid">{cards}
+    </div>
+  </div>
+</section>'''
+
+
+def build_compare(c):
+    return '''
+<section class="compare-section" aria-labelledby="compare-title">
+  <div class="container">
+    <p class="sec-label">لماذا المحترف أفضل؟</p>
+    <h2 class="sec-title" id="compare-title">تركيب احترافي مقابل تركيب بنفسك</h2>
+    <p class="sec-sub">الفرق الحقيقي بين الفني المعتمد والتركيب الذاتي</p>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead><tr><th>المعيار</th><th class="pro">فني رفيق المعتمد ✅</th><th class="diy">بنفسك</th></tr></thead>
+        <tbody>
+          <tr><td>استواء وانتظام</td><td><span class="ico-yes">✓ دقة 100% مضمونة</span></td><td><span class="ico-no">فروق وتموجات</span></td></tr>
+          <tr><td>المفاصل والجيروب</td><td><span class="ico-yes">✓ متساوية تماماً</span></td><td><span class="ico-no">غير منتظمة</span></td></tr>
+          <tr><td>الكسر والهدر</td><td><span class="ico-yes">✓ تقليص الهدر للأدنى</span></td><td><span class="ico-no">هدر كبير بالقطع</span></td></tr>
+          <tr><td>حول المآخذ والفتحات</td><td><span class="ico-yes">✓ قطع دقيقة احترافية</span></td><td><span class="ico-no">قطع خشنة</span></td></tr>
+          <tr><td>مقاومة الرطوبة</td><td><span class="ico-yes">✓ عزل صحيح</span></td><td><span class="ico-no">تسربات لاحقاً</span></td></tr>
+          <tr><td>الضمان</td><td><span class="ico-yes">✓ ضمان سنة كاملة</span></td><td><span class="ico-no">بدون ضمان</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>'''
+
+
+def build_infographic(c):
+    city = c["city"]
+    info = c["infographic"]
+    return f'''
+<section class="infographic-section" aria-labelledby="info-title">
+  <div class="container">
+    <p class="sec-label">حقائق سريعة</p>
+    <h2 class="sec-title" id="info-title">إحصائيات تركيب السيراميك في {city}</h2>
+    <p class="sec-sub" style="margin-bottom:40px">بيانات حقيقية من تطبيق رفيق</p>
+    <div class="infographic-grid">
+      <div class="info-card"><span class="info-icon">🪵</span><div class="info-num">{info["jobs"]}</div><div class="info-label">مهمة تركيب أنجزت في {city}</div></div>
+      <div class="info-card"><span class="info-icon">⭐</span><div class="info-num">{info["rating"]}</div><div class="info-label">تقييم متوسط للفنيين</div></div>
+      <div class="info-card"><span class="info-icon">👷</span><div class="info-num">{info["technicians"]}</div><div class="info-label">فني سيراميك معتمد</div></div>
+      <div class="info-card"><span class="info-icon">📐</span><div class="info-num">{info["sqm"]}</div><div class="info-label">متر مربع مُركَّب</div></div>
+    </div>
+  </div>
+</section>'''
+
+
+def build_cities_section(c):
+    city = c["city"]
+    emoji = c["emoji"]
+    neighborhoods = c["neighborhoods"]
+    other_cards = ""
+    for oc in c["other_cities_cards"]:
+        other_cards += f'''
+      <div class="city-card">
+        <a href="/{oc["slug"]}/" style="text-decoration:none;color:inherit;display:block">
+        <div class="city-card-name">{oc["name"]} {oc["emoji"]}</div>
+        <span class="city-card-tag" style="color:var(--green)">متاح الآن</span>
+        <div class="city-card-areas">{oc["areas"]}</div>
+        <div class="city-card-price">{oc["price"]}</div>
+        </a>
+      </div>'''
+    return f'''
+<section class="city-section" aria-labelledby="city-title">
+  <div class="container">
+    <p class="sec-label">مناطق الخدمة</p>
+    <h2 class="sec-title" id="city-title">أسعار تركيب السيراميك حسب المدينة</h2>
+    <p class="sec-sub">خدمة متاحة في جميع الإمارات — بدون رسوم زيارة مخفية</p>
+    <div class="city-cards">
+      <div class="city-card active">
+        <div class="city-card-name">{city} {emoji}</div>
+        <span class="city-card-tag">موقعك الحالي</span>
+        <div class="city-card-areas">{neighborhoods}</div>
+        <div class="city-card-price">من 500 درهم/غرفة</div>
+      </div>{other_cards}
+    </div>
+  </div>
+</section>'''
+
+
+def build_content(c):
+    city = c["city"]
+    body_neighborhoods = c["body_neighborhoods_html"]
+    return f'''
+<section class="content-section" aria-label="محتوى تفصيلي">
+  <div class="container">
+    <div class="content-body">
+      <h2>خدمة تركيب السيراميك الاحترافية في {city}</h2>
+      <p>تركيب السيراميك والبورسلين في {city} يتطلب دقة عالية ومهارة متخصصة. في رفيق، فنيونا معتمدون ويمتلكون خبرة تمتد لأكثر من 8 سنوات في مشاريع الأرضيات والحمامات والمطابخ في مختلف أنحاء {city}.</p>
+
+      <h3>أنواع التركيب التي نقدمها</h3>
+      <ul>
+        <li>تركيب سيراميك أرضيات (صالات، غرف، ممرات)</li>
+        <li>تركيب سيراميك حمامات (أرضيات وجدران مع عزل رطوبة)</li>
+        <li>تركيب سيراميك مطابخ (كاونتر وجدران)</li>
+        <li>تركيب بورسلين فاخر (60×60، 80×80، 120×60)</li>
+        <li>تركيب سيراميك خارجي ومسابح</li>
+        <li>إزالة سيراميك قديم وتجديد كامل</li>
+      </ul>
+
+      <h3>لماذا يختارنا سكان {city}؟</h3>
+      <p>{city} مدينة تقدّر التفاصيل والجودة. فنيو رفيق يعرفون معايير البناء الإماراتية ويتعاملون مع أفخم أنواع السيراميك الإيطالي والإسباني. نحن نضمن استواء مثالياً واختياراً صحيحاً للمواد اللاصقة حسب نوع السطح.</p>
+
+      <h3>نصائح قبل التركيب</h3>
+      <ul>
+        <li><strong>السطح:</strong> يجب أن يكون السطح مستوياً ونظيفاً — نحن نتحقق قبل البدء</li>
+        <li><strong>المواصفات:</strong> للحمامات اختر سيراميك R10+ لمقاومة الانزلاق</li>
+        <li><strong>المفاصل:</strong> مفاصل 2-3 مم للمظهر الحديث، 1 مم للسيراميك الكبير</li>
+        <li><strong>التوسعة:</strong> اترك فراغ توسعة 5-8 مم عند الجدران للمناطق الخارجية</li>
+      </ul>
+
+      <h2>سيراميك أم بورسلين: أيهما أفضل لمنزلك في {city}؟</h2>
+      <p>سؤال يطرحه معظم عملائنا في {city}. الإجابة تعتمد على المكان والاستخدام:</p>
+      <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
+        <thead><tr style="background:var(--dark);color:#fff"><th style="padding:12px 16px;text-align:right">المعيار</th><th style="padding:12px 16px;text-align:center">سيراميك 🪵</th><th style="padding:12px 16px;text-align:center;background:var(--green)">بورسلين ✅</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 16px;font-weight:700">امتصاص الماء</td><td style="padding:11px 16px;text-align:center">3–5%</td><td style="padding:11px 16px;text-align:center;color:var(--green);font-weight:700">أقل من 0.5%</td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fafafa"><td style="padding:11px 16px;font-weight:700">للحمامات والمطابخ</td><td style="padding:11px 16px;text-align:center">مقبول</td><td style="padding:11px 16px;text-align:center;color:var(--green);font-weight:700">الأفضل</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 16px;font-weight:700">للأرضيات الخارجية</td><td style="padding:11px 16px;text-align:center">لا يُنصح</td><td style="padding:11px 16px;text-align:center;color:var(--green);font-weight:700">ممتاز</td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fafafa"><td style="padding:11px 16px;font-weight:700">سهولة القطع</td><td style="padding:11px 16px;text-align:center;color:var(--green);font-weight:700">أسهل</td><td style="padding:11px 16px;text-align:center">يحتاج أدوات خاصة</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 16px;font-weight:700">السعر</td><td style="padding:11px 16px;text-align:center;color:var(--green);font-weight:700">أوفر</td><td style="padding:11px 16px;text-align:center">أعلى قليلاً</td></tr>
+          <tr style="background:#fafafa"><td style="padding:11px 16px;font-weight:700">المتانة</td><td style="padding:11px 16px;text-align:center">جيدة</td><td style="padding:11px 16px;text-align:center;color:var(--green);font-weight:700">أعلى بكثير</td></tr>
+        </tbody>
+      </table>
+      <p><strong>توصية رفيق:</strong> استخدم البورسلين في الحمامات والمطابخ والمناطق الخارجية. السيراميك مناسب للغرف وأماكن الاسترخاء حيث الحركة أقل.</p>
+
+      <h2>أخطاء شائعة في تركيب السيراميك يجب تجنبها</h2>
+      <ul>
+        <li><strong>ترك فراغات تحت البلاط (Hollow Tiles):</strong> يحدث عند استخدام كمية لاصق غير كافية. تكتشفه بالطرق على البلاطة — الصوت الأجوف علامة خطر. فنيو رفيق يتحققون من كل بلاطة.</li>
+        <li><strong>عدم مراعاة خطوط التوسعة:</strong> في {city}، الحرارة الشديدة تمدّد السيراميك. بدون خطوط توسعة مناسبة عند الجدران والمساحات الكبيرة، السيراميك ينبثق مع الوقت.</li>
+        <li><strong>خلط أرقام الدُفعات (Lot Numbers):</strong> السيراميك من دُفعات مختلفة قد يختلف في اللون قليلاً. دائماً اشترِ كمية إضافية 10-15% من نفس الدُفعة.</li>
+        <li><strong>البدء بالتركيب قبل تسوية السطح:</strong> أرضية غير مستوية = سيراميك غير مستوٍ. تسوية السطح بـ 50 درهم/م² توفر عليك إعادة التركيب لاحقاً.</li>
+        <li><strong>استخدام لاصق غير مناسب للرطوبة:</strong> في حمامات {city}، يجب استخدام لاصق مقاوم للماء مع عزل مائي إضافي خلف السيراميك.</li>
+      </ul>
+
+      <h2>مناطق {city} التي نخدمها</h2>
+      <p>{body_neighborhoods}</p>
+    </div>
+  </div>
+</section>'''
+
+
+def build_steps(c):
+    city = c["city"]
+    return f'''
+<section class="steps-section" aria-labelledby="steps-title">
+  <div class="container">
+    <p class="sec-label">كيف تعمل الخدمة؟</p>
+    <h2 class="sec-title" id="steps-title">خطوات تنفيذ تركيب السيراميك</h2>
+    <p class="sec-sub" style="margin-bottom:40px">من الطلب حتى التسليم في 5 خطوات بسيطة</p>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">١</div><div class="step-title">حمّل التطبيق وسجّل</div><div class="step-desc">أدخل عنوانك في {city} والمساحة المطلوبة.</div></div>
+      <div class="step-card"><div class="step-num">٢</div><div class="step-title">اختر النوع والموعد</div><div class="step-desc">حدد نوع التركيب ووقتاً يناسبك.</div></div>
+      <div class="step-card"><div class="step-num">٣</div><div class="step-title">تأكيد وعرض السعر</div><div class="step-desc">ستستقبل تأكيداً فورياً بالسعر الكامل.</div></div>
+      <div class="step-card"><div class="step-num">٤</div><div class="step-title">وصول الفني المعتمد</div><div class="step-desc">يصل الفني في الوقت المحدد بجميع أدواته.</div></div>
+      <div class="step-card"><div class="step-num">٥</div><div class="step-title">التركيب والتسليم</div><div class="step-desc">نُسلّم العمل ونضمن رضاك أو نُكمّله مجاناً.</div></div>
+    </div>
+  </div>
+</section>'''
+
+
+def build_before_after(c):
+    city = c["city"]
+    return f'''
+<section class="media-section" aria-labelledby="media-title">
+  <div class="container">
+    <p class="sec-label">وسائط بصرية</p>
+    <h2 class="sec-title" id="media-title">شاهد نتائج رفيق في {city}</h2>
+    <p class="sec-sub" style="margin-bottom:28px">الفرق الحقيقي الذي يصنعه فنيو رفيق في منزلك</p>
+    <div class="ba-card">
+      <div class="ba-img-wrap">
+        <picture>
+          <source srcset="ceramic-before-after.webp" type="image/webp">
+          <img src="ceramic-before-after.jpg" alt="تركيب سيراميك في {city} — قبل وبعد خدمة رفيق" width="1024" height="576" loading="eager" style="width:100%;height:auto;display:block;border-radius:var(--radius) var(--radius) 0 0;">
+        </picture>
+        <div class="ba-img-labels">
+          <span class="ba-img-label bad">قبل التركيب</span>
+          <span class="ba-img-label good">بعد التركيب</span>
+        </div>
+      </div>
+      <div class="ba-split">
+        <div class="ba-side ba-before">
+          <div class="ba-label-badge">قبل التركيب</div>
+          <div class="ba-icon-row">
+            <div class="ba-stat bad"><span class="ba-ico">❌</span><strong>أرضية قديمة</strong><small>سيراميك مكسور وبالٍ</small></div>
+            <div class="ba-stat bad"><span class="ba-ico">📉</span><strong>مظهر رديء</strong><small>يؤثر على قيمة العقار</small></div>
+            <div class="ba-stat bad"><span class="ba-ico">⚠️</span><strong>غير آمن</strong><small>خطر الانزلاق والتعثر</small></div>
+          </div>
+          <div class="ba-desc">سيراميك قديم متشقق يُقلّل قيمة المنزل ويشكّل خطراً على السلامة.</div>
+        </div>
+        <div class="ba-divider">←</div>
+        <div class="ba-side ba-after">
+          <div class="ba-label-badge after">بعد التركيب</div>
+          <div class="ba-icon-row">
+            <div class="ba-stat good"><span class="ba-ico">✅</span><strong>أرضية جديدة</strong><small>سيراميك فاخر مستوٍ</small></div>
+            <div class="ba-stat good"><span class="ba-ico">📈</span><strong>مظهر فاخر</strong><small>يرفع قيمة العقار</small></div>
+            <div class="ba-stat good"><span class="ba-ico">🛡️</span><strong>آمن ومتين</strong><small>ضمان سنة كاملة</small></div>
+          </div>
+          <div class="ba-desc">تركيب احترافي يُحوّل مظهر منزلك ويرفع قيمته العقارية بشكل ملحوظ.</div>
+        </div>
+      </div>
+      <div class="ba-footer">
+        <span>استواء مثالي</span><span>مفاصل منتظمة</span><span>مقاومة رطوبة</span><span>ضمان سنة كاملة</span>
+      </div>
+    </div>
+  </div>
+</section>'''
+
+
+def build_map(c):
+    city = c["city"]
+    neighborhoods = c["neighborhoods"]
+    map_url = c["map_embed"]
+    return f'''
+<section class="map-section" aria-labelledby="map-title">
+  <div class="container">
+    <p class="sec-label">نطاق الخدمة</p>
+    <h2 class="sec-title" id="map-title">نطاق خدمتنا في {city}</h2>
+    <p class="sec-sub" style="margin-bottom:24px">نغطي جميع مناطق {city}: {neighborhoods}، والمناطق الأخرى</p>
+    <div class="map-wrap">
+      <iframe src="{map_url}" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="تركيب سيراميك رفيق في {city}"></iframe>
+    </div>
+  </div>
+</section>'''
+
+
+def build_faq(c):
+    city = c["city"]
+    neighborhoods_full = c["neighborhoods_full"]
+    return f'''
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="container">
+    <p class="sec-label">أسئلة شائعة</p>
+    <h2 class="sec-title" id="faq-title">أسئلة شائعة حول تركيب السيراميك في {city}</h2>
+    <p class="sec-sub" style="margin-bottom:32px">إجابات سريعة لأكثر الأسئلة تكراراً</p>
+    <div class="faq-list">
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">كم تكلفة تركيب السيراميك في {city}؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">أسعار رفيق الرسمية: غرفة صغيرة 12 م² بـ 500 درهم، غرفة متوسطة 20 م² بـ 750 درهم، غرفة كبيرة 30 م² بـ 1,000 درهم. حمام ضيوف صغير (أرضيات + جدران) بـ 1,000 درهم. الأسعار تشمل أجور التركيب والمواد اللاصقة القياسية.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">كم مدة تركيب سيراميك غرفة كاملة في {city}؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">غرفة 20 م² تأخذ يوم كامل تقريباً. الحمام الصغير 3-4 ساعات. المطبخ 5-7 ساعات. يعتمد على التصميم ونوع السيراميك ومدى استواء السطح.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">هل تشمل الخدمة إزالة السيراميك القديم؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">نعم، نقدم خدمة إزالة السيراميك القديم بسعر 15-20 درهم/م² إضافية. يمكنك طلبها مع التركيب من نفس الفني في نفس الزيارة.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">ما أفضل نوع سيراميك للحمامات في {city}؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">للحمامات ننصح بسيراميك بورسلين مضاد للانزلاق بأبعاد 60×60 أو 30×60. مهم أن يكون مقاوم للرطوبة ومعامل احتكاك R10 أو أعلى لضمان السلامة.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">هل هناك ضمان على تركيب السيراميك؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">نعم، كل تركيب عبر رفيق يأتي بضمان سنة كاملة على العمل. أي خلل في التركيب — بلاطة طافية أو مفصل متشقق — نصلحه مجاناً خلال فترة الضمان.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">ما الفرق بين السيراميك والبورسلين؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">البورسلين أكثر كثافة وصلابة من السيراميك، نسبة امتصاصه للماء أقل من 0.5% مقابل 3-5% للسيراميك. البورسلين مناسب للمناطق عالية الحركة والخارجية في {city}. السيراميك أخف وأسهل قطعاً وأوفر سعراً. للحمامات والمطابخ في {city}، البورسلين هو الخيار الأمثل بسبب الرطوبة والحرارة.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">هل يمكن تركيب سيراميك فوق سيراميك قديم؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">ممكن في حالات محددة: السيراميك القديم يجب أن يكون ثابتاً تماماً وغير مكسور. لكن الأرضية سترتفع 10-15 مم مما يؤثر على الأبواب والعتبات. فنيو رفيق يفحصون الوضع ويقدمون توصية مجانية. في أغلب حالات {city}، الإزالة بـ 50 درهم/م² هي الحل الأفضل للنتيجة المثالية.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">كيف أختار حجم البلاط المناسب لغرفتي؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">للغرف الكبيرة فوق 20 م²: بلاط 60×60 أو 80×80 يجعل المساحة تبدو أوسع. للحمامات: 30×30 أو 30×60 يعطي تماسكاً أفضل. للمطابخ: 60×30 عملي وجمالي. القاعدة المهمة: لا تستخدم بلاطاً أكبر من نصف عرض الغرفة لتقليل الهدر عند القطع.</p>
+        </div>
+      </details>
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">كم يستغرق جفاف الجروت بعد التركيب؟</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">الجروت يجف ظاهرياً في 24 ساعة لكن تجنب التبليل والمشي الثقيل لـ 72 ساعة. الجفاف الكامل يستغرق 28 يوماً. في {city}، بسبب الحرارة العالية صيفاً، ينصح برش الفواصل بالماء يومياً في الأسبوع الأول لمنع التشقق السريع والحصول على جروت متين.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>'''
+
+
+def build_wa_share(c):
+    city = c["city"]
+    slug = c["slug"]
+    return f'''
+<section class="whatsapp-share-section">
+  <div class="container">
+    <div class="whatsapp-share-box">
+      <h3>هل أعجبك ما قرأت؟</h3>
+      <p>شارك هذه الصفحة مع أصدقائك المحتاجين لتركيب سيراميك في {city}</p>
+      <a class="btn-whatsapp-solid" href="https://wa.me/?text=احجز+تركيب+سيراميك+في+{city}+مع+رفيق+https://hub.rafeeg.ae/{slug}/" target="_blank" rel="noopener">{WA} شارك عبر واتساب</a>
+    </div>
+  </div>
+</section>'''
+
+
+def build_links(c):
+    cards = ""
+    for link in c["internal_links"]:
+        cards += f'''
+      <a class="link-card" href="{link["href"]}"><div class="link-card-title">{link["title"]}</div><div class="link-card-desc">{link["desc"]}</div></a>'''
+    return f'''
+<section class="links-section" aria-labelledby="links-title">
+  <div class="container">
+    <p class="sec-label">خدمات ذات صلة</p>
+    <h2 class="sec-title" id="links-title">اكتشف المزيد من خدمات السيراميك</h2>
+    <p class="sec-sub" style="margin-bottom:28px">اختر ما يناسب احتياجك</p>
+    <div class="links-grid">{cards}
+    </div>
+  </div>
+</section>'''
+
+
+def build_cta(c):
+    city = c["city"]
+    return f'''
+<section class="cta-banner">
+  <div class="container">
+    <h2>مستعد لتجديد أرضياتك في {city}؟</h2>
+    <p>احجز تركيب سيراميك الآن وفنيّنا عندك في {city} خلال ساعات</p>
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+      <div class="guarantee-seal"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>ضمان سنة كاملة على التركيب</div>
+      <div class="guarantee-seal"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>فنيون معتمدون ومعروفو الهوية</div>
+      <div class="guarantee-seal"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>تغطية جميع مناطق {city}</div>
+    </div>
+    <div class="cta-buttons">
+      <a class="btn-green" href="https://rafeeggoogle.onelink.me/C8Hp/news" style="font-size:17px;padding:16px 36px;">{APP} حمّل التطبيق الآن</a>
+      <a class="btn-whatsapp" href="https://wa.me/971600500200?text=أهلاً،+أريد+تركيب+سيراميك+في+{city}" target="_blank" rel="noopener" style="font-size:17px;padding:15px 36px;">{WA} تواصل عبر واتساب</a>
+    </div>
+  </div>
+</section>'''
+
+
+def build_footer(c):
+    city = c["city"]
+    return f'''
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo-img" src="https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png" alt="تطبيق رفيق" width="110" height="40" loading="lazy">
+        <p class="footer-about">رفيق — تطبيق الخدمات المنزلية الأول في الإمارات. يربطك بأكثر من 4,500 مقدم خدمة معتمد في دبي وأبوظبي والشارقة وعجمان.</p>
+        <a class="btn-green" href="https://rafeeggoogle.onelink.me/C8Hp/news" style="font-size:14px;padding:10px 20px;">📱 حمّل التطبيق</a>
+      </div>
+      <div>
+        <div class="footer-col-title">روابط سريعة</div>
+        <ul class="footer-links">
+          <li><a href="https://hub.rafeeg.ae/">الرئيسية</a></li>
+          <li><a href="https://ar.rafeeg.ae/about-us/">من نحن</a></li>
+          <li><a href="https://ar.rafeeg.ae/contact-us/">تواصل معنا</a></li>
+          <li><a href="https://ar.rafeeg.ae/rafeeg-franchise/">فرص الاستثمار</a></li>
+          <li><a href="https://ar.rafeeg.ae/faqs/">الأسئلة الشائعة</a></li>
+          <li><a href="https://en.rafeeg.ae/">English</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">تواصل معنا</div>
+        <ul class="footer-links">
+          <li><a href="tel:+971600500200">📞 600-500-200</a></li>
+          <li><a href="https://wa.me/971600500200?text=أهلاً،+أريد+تركيب+سيراميك+في+{city}" target="_blank" rel="noopener">💬 واتساب</a></li>
+          <li><a href="mailto:info@rafeeg.ae">✉️ info@rafeeg.ae</a></li>
+          <li><span style="color:#6b7280">📍 {city}، الإمارات العربية المتحدة</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 رفيق. جميع الحقوق محفوظة.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/rafeegapp" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.tiktok.com/@rafeeg.ae" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.83 1.56V6.8a4.85 4.85 0 01-1.06-.11z"/></svg></a>
+        <a href="https://www.linkedin.com/company/rafeeg/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/971600500200?text=أهلاً،+أريد+تركيب+سيراميك+في+{city}" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب">
+  <span class="float-wa-label">تواصل معنا</span>
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+</a>
+<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="حجز سريع">
+  <a class="btn-whatsapp-solid" href="https://wa.me/971600500200?text=أهلاً+رفيق،+أريد+تركيب+سيراميك+في+{city}" target="_blank" rel="noopener">💬 واتساب — احجز الآن</a>
+  <a class="btn-green" href="https://rafeeggoogle.onelink.me/C8Hp/news">📱 حمّل التطبيق</a>
+</div>
+<script>
+(function(){{
+  var sticky=document.getElementById('sticky-cta');
+  var hero=document.querySelector('.hero-wrap');
+  if(!sticky||!hero)return;
+  var observer=new IntersectionObserver(function(entries){{
+    sticky.style.display=entries[0].isIntersecting?'none':'flex';
+  }},{{threshold:0.1}});
+  observer.observe(hero);
+}})();
+</script>
+</body>
+</html>'''
+
+
+# ─────────────────────────────────────────────────────────────
+# Main build function
+# ─────────────────────────────────────────────────────────────
+
+def build_page(cfg):
+    """Generate complete HTML page for a city. Returns HTML string."""
+    return (
+        build_head(cfg)
+        + build_header(cfg)
+        + build_hero(cfg)
+        + build_features(cfg)
+        + build_pricing(cfg)
+        + build_calc(cfg)
+        + build_personas(cfg)
+        + build_proof(cfg)
+        + build_providers(cfg)
+        + build_compare(cfg)
+        + build_infographic(cfg)
+        + build_cities_section(cfg)
+        + build_content(cfg)
+        + build_steps(cfg)
+        + build_before_after(cfg)
+        + build_map(cfg)
+        + build_faq(cfg)
+        + build_wa_share(cfg)
+        + build_links(cfg)
+        + build_cta(cfg)
+        + build_footer(cfg)
+    )
+
+
+def main():
+    # Determine which cities to build
+    if len(sys.argv) > 1:
+        requested = sys.argv[1:]
+        cities_to_build = {}
+        for name in requested:
+            if name in CITIES:
+                cities_to_build[name] = CITIES[name]
+            else:
+                print(f"⚠️  Unknown city: {name}")
+                print(f"   Available: {', '.join(CITIES.keys())}")
+                sys.exit(1)
+    else:
+        cities_to_build = CITIES
+
+    for city_name, cfg in cities_to_build.items():
+        slug = cfg["slug"]
+        out_dir = os.path.join(BASE, slug)
+        os.makedirs(out_dir, exist_ok=True)
+
+        html = build_page(cfg)
+        out_path = os.path.join(out_dir, "index.html")
+
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(html)
+
+        print(f"✅ {city_name} — {len(html):,} chars → {out_path}")
+
+
+if __name__ == "__main__":
+    main()
