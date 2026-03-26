@@ -564,16 +564,8 @@ function submitLeadForm(e){
   if(!n||!p||!s){status.textContent='⚠️ يرجى تعبئة جميع الحقول';status.style.color='#e53e3e';return false;}
   btn.disabled=true;btn.textContent='جارٍ الإرسال...';btn.style.opacity='0.7';
   status.textContent='';status.style.color='';
-  var fd=new FormData();
-  fd.append('name',n);
-  fd.append('phone',p);
-  fd.append('service',s);
-  fd.append('city','أبوظبي');
-  fd.append('page',location.href);
-  fd.append('_subject','🚿 طلب جديد — تركيب سيراميك حمامات في أبوظبي');
-  fd.append('_template','table');
-  fd.append('_captcha','false');
-  fetch('https://formsubmit.co/ajax/info@rafeeg.ae',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+  var payload=JSON.stringify({name:n,phone:p,service:s,city:'أبوظبي',page:location.href});
+  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:payload})
   .then(function(r){return r.json()})
   .then(function(data){
     if(data.success){
