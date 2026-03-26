@@ -53,6 +53,24 @@ PROMPTS = {
         "ba_filename": "wall-ceramic-before-after.jpg",
         "slug_prefix": "تركيب-سيراميك-جدران",
     },
+    "kitchen-ceramic": {
+        "hero": (
+            "Professional kitchen ceramic tile installation in a modern {city} kitchen. "
+            "Expert technician in clean uniform installing anti-slip porcelain floor tiles. "
+            "Modern UAE kitchen with splash back tiles and grease-resistant wall tiles visible. "
+            "Photorealistic editorial photography, warm natural lighting, clean professional environment."
+        ),
+        "before_after": (
+            "Split comparison image: left side shows old stained cracked kitchen tiles "
+            "with greasy grout and worn floor tiles in a UAE home kitchen, right side shows "
+            "beautifully renovated kitchen with pristine anti-slip porcelain floor and "
+            "modern splash back tiles perfectly aligned. "
+            "Professional renovation photography, clean lighting."
+        ),
+        "image_prefix": "kitchen-ceramic-installation",
+        "ba_filename": "kitchen-ceramic-before-after.jpg",
+        "slug_prefix": "تركيب-سيراميك-مطابخ",
+    },
     # Future services can be added here
 }
 
