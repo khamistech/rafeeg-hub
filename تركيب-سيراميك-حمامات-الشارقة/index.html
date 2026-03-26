@@ -564,7 +564,7 @@ function submitLeadForm(e){
   if(!n||!p||!s){status.textContent='⚠️ يرجى تعبئة جميع الحقول';status.style.color='#e53e3e';return false;}
   btn.disabled=true;btn.textContent='جارٍ الإرسال...';btn.style.opacity='0.7';
   status.textContent='';status.style.color='';
-  var SHEET_URL='https://script.google.com/macros/s/AKfycbwYour_Script_ID_Here/exec';
+  var SHEET_URL='https://script.google.com/macros/s/AKfycbyzKRg3Gkn9ZnKq2z_nuxx3bdSpRgKB-O0z-y09x8k3I7lRtVLg5dAjcav10MqXEkJxfg/exec';
   var payload=JSON.stringify({name:n,phone:p,service:s,city:'الشارقة',page:location.href});
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:payload})
   .then(function(){
