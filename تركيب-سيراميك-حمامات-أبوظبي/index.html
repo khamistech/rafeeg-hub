@@ -316,6 +316,8 @@ details[open] summary::after{content:'−'}
 .lead-form button{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s}
 .lead-form button:hover{background:var(--green-dark)}
 .lead-form .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+.lead-form button:disabled{cursor:not-allowed}
+.lead-form .success-msg{background:#f0fff4;border:1.5px solid var(--green);border-radius:var(--radius-sm);padding:12px;text-align:center;margin-top:10px;font-size:14px;color:var(--green-dark);font-weight:600}
 .ai-summary{background:linear-gradient(135deg,#c6f6d5,#b2f5ea);border:2px solid #68d391;border-radius:var(--radius);padding:20px 24px;max-width:740px;margin:16px auto 8px}
 .ai-summary-title{font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 .ai-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
@@ -408,20 +410,20 @@ details[open] summary::after{content:'−'}
     </div>
   </div>
 
-  <div class="lead-form" id="quick-form">
+  <form class="lead-form" id="quick-form" onsubmit="return submitLeadForm(event)">
     <h3>📋 احصل على عرض سعر مجاني</h3>
-    <input type="text" id="lf-name" placeholder="الاسم" aria-label="الاسم" required>
-    <input type="tel" id="lf-phone" placeholder="رقم الهاتف" aria-label="رقم الهاتف" required>
-    <select id="lf-service" aria-label="نوع الخدمة">
+    <input type="text" id="lf-name" name="name" placeholder="الاسم" aria-label="الاسم" required>
+    <input type="tel" id="lf-phone" name="phone" placeholder="رقم الهاتف (مثال: 0501234567)" aria-label="رقم الهاتف" required pattern="[0-9+]{7,15}">
+    <select id="lf-service" name="service" aria-label="نوع الخدمة" required>
       <option value="">اختر نوع الخدمة</option>
-      <option value="حمام ضيوف صغير">حمام ضيوف صغير (1,000 درهم)</option>
-      <option value="حمام متوسط">حمام متوسط (1,250 درهم)</option>
-      <option value="حمام كبير">حمام كبير / ماستر (1,750 درهم)</option>
-      <option value="تجديد كامل">تجديد كامل (إزالة + عزل + تركيب)</option>
+      <option value="حمام ضيوف صغير (1,000 درهم)">حمام ضيوف صغير (1,000 درهم)</option>
+      <option value="حمام متوسط (1,250 درهم)">حمام متوسط (1,250 درهم)</option>
+      <option value="حمام كبير / ماستر (1,750 درهم)">حمام كبير / ماستر (1,750 درهم)</option>
+      <option value="تجديد كامل (إزالة + عزل + تركيب)">تجديد كامل (إزالة + عزل + تركيب)</option>
     </select>
-    <button type="button" onclick="submitLeadForm()">أرسل طلبك الآن</button>
-    <div class="form-note">سنتواصل معك خلال 30 دقيقة لتأكيد الموعد والسعر</div>
-  </div>
+    <button type="submit" id="lf-btn">أرسل طلبك الآن</button>
+    <div class="form-note" id="lf-status">سنتواصل معك خلال 30 دقيقة لتأكيد الموعد والسعر</div>
+  </form>
 </div>
 
 <div class="hero-wrap">
@@ -552,16 +554,43 @@ function calcUpdate(){
   waBtn.href='https://wa.me/971600500200?text=أهلاً+رفيق،+أريد+تركيب+سيراميك+حمامات+في+أبوظبي.+التكلفة+المبدئية+حسب+الحاسبة:+'+encodeURIComponent(txt);
   document.getElementById('calc-cta').classList.add('show');
 }
-function submitLeadForm(){
+function submitLeadForm(e){
+  e.preventDefault();
   var n=document.getElementById('lf-name').value.trim();
   var p=document.getElementById('lf-phone').value.trim();
   var s=document.getElementById('lf-service').value;
-  if(!n||!p){alert('يرجى إدخال الاسم ورقم الهاتف');return;}
-  var msg='طلب+جديد+—+تركيب+سيراميك+حمامات+في+أبوظبي%0A'+'الاسم:+'+encodeURIComponent(n)+'%0A'+'الهاتف:+'+encodeURIComponent(p)+'%0A'+'الخدمة:+'+encodeURIComponent(s||'غير محدد');
-  window.open('https://wa.me/971600500200?text='+msg,'_blank');
-  var btn=document.querySelector('#quick-form button');
-  btn.textContent='✅ تم الإرسال';btn.style.background='var(--green-dark)';
-  setTimeout(function(){btn.textContent='أرسل طلبك الآن';btn.style.background=''},3000);
+  var btn=document.getElementById('lf-btn');
+  var status=document.getElementById('lf-status');
+  if(!n||!p||!s){status.textContent='⚠️ يرجى تعبئة جميع الحقول';status.style.color='#e53e3e';return false;}
+  btn.disabled=true;btn.textContent='جارٍ الإرسال...';btn.style.opacity='0.7';
+  status.textContent='';status.style.color='';
+  var fd=new FormData();
+  fd.append('name',n);
+  fd.append('phone',p);
+  fd.append('service',s);
+  fd.append('city','أبوظبي');
+  fd.append('page',location.href);
+  fd.append('_subject','🚿 طلب جديد — تركيب سيراميك حمامات في أبوظبي');
+  fd.append('_template','table');
+  fd.append('_captcha','false');
+  fetch('https://formsubmit.co/ajax/info@rafeeg.ae',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+  .then(function(r){return r.json()})
+  .then(function(data){
+    if(data.success){
+      btn.textContent='✅ تم الإرسال بنجاح';btn.style.background='var(--green-dark)';btn.style.opacity='1';
+      status.textContent='شكراً '+n+'! سنتواصل معك خلال 30 دقيقة على الرقم '+p;status.style.color='var(--green)';
+      document.getElementById('lf-name').value='';document.getElementById('lf-phone').value='';document.getElementById('lf-service').selectedIndex=0;
+      setTimeout(function(){btn.textContent='أرسل طلبك الآن';btn.style.background='';btn.disabled=false;},5000);
+    }else{
+      btn.textContent='أرسل طلبك الآن';btn.style.opacity='1';btn.disabled=false;
+      status.textContent='⚠️ حدث خطأ، يرجى المحاولة مرة أخرى';status.style.color='#e53e3e';
+    }
+  })
+  .catch(function(){
+    btn.textContent='أرسل طلبك الآن';btn.style.opacity='1';btn.disabled=false;
+    status.textContent='⚠️ تعذر الاتصال، يرجى المحاولة مرة أخرى';status.style.color='#e53e3e';
+  });
+  return false;
 }
 </script>
 <section class="persona-section" aria-labelledby="persona-title">
