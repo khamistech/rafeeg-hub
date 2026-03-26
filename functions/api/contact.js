@@ -1,15 +1,22 @@
 /**
  * Cloudflare Pages Function — Contact Form Handler
- * Receives form submissions and sends email via Resend API
+ * Sends email to info@rafeeg.ae via Brevo (Sendinblue) transactional API
  *
- * Environment variable required in Cloudflare Dashboard:
- *   RESEND_API_KEY = your Resend.com API key
+ * Environment variable required in Cloudflare Pages Dashboard:
+ *   Settings → Environment Variables → Add:
+ *   BREVO_API_KEY = your Brevo API key (free: 300 emails/day)
+ *
+ * Get your free key: https://app.brevo.com → Settings → SMTP & API → API Keys
  *
  * Endpoint: POST /api/contact
  */
 
+const TO_EMAIL = 'info@rafeeg.ae';
+const FROM_EMAIL = 'noreply@rafeeg.ae';
+const FROM_NAME = 'رفيق — نموذج الموقع';
+
 const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': 'https://hub.rafeeg.ae',
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
@@ -23,7 +30,7 @@ export async function onRequestPost(context) {
     const body = await context.request.json();
     const { name, phone, service, city, page } = body;
 
-    // Validate required fields
+    // Validate
     if (!name || !phone || !service) {
       return Response.json(
         { success: false, message: 'جميع الحقول مطلوبة' },
@@ -31,7 +38,6 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Sanitize phone (only digits, +, spaces)
     const cleanPhone = phone.replace(/[^\d+\s-]/g, '');
     if (cleanPhone.length < 7) {
       return Response.json(
@@ -40,82 +46,69 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Build email HTML
+    const timestamp = new Date().toLocaleString('ar-AE', { timeZone: 'Asia/Dubai' });
+    const waLink = `https://wa.me/${cleanPhone.replace(/[\s\-\+]/g, '')}`;
+
+    // Build email
     const emailHtml = `
-      <div dir="rtl" style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px">
-        <div style="background:#189F18;color:white;padding:16px 24px;border-radius:12px 12px 0 0">
-          <h2 style="margin:0;font-size:20px">🚿 طلب جديد — تركيب سيراميك حمامات</h2>
-        </div>
-        <div style="background:#f8f9fa;padding:24px;border:1px solid #e5e7eb;border-radius:0 0 12px 12px">
-          <table style="width:100%;border-collapse:collapse;font-size:15px">
-            <tr><td style="padding:10px 12px;font-weight:bold;color:#6b7280;width:120px">الاسم</td><td style="padding:10px 12px;font-size:17px;font-weight:bold">${name}</td></tr>
-            <tr style="background:white"><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الهاتف</td><td style="padding:10px 12px"><a href="tel:${cleanPhone}" style="color:#189F18;font-size:17px;font-weight:bold;text-decoration:none">${cleanPhone}</a></td></tr>
-            <tr><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الخدمة</td><td style="padding:10px 12px">${service}</td></tr>
-            <tr style="background:white"><td style="padding:10px 12px;font-weight:bold;color:#6b7280">المدينة</td><td style="padding:10px 12px">${city || '—'}</td></tr>
-            <tr><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الصفحة</td><td style="padding:10px 12px"><a href="${page || '#'}" style="color:#2B5DF5;font-size:13px">${page || '—'}</a></td></tr>
-            <tr style="background:white"><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الوقت</td><td style="padding:10px 12px">${new Date().toLocaleString('ar-AE', { timeZone: 'Asia/Dubai' })}</td></tr>
-          </table>
-          <div style="margin-top:20px;text-align:center">
-            <a href="https://wa.me/${cleanPhone.replace(/[\s-]/g, '')}" style="display:inline-block;background:#25D366;color:white;padding:12px 32px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:16px">💬 تواصل عبر واتساب</a>
-            <a href="tel:${cleanPhone}" style="display:inline-block;background:#189F18;color:white;padding:12px 32px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:16px;margin-right:10px">📞 اتصل الآن</a>
-          </div>
-        </div>
-        <p style="text-align:center;color:#9ca3af;font-size:12px;margin-top:16px">تم الإرسال من hub.rafeeg.ae</p>
-      </div>
-    `;
+<div dir="rtl" style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px">
+  <div style="background:#189F18;color:white;padding:16px 24px;border-radius:12px 12px 0 0">
+    <h2 style="margin:0;font-size:20px">🚿 طلب جديد — تركيب سيراميك حمامات في ${city || 'الإمارات'}</h2>
+  </div>
+  <div style="background:#f8f9fa;padding:24px;border:1px solid #e5e7eb;border-radius:0 0 12px 12px">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <tr><td style="padding:10px 12px;font-weight:bold;color:#6b7280;width:100px">الاسم</td><td style="padding:10px 12px;font-size:17px;font-weight:bold">${name}</td></tr>
+      <tr style="background:white"><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الهاتف</td><td style="padding:10px 12px"><a href="tel:${cleanPhone}" style="color:#189F18;font-size:17px;font-weight:bold;text-decoration:none">${cleanPhone}</a></td></tr>
+      <tr><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الخدمة</td><td style="padding:10px 12px;font-weight:600">${service}</td></tr>
+      <tr style="background:white"><td style="padding:10px 12px;font-weight:bold;color:#6b7280">المدينة</td><td style="padding:10px 12px">${city || '—'}</td></tr>
+      <tr><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الصفحة</td><td style="padding:10px 12px;font-size:13px"><a href="${page || '#'}" style="color:#2B5DF5">${page || '—'}</a></td></tr>
+      <tr style="background:white"><td style="padding:10px 12px;font-weight:bold;color:#6b7280">الوقت</td><td style="padding:10px 12px">${timestamp}</td></tr>
+    </table>
+    <div style="margin-top:20px;text-align:center">
+      <a href="${waLink}" style="display:inline-block;background:#25D366;color:white;padding:12px 32px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:16px">💬 واتساب</a>
+      <a href="tel:${cleanPhone}" style="display:inline-block;background:#189F18;color:white;padding:12px 32px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:16px;margin-right:10px">📞 اتصل</a>
+    </div>
+  </div>
+  <p style="text-align:center;color:#9ca3af;font-size:12px;margin-top:12px">hub.rafeeg.ae — ${timestamp}</p>
+</div>`;
 
-    // Send via Resend API
-    const RESEND_KEY = context.env.RESEND_API_KEY;
+    const BREVO_KEY = context.env.BREVO_API_KEY;
 
-    if (!RESEND_KEY) {
-      // Fallback: if no Resend key, use Cloudflare Email (MailChannels)
-      const emailRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          personalizations: [{ to: [{ email: 'info@rafeeg.ae', name: 'Rafeeg' }] }],
-          from: { email: 'noreply@hub.rafeeg.ae', name: 'رفيق — نموذج الموقع' },
-          subject: `🚿 طلب جديد — تركيب سيراميك حمامات في ${city || 'الإمارات'}`,
-          content: [{ type: 'text/html', value: emailHtml }],
-        }),
-      });
-
-      if (emailRes.status === 202 || emailRes.ok) {
-        return Response.json({ success: true, message: 'تم الإرسال بنجاح' }, { headers: CORS_HEADERS });
-      }
-
-      const errText = await emailRes.text();
-      console.error('MailChannels error:', errText);
+    if (!BREVO_KEY) {
       return Response.json(
-        { success: false, message: 'فشل إرسال البريد' },
+        { success: false, message: 'Email service not configured. Set BREVO_API_KEY in Cloudflare Pages environment variables.' },
         { status: 500, headers: CORS_HEADERS }
       );
     }
 
-    // Primary: Resend API
-    const resendRes = await fetch('https://api.resend.com/emails', {
+    // Send via Brevo Transactional API
+    const brevoRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${RESEND_KEY}`,
+        'api-key': BREVO_KEY,
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Rafeeg Hub <noreply@hub.rafeeg.ae>',
-        to: ['info@rafeeg.ae'],
-        subject: `🚿 طلب جديد — تركيب سيراميك حمامات في ${city || 'الإمارات'}`,
-        html: emailHtml,
-        reply_to: `${name} <noreply@hub.rafeeg.ae>`,
+        sender: { name: FROM_NAME, email: FROM_EMAIL },
+        to: [{ email: TO_EMAIL, name: 'Rafeeg' }],
+        subject: `🚿 طلب جديد — سيراميك حمامات ${city || ''} — ${name}`,
+        htmlContent: emailHtml,
+        tags: ['hub-contact-form', 'bathroom-ceramic'],
       }),
     });
 
-    if (resendRes.ok) {
-      return Response.json({ success: true, message: 'تم الإرسال بنجاح' }, { headers: CORS_HEADERS });
+    if (brevoRes.ok || brevoRes.status === 201) {
+      return Response.json(
+        { success: true, message: 'تم الإرسال بنجاح' },
+        { headers: CORS_HEADERS }
+      );
     }
 
-    const resendErr = await resendRes.text();
-    console.error('Resend error:', resendErr);
+    const errBody = await brevoRes.text();
+    console.error('Brevo error:', brevoRes.status, errBody);
     return Response.json(
-      { success: false, message: 'فشل إرسال البريد' },
+      { success: false, message: 'فشل إرسال البريد، يرجى المحاولة لاحقاً' },
       { status: 500, headers: CORS_HEADERS }
     );
 
