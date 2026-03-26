@@ -22,6 +22,7 @@ APP = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-
 CITIES = {
     "أبوظبي": {
         "slug": "تركيب-سيراميك-حمامات-أبوظبي",
+        "slug_en": "abu-dhabi",
         "city": "أبوظبي",
         "emoji": "🏛️",
         "lat": "24.4539",
@@ -66,6 +67,7 @@ CITIES = {
     },
     "الشارقة": {
         "slug": "تركيب-سيراميك-حمامات-الشارقة",
+        "slug_en": "sharjah",
         "city": "الشارقة",
         "emoji": "🌆",
         "lat": "25.3463",
@@ -117,6 +119,7 @@ CITIES = {
 
 def build_head(c):
     slug = c["slug"]
+    slug_en = c["slug_en"]
     city = c["city"]
     lat = c["lat"]
     lng = c["lng"]
@@ -140,11 +143,11 @@ def build_head(c):
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hub.rafeeg.ae/{slug}/">
 <meta property="og:locale" content="ar_AE">
-<meta property="og:image" content="https://hub.rafeeg.ae/{slug}/hero.jpg">
+<meta property="og:image" content="https://hub.rafeeg.ae/{slug}/bathroom-ceramic-installation-{slug_en}.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="تركيب سيراميك حمامات في {city} 2025 — أسعار من 1,000 درهم | رفيق">
 <meta name="twitter:description" content="تركيب سيراميك حمامات في {city} — حمام صغير 1,000 درهم، حمام كبير 1,750 درهم. عزل مائي متضمن، فنيون معتمدون، ضمان سنة كاملة.">
-<meta name="twitter:image" content="https://hub.rafeeg.ae/{slug}/hero.jpg">
+<meta name="twitter:image" content="https://hub.rafeeg.ae/{slug}/bathroom-ceramic-installation-{slug_en}.jpg">
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -181,7 +184,7 @@ def build_head(c):
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="bathroom-ceramic-installation-{slug_en}.jpg" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional"></noscript>
 <style>
@@ -435,6 +438,13 @@ details[open] summary::after{{content:'−'}}
 .sticky-cta .btn-whatsapp-solid{{flex:1;max-width:220px;justify-content:center;font-size:15px;padding:12px 16px}}
 .sticky-cta .btn-green{{flex:1;max-width:200px;justify-content:center;font-size:15px;padding:12px 16px}}
 @media(max-width:768px){{.sticky-cta{{display:flex}}body{{padding-bottom:72px}}}}
+.lead-form{{background:var(--white);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin:20px auto 0;max-width:480px}}
+.lead-form h3{{font-size:16px;font-weight:700;margin-bottom:12px;text-align:center;color:var(--text)}}
+.lead-form input,.lead-form select{{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:15px;margin-bottom:10px;direction:rtl}}
+.lead-form input:focus,.lead-form select:focus{{border-color:var(--green);outline:none;box-shadow:0 0 0 3px rgba(24,159,24,.12)}}
+.lead-form button{{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s}}
+.lead-form button:hover{{background:var(--green-dark)}}
+.lead-form .form-note{{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}}
 .ai-summary{{background:linear-gradient(135deg,#c6f6d5,#b2f5ea);border:2px solid #68d391;border-radius:var(--radius);padding:20px 24px;max-width:740px;margin:16px auto 8px}}
 .ai-summary-title{{font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}}
 .ai-summary-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}}
@@ -521,6 +531,7 @@ def build_header(c):
 def build_hero(c):
     city = c["city"]
     slug = c["slug"]
+    slug_en = c["slug_en"]
     wa_text = f"أهلاً+رفيق،+أريد+تركيب+سيراميك+حمامات+في+{city}.+عدد+الحمامات+تقريباً"
     return f'''
 <div class="urgency-strip" role="alert">
@@ -538,6 +549,21 @@ def build_hero(c):
       <div class="ai-fact"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div>
       <div class="ai-fact"><span>📞</span> الحد الأدنى: <b>300 درهم</b></div>
     </div>
+  </div>
+
+  <div class="lead-form" id="quick-form">
+    <h3>📋 احصل على عرض سعر مجاني</h3>
+    <input type="text" id="lf-name" placeholder="الاسم" aria-label="الاسم" required>
+    <input type="tel" id="lf-phone" placeholder="رقم الهاتف" aria-label="رقم الهاتف" required>
+    <select id="lf-service" aria-label="نوع الخدمة">
+      <option value="">اختر نوع الخدمة</option>
+      <option value="حمام ضيوف صغير">حمام ضيوف صغير (1,000 درهم)</option>
+      <option value="حمام متوسط">حمام متوسط (1,250 درهم)</option>
+      <option value="حمام كبير">حمام كبير / ماستر (1,750 درهم)</option>
+      <option value="تجديد كامل">تجديد كامل (إزالة + عزل + تركيب)</option>
+    </select>
+    <button type="button" onclick="submitLeadForm()">أرسل طلبك الآن</button>
+    <div class="form-note">سنتواصل معك خلال 30 دقيقة لتأكيد الموعد والسعر</div>
   </div>
 </div>
 
@@ -562,7 +588,7 @@ def build_hero(c):
       </div>
     </div>
     <div class="hero-image" aria-hidden="true">
-      <img src="hero.jpg" alt="تركيب سيراميك حمامات في {city} — رفيق" width="340" height="380" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
+      <img src="bathroom-ceramic-installation-{slug_en}.jpg" alt="معلم سيراميك يركّب بلاط حمام في {city} — خدمة تركيب سيراميك حمامات احترافية من رفيق" width="340" height="380" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
     </div>
   </section>
 </div>'''
@@ -683,6 +709,17 @@ function calcUpdate(){{
   var waBtn=document.getElementById('calc-wa-btn');
   waBtn.href='https://wa.me/971600500200?text=أهلاً+رفيق،+أريد+تركيب+سيراميك+حمامات+في+{city}.+التكلفة+المبدئية+حسب+الحاسبة:+'+encodeURIComponent(txt);
   document.getElementById('calc-cta').classList.add('show');
+}}
+function submitLeadForm(){{
+  var n=document.getElementById('lf-name').value.trim();
+  var p=document.getElementById('lf-phone').value.trim();
+  var s=document.getElementById('lf-service').value;
+  if(!n||!p){{alert('يرجى إدخال الاسم ورقم الهاتف');return;}}
+  var msg='طلب+جديد+—+تركيب+سيراميك+حمامات+في+{city}%0A'+'الاسم:+'+encodeURIComponent(n)+'%0A'+'الهاتف:+'+encodeURIComponent(p)+'%0A'+'الخدمة:+'+encodeURIComponent(s||'غير محدد');
+  window.open('https://wa.me/971600500200?text='+msg,'_blank');
+  var btn=document.querySelector('#quick-form button');
+  btn.textContent='✅ تم الإرسال';btn.style.background='var(--green-dark)';
+  setTimeout(function(){{btn.textContent='أرسل طلبك الآن';btn.style.background=''}},3000);
 }}
 </script>'''
 
@@ -857,8 +894,8 @@ def build_content(c):
 <section class="content-section" aria-label="محتوى تفصيلي">
   <div class="container">
     <div class="content-body">
-      <h2>خدمة تركيب سيراميك الحمامات الاحترافية في {city}</h2>
-      <p>تركيب سيراميك الحمامات مختلف تماماً عن تركيب الأرضيات العادية. الحمام بيئته رطبة، لذلك يحتاج إلى عزل مائي محكم وسيراميك غير قابل للانزلاق ومواد لاصقة مخصصة للرطوبة. فنيو رفيق في {city} يركّبون سيراميك الحمامات بمعايير احترافية تحافظ على سلامة العائلة وتحمي المبنى من التسربات.</p>
+      <h2>خدمة تركيب سيراميك الحمامات الاحترافية في {city} — معلم سيراميك معتمد</h2>
+      <p>تركيب سيراميك الحمامات مختلف تماماً عن تركيب الأرضيات العادية. الحمام بيئته رطبة، لذلك يحتاج إلى عزل مائي محكم وسيراميك غير قابل للانزلاق ومواد لاصقة مخصصة للرطوبة. كل <strong>معلم سيراميك</strong> و<strong>مبلط حمامات في {city}</strong> عبر رفيق يمتلك خبرة لا تقل عن 8 سنوات، ويركّب سيراميك الحمامات بمعايير احترافية تحافظ على سلامة العائلة وتحمي المبنى من التسربات.</p>
 
       <h3>ما يشمله تركيب سيراميك الحمام</h3>
       <ul>
@@ -891,9 +928,9 @@ def build_content(c):
         <li><strong>البلاط الصغير للأرضيات:</strong> 30×30 يتيح ميلاناً أفضل نحو البالوعة</li>
       </ul>
 
-      <h2>تصميم حمامات صغيرة مقابل حمامات ماستر في {city}</h2>
-      <p>حمام الضيوف الصغير (3-5 م²) يحتاج إلى تخطيط مختلف عن حمام الماستر الكبير (8-12 م²). في الحمام الصغير، يُفضّل بلاط بألوان فاتحة وأحجام متوسطة لتوسيع الشعور بالمساحة. في حمام الماستر، يمكن اختيار بلاط كبير بألوان داكنة مع إضاءة مناسبة لتكوين أجواء فندقية فاخرة.</p>
-      <p><strong>توصية رفيق:</strong> للحمامات الصغيرة، استخدم نفس البلاط على الأرضية والجدران لإعطاء إحساس باتساع أكبر. للحمامات الكبيرة، امزج بين بلاط الجدران والأرضيات مع حزام ديكوري بينهما للتميز.</p>
+      <h2>تجديد حمامات {city} — تصميم حمامات صغيرة مقابل حمامات ماستر</h2>
+      <p>سواء كنت تبحث عن <strong>تجديد حمامات في {city}</strong> أو <strong>تغيير سيراميك الحمام</strong> القديم، التصميم يختلف حسب المساحة. حمام الضيوف الصغير (3-5 م²) يحتاج إلى تخطيط مختلف عن حمام الماستر الكبير (8-12 م²). في الحمام الصغير، يُفضّل بلاط بألوان فاتحة وأحجام متوسطة لتوسيع الشعور بالمساحة. في حمام الماستر، يمكن اختيار بلاط كبير بألوان داكنة مع إضاءة مناسبة لتكوين أجواء فندقية فاخرة.</p>
+      <p><strong>توصية رفيق — أفضل شركة تركيب سيراميك في {city}:</strong> للحمامات الصغيرة، استخدم نفس البلاط على الأرضية والجدران لإعطاء إحساس باتساع أكبر. للحمامات الكبيرة، امزج بين بلاط الجدران والأرضيات مع حزام ديكوري بينهما للتميز.</p>
 
       <h2>أخطاء شائعة في تركيب سيراميك الحمامات يجب تجنبها</h2>
       <ul>
@@ -904,7 +941,8 @@ def build_content(c):
         <li><strong>تركيب سيراميك فوق القديم في الحمام:</strong> هذا يضعف العزل المائي ويرفع مستوى الأرضية مما يسبب مشاكل في تصريف المياه</li>
       </ul>
 
-      <h2>مناطق {city} التي نخدمها</h2>
+      <h2>مناطق {city} التي نخدمها — تركيب وصيانة سيراميك الحمامات</h2>
+      <p>سواء كنت تبحث عن <strong>تركيب سيراميك حمامات</strong> جديد أو <strong>صيانة سيراميك الحمامات</strong> القائم أو <strong>تجديد حمامات</strong> كاملة مع إزالة القديم، فنيو رفيق يغطون كل مناطق {city}.</p>
       <p>{body_neighborhoods}</p>
     </div>
   </div>
