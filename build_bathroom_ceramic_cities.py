@@ -722,19 +722,14 @@ function submitLeadForm(e){{
   if(!n||!p||!s){{status.textContent='⚠️ يرجى تعبئة جميع الحقول';status.style.color='#e53e3e';return false;}}
   btn.disabled=true;btn.textContent='جارٍ الإرسال...';btn.style.opacity='0.7';
   status.textContent='';status.style.color='';
+  var SHEET_URL='https://script.google.com/macros/s/AKfycbwYour_Script_ID_Here/exec';
   var payload=JSON.stringify({{name:n,phone:p,service:s,city:'{city}',page:location.href}});
-  fetch('/api/contact',{{method:'POST',headers:{{'Content-Type':'application/json','Accept':'application/json'}},body:payload}})
-  .then(function(r){{return r.json()}})
-  .then(function(data){{
-    if(data.success){{
-      btn.textContent='✅ تم الإرسال بنجاح';btn.style.background='var(--green-dark)';btn.style.opacity='1';
-      status.textContent='شكراً '+n+'! سنتواصل معك خلال 30 دقيقة على الرقم '+p;status.style.color='var(--green)';
-      document.getElementById('lf-name').value='';document.getElementById('lf-phone').value='';document.getElementById('lf-service').selectedIndex=0;
-      setTimeout(function(){{btn.textContent='أرسل طلبك الآن';btn.style.background='';btn.disabled=false;}},5000);
-    }}else{{
-      btn.textContent='أرسل طلبك الآن';btn.style.opacity='1';btn.disabled=false;
-      status.textContent='⚠️ حدث خطأ، يرجى المحاولة مرة أخرى';status.style.color='#e53e3e';
-    }}
+  fetch(SHEET_URL,{{method:'POST',mode:'no-cors',headers:{{'Content-Type':'text/plain'}},body:payload}})
+  .then(function(){{
+    btn.textContent='✅ تم الإرسال بنجاح';btn.style.background='var(--green-dark)';btn.style.opacity='1';
+    status.textContent='شكراً '+n+'! سنتواصل معك خلال 30 دقيقة على الرقم '+p;status.style.color='var(--green)';
+    document.getElementById('lf-name').value='';document.getElementById('lf-phone').value='';document.getElementById('lf-service').selectedIndex=0;
+    setTimeout(function(){{btn.textContent='أرسل طلبك الآن';btn.style.background='';btn.disabled=false;}},5000);
   }})
   .catch(function(){{
     btn.textContent='أرسل طلبك الآن';btn.style.opacity='1';btn.disabled=false;
