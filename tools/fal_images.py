@@ -71,6 +71,24 @@ PROMPTS = {
         "ba_filename": "kitchen-ceramic-before-after.jpg",
         "slug_prefix": "تركيب-سيراميك-مطابخ",
     },
+    "floor-ceramic": {
+        "hero": (
+            "Professional floor ceramic tile installation in a modern {city} home. "
+            "Expert technician in clean uniform laying large-format porcelain floor tiles with laser level. "
+            "Modern UAE living room with perfectly aligned floor tiles and clean grout lines visible. "
+            "Photorealistic editorial photography, soft natural lighting, clean professional environment."
+        ),
+        "before_after": (
+            "Split comparison image: left side shows old worn cracked floor tiles "
+            "with dirty grout lines and uneven surface in a UAE home, right side shows "
+            "beautifully renovated floor with pristine large-format porcelain tiles "
+            "perfectly leveled and grouted with uniform spacing. "
+            "Professional renovation photography, clean lighting."
+        ),
+        "image_prefix": "floor-ceramic-installation",
+        "ba_filename": "floor-ceramic-before-after.jpg",
+        "slug_prefix": "تركيب-سيراميك-أرضيات",
+    },
     # Future services can be added here
 }
 
