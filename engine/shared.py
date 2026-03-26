@@ -68,10 +68,11 @@ def build_head(s, c):
     bc_items += f',{{"@type":"ListItem","position":{bc_pos},"name":"{bc_current_name}","item":"https://hub.rafeeg.ae/{slug}/"}}'
     bc_items = bc_items[1:]  # remove leading comma
 
-    # Build FAQ schema from s["faqs"]
+    # Build FAQ schema from s["faqs"] + optional c["city_faqs"]
+    all_faqs = list(s["faqs"]) + list(c.get("city_faqs", []))
     faq_entities = ",\n      ".join(
         f'{{"@type":"Question","name":"{faq["q"].format(city=city, neighborhoods_full=neighborhoods_full)}","acceptedAnswer":{{"@type":"Answer","text":"{faq["a"].format(city=city, neighborhoods_full=neighborhoods_full)}"}}}}'
-        for faq in s["faqs"]
+        for faq in all_faqs
     )
 
     css = get_css()
@@ -603,6 +604,10 @@ def build_content(s, c):
     city = c["city"]
     body_neighborhoods = c["body_neighborhoods_html"]
     body_html = s["body_content_html"].format(city=city, body_neighborhoods=body_neighborhoods)
+    # Append city-specific extra body paragraph if defined
+    city_extra = c.get("city_body_extra_html", "")
+    if city_extra:
+        body_html += "\n      " + city_extra.format(city=city)
     return f'''
 <section class="content-section" aria-label="محتوى تفصيلي">
   <div class="container">
@@ -730,7 +735,8 @@ def build_faq(s, c):
     faq_subtitle = s["faq_subtitle"]
 
     items = ""
-    for faq in s["faqs"]:
+    all_faqs = list(s["faqs"]) + list(c.get("city_faqs", []))
+    for faq in all_faqs:
         q = faq["q"].format(city=city, neighborhoods_full=neighborhoods_full)
         a = faq["a"].format(city=city, neighborhoods_full=neighborhoods_full)
         items += f'''
