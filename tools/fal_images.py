@@ -89,6 +89,23 @@ PROMPTS = {
         "ba_filename": "floor-ceramic-before-after.jpg",
         "slug_prefix": "تركيب-سيراميك-أرضيات",
     },
+    "small-bathroom-ceramic": {
+        "hero": (
+            "Professional small bathroom ceramic tile installation in a compact modern {city} bathroom. "
+            "Expert technician in clean uniform installing large-format white porcelain tiles on walls and floor. "
+            "Small UAE bathroom 4 square meters with visual enlargement technique, anti-slip tiles, waterproofing layer visible. "
+            "Photorealistic editorial photography, bright lighting, clean professional environment."
+        ),
+        "before_after": (
+            "Split comparison image: left side shows a cramped small bathroom with old dark cracked small tiles "
+            "making it look tiny, right side shows the same small bathroom renovated with large-format white "
+            "porcelain tiles on walls and floor making it look spacious and modern. "
+            "Professional renovation photography, bright clean lighting."
+        ),
+        "image_prefix": "small-bathroom-ceramic-installation",
+        "ba_filename": "small-bathroom-ceramic-before-after.jpg",
+        "slug_prefix": "تركيب-سيراميك-حمامات-صغيرة",
+    },
     # Future services can be added here
 }
 
