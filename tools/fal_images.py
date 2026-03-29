@@ -106,6 +106,23 @@ PROMPTS = {
         "ba_filename": "small-bathroom-ceramic-before-after.jpg",
         "slug_prefix": "تركيب-سيراميك-حمامات-صغيرة",
     },
+    "rak-ceramic": {
+        "hero": (
+            "Professional RAK Ceramics tile installation in a luxury {city} home. "
+            "Expert technician in clean uniform installing premium large-format RAK porcelain tiles on floor. "
+            "Showroom-quality finish with perfectly aligned grout lines, modern UAE interior design. "
+            "Photorealistic editorial photography, bright natural lighting, clean professional environment."
+        ),
+        "before_after": (
+            "Split comparison image: left side shows old worn outdated floor tiles with cracked grout "
+            "and uneven surface in a UAE home, right side shows stunning premium RAK Ceramics porcelain "
+            "large-format tiles perfectly installed with precise grout lines and mirror-like finish. "
+            "Professional renovation photography, bright clean lighting."
+        ),
+        "image_prefix": "rak-ceramic-installation",
+        "ba_filename": "rak-ceramic-before-after.jpg",
+        "slug_prefix": "سيراميك-راس-الخيمة",
+    },
     # Future services can be added here
 }
 
