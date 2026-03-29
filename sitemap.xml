@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Generated: 2026-03-29 13:18 — 211 URLs -->
+  <!-- Generated: 2026-03-29 13:46 — 211 URLs -->
 
   <!-- ═══ HOMEPAGE ══════════════════════════════════════════════ -->
   <url>
@@ -218,7 +218,7 @@
   <!-- ═══ SECONDARY CITY PAGES + CITY HUBS ══════════════════════ -->
   <url>
     <loc>https://hub.rafeeg.ae/أبوظبي/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -230,7 +230,7 @@
   </url>
   <url>
     <loc>https://hub.rafeeg.ae/الشارقة/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -458,7 +458,7 @@
   </url>
   <url>
     <loc>https://hub.rafeeg.ae/دبي/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -488,7 +488,7 @@
   </url>
   <url>
     <loc>https://hub.rafeeg.ae/عجمان/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
