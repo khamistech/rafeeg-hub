@@ -106,6 +106,23 @@ PROMPTS = {
         "ba_filename": "small-bathroom-ceramic-before-after.jpg",
         "slug_prefix": "تركيب-سيراميك-حمامات-صغيرة",
     },
+    "bathroom-design": {
+        "hero": (
+            "Professional modern bathroom renovation in a luxury {city} home. "
+            "Beautifully renovated bathroom with large-format marble-look porcelain tiles 60x120cm, "
+            "gold fixtures, LED mirror lighting, floating vanity. "
+            "Hotel-quality finish, photorealistic editorial photography, bright natural lighting."
+        ),
+        "before_after": (
+            "Split comparison image: left side shows outdated 1990s bathroom with old small tiles "
+            "and worn fixtures in a UAE home, right side shows stunning modern hotel-style bathroom "
+            "with large marble-look porcelain tiles, gold accents, LED lighting and floating vanity. "
+            "Professional renovation photography."
+        ),
+        "image_prefix": "bathroom-design-modern",
+        "ba_filename": "bathroom-design-before-after.jpg",
+        "slug_prefix": "تصميم-حمامات",
+    },
     "porcelain-bathroom": {
         "hero": (
             "Professional premium porcelain tile installation in a luxury {city} bathroom. "
