@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Generated: 2026-03-29 14:28 — 214 URLs -->
+  <!-- Generated: 2026-03-29 16:28 — 221 URLs -->
 
   <!-- ═══ HOMEPAGE ══════════════════════════════════════════════ -->
   <url>
@@ -193,7 +193,7 @@
   </url>
   <url>
     <loc>https://hub.rafeeg.ae/تنظيف-مكيفات-الشارقة/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -205,7 +205,7 @@
   </url>
   <url>
     <loc>https://hub.rafeeg.ae/تنظيف-مكيفات-عجمان/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -692,7 +692,43 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://hub.rafeeg.ae/تركيب-جبس-بورد/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-جبس-بورد-دبي/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://hub.rafeeg.ae/تركيب-ستائر/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-ستائر-أبوظبي/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-ستائر-الشارقة/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-ستائر-دبي/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-ستائر-عجمان/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -784,6 +820,12 @@
   <url>
     <loc>https://hub.rafeeg.ae/تسليك-مواسير-عجمان/</loc>
     <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تشطيب-داخلي-دبي/</loc>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
