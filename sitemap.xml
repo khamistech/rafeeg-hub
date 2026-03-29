@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Generated: 2026-03-29 13:46 — 211 URLs -->
+  <!-- Generated: 2026-03-29 13:52 — 213 URLs -->
 
   <!-- ═══ HOMEPAGE ══════════════════════════════════════════════ -->
   <url>
@@ -1034,6 +1034,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://hub.rafeeg.ae/سيراميك-ام-بورسلين/</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://hub.rafeeg.ae/سيراميك-راس-الخيمة/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -1066,6 +1072,12 @@
   <url>
     <loc>https://hub.rafeeg.ae/شحن-فريون-مكيفات/</loc>
     <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/صيانة-ام-تصليح-مكيفات/</loc>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
