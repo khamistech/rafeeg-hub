@@ -106,6 +106,23 @@ PROMPTS = {
         "ba_filename": "small-bathroom-ceramic-before-after.jpg",
         "slug_prefix": "تركيب-سيراميك-حمامات-صغيرة",
     },
+    "porcelain-bathroom": {
+        "hero": (
+            "Professional premium porcelain tile installation in a luxury {city} bathroom. "
+            "Expert technician installing large-format marble-look porcelain tiles 60x120cm on bathroom wall. "
+            "Modern UAE bathroom with mirror finish, precise 2mm grout lines, waterproofing visible. "
+            "Photorealistic editorial photography, bright clean lighting, five-star hotel bathroom feel."
+        ),
+        "before_after": (
+            "Split comparison image: left side shows old damaged ceramic bathroom tiles with mold in grout "
+            "and dull worn surface, right side shows stunning modern bathroom with premium large-format "
+            "marble-look porcelain tiles perfectly installed, mirror-like finish, hotel-quality renovation. "
+            "Professional renovation photography, bright clean lighting."
+        ),
+        "image_prefix": "porcelain-bathroom-installation",
+        "ba_filename": "porcelain-bathroom-before-after.jpg",
+        "slug_prefix": "بورسلين-حمامات",
+    },
     "rak-ceramic": {
         "hero": (
             "Professional RAK Ceramics tile installation in a luxury {city} home. "
