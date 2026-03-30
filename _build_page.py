@@ -117,6 +117,13 @@ def build_schema(c):
     service = c['service_name']
     base_price = c['base_price']
     faqs = c['faq_items']
+    date_mod = c.get('date_modified', '2026-03-30')
+    lat = c.get('lat', '25.2048')
+    lng = c.get('lng', '55.2708')
+    wikidata = c.get('wikidata', 'Q612')
+    low_price = c.get('low_price', str(base_price))
+    high_price = c.get('high_price', str(int(base_price) * 2))
+    price_range = c.get('price_range', f'درهم {low_price}–{high_price}')
 
     faq_entities = ',\n'.join([
         f'{{"@type":"Question","name":"{f["q"]}","acceptedAnswer":{{"@type":"Answer","text":"{f["a"]}"}}}}'
@@ -126,7 +133,7 @@ def build_schema(c):
     steps_json = ',\n'.join([
         f'{{"@type":"HowToStep","position":{i+1},"name":"{s["title"]}","text":"{s["desc"]}"}}'
         for i, s in enumerate(c.get('steps', [
-            {"title": "حمّل التطبيق وسجّل", "desc": f"أدخل عنوانك في {city} ونوع المكيف."},
+            {"title": "حمّل التطبيق وسجّل", "desc": f"أدخل عنوانك في {city} ونوع الخدمة."},
             {"title": "اختر الخدمة والموعد", "desc": "حدد نوع الخدمة ووقتاً يناسبك."},
             {"title": "تأكيد الحجز والسعر", "desc": "ستستقبل تأكيداً فورياً بتفاصيل الفني والسعر."},
             {"title": "وصول الفني المعتمد", "desc": "يصل الفني في الوقت المحدد بجميع أدواته."},
@@ -134,11 +141,21 @@ def build_schema(c):
         ]))
     ])
 
+    price_specs = ''
+    for row in c.get('pricing_rows', []):
+        price_val = row['price'].replace(' درهم', '').replace(',', '').split('–')[0].strip()
+        price_specs += f'{{"@type":"PriceSpecification","name":"{row["name"]}","price":"{price_val}","priceCurrency":"AED"}},'
+    if price_specs:
+        price_specs = price_specs.rstrip(',')
+        offers_block = f'"offers":{{"@type":"AggregateOffer","priceCurrency":"AED","lowPrice":"{low_price}","highPrice":"{high_price}","priceSpecification":[{price_specs}]}}'
+    else:
+        offers_block = f'"offers":{{"@type":"Offer","priceCurrency":"AED","price":"{base_price}"}}'
+
     return f'''{{
   "@context": "https://schema.org",
   "@graph": [
-    {{"@type":"LocalBusiness","@id":"https://ar.rafeeg.ae/#organization","name":"رفيق","url":"https://ar.rafeeg.ae","logo":"https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png","telephone":"+971600500200","email":"info@rafeeg.ae","address":{{"@type":"PostalAddress","addressLocality":"{city}","addressRegion":"{city}","addressCountry":"AE"}},"aggregateRating":{{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"135000","bestRating":"5"}},"sameAs":["https://www.instagram.com/rafeegapp","https://www.linkedin.com/company/rafeeg/","https://www.tiktok.com/@rafeeg.ae"]}},
-    {{"@type":"Service","name":"{service} في {city}","description":"خدمة {service} في {city} من مقدمي خدمة معتمدين عبر تطبيق رفيق","provider":{{"@id":"https://ar.rafeeg.ae/#organization"}},"areaServed":{{"@type":"City","name":"{city}"}},"serviceType":"{service}","offers":{{"@type":"Offer","priceCurrency":"AED","priceSpecification":{{"@type":"PriceSpecification","minPrice":"{base_price}","priceCurrency":"AED"}}}}}},
+    {{"@type":"HomeAndConstructionBusiness","@id":"https://ar.rafeeg.ae/#organization","name":"رفيق","description":"رفيق هو تطبيق إماراتي للخدمات المنزلية، يربط أصحاب المنازل بأكثر من 4,500 فني معتمد في دبي وأبوظبي والشارقة وعجمان.","url":"https://ar.rafeeg.ae","logo":"https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png","telephone":"+971600500200","email":"info@rafeeg.ae","priceRange":"{price_range}","openingHours":"Mo-Su 07:00-22:00","address":{{"@type":"PostalAddress","addressLocality":"{city}","addressRegion":"{city}","addressCountry":"AE"}},"geo":{{"@type":"GeoCoordinates","latitude":"{lat}","longitude":"{lng}"}},"areaServed":[{{"@type":"City","name":"دبي"}},{{"@type":"City","name":"أبوظبي"}},{{"@type":"City","name":"الشارقة"}},{{"@type":"City","name":"عجمان"}}],"aggregateRating":{{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"135000","bestRating":"5"}},"sameAs":["https://www.instagram.com/rafeegapp","https://www.linkedin.com/company/rafeeg/","https://www.tiktok.com/@rafeeg.ae"]}},
+    {{"@type":"Service","name":"{service} في {city}","description":"خدمة {service} في {city} من مقدمي خدمة معتمدين عبر تطبيق رفيق. ضمان على الخدمة، فنيون معتمدون، أسعار شفافة.","dateModified":"{date_mod}","provider":{{"@id":"https://ar.rafeeg.ae/#organization"}},"areaServed":{{"@type":"City","name":"{city}","sameAs":"https://www.wikidata.org/wiki/{wikidata}"}},"serviceType":"{service}",{offers_block}}},
     {{"@type":"HowTo","name":"كيف تحجز {service} في {city} عبر رفيق","step":[{steps_json}]}},
     {{"@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://hub.rafeeg.ae/"}},{{"@type":"ListItem","position":2,"name":"{c['parent_name']}","item":"https://hub.rafeeg.ae/{c['parent_slug']}/"}},{{"@type":"ListItem","position":3,"name":"{service} في {city}","item":"https://hub.rafeeg.ae/{slug}/"}}]}},
     {{"@type":"FAQPage","mainEntity":[{faq_entities}]}}
@@ -219,6 +236,10 @@ def build(config_path):
         '{{MAP_IFRAME_SRC}}': c['map_iframe_src'],
         '{{MAP_COVERAGE}}':   c['map_coverage'],
         '{{SCHEMA_JSON}}':    schema_json,
+        # ═══ RAK v2 optional fields (default to empty if not in config)
+        '{{URGENCY_STRIP}}':  c.get('urgency_strip', ''),
+        '{{AI_SUMMARY}}':     c.get('ai_summary', ''),
+        '{{GUARANTEE_SEALS}}':c.get('guarantee_seals', ''),
     }
 
     for key, val in replacements.items():
