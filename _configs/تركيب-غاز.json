@@ -399,5 +399,14 @@
       "num": "4",
       "label": "إمارات"
     }
-  ]
+  ],
+  "date_modified": "2026-03-30",
+  "low_price": "200",
+  "high_price": "400",
+  "lat": "25.2048",
+  "lng": "55.2708",
+  "wikidata": "Q878",
+  "urgency_strip": "<div class=\"urgency-strip\" role=\"alert\">⚡ <strong>فنيون متاحون اليوم في الإمارات</strong> — احجز الآن واحصل على موعد نفس اليوم</div>",
+  "ai_summary": "<div class=\"ai-summary\" role=\"note\" aria-label=\"ملخص سريع\"><div class=\"ai-summary-title\">📋 ملخص سريع — تركيب غاز الإمارات 2025</div><div class=\"ai-summary-grid\"><div class=\"ai-fact\"><span>🔧</span> الخدمة: <b>تركيب غاز</b></div><div class=\"ai-fact\"><span>💰</span> السعر: <b>من 200 درهم</b></div><div class=\"ai-fact\"><span>📍</span> التغطية: <b>جميع مناطق الإمارات</b></div><div class=\"ai-fact\"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div><div class=\"ai-fact\"><span>⏱️</span> وقت الوصول: <b>نفس اليوم</b></div><div class=\"ai-fact\"><span>⭐</span> التقييم: <b>4.8/5</b></div></div></div>",
+  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>"
 }
