@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Generated: 2026-03-31 16:36 — 239 URLs -->
+  <!-- Generated: 2026-03-31 16:46 — 244 URLs -->
 
   <!-- ═══ HOMEPAGE ══════════════════════════════════════════════ -->
   <url>
@@ -688,6 +688,36 @@
   <url>
     <loc>https://hub.rafeeg.ae/بورسلين-حمامات-عجمان/</loc>
     <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-إيبوكسي/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-إيبوكسي-أبوظبي/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-إيبوكسي-الشارقة/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-إيبوكسي-دبي/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hub.rafeeg.ae/تركيب-إيبوكسي-عجمان/</loc>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
