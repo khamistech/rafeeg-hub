@@ -408,5 +408,114 @@
   "wikidata": "Q878",
   "urgency_strip": "<div class=\"urgency-strip\" role=\"alert\">⚡ <strong>فنيون متاحون اليوم في الإمارات</strong> — احجز الآن واحصل على موعد نفس اليوم</div>",
   "ai_summary": "<div class=\"ai-summary\" role=\"note\" aria-label=\"ملخص سريع\"><div class=\"ai-summary-title\">📋 ملخص سريع — صيانة عامة الإمارات 2025</div><div class=\"ai-summary-grid\"><div class=\"ai-fact\"><span>🔧</span> الخدمة: <b>صيانة عامة</b></div><div class=\"ai-fact\"><span>💰</span> السعر: <b>من 100 درهم</b></div><div class=\"ai-fact\"><span>📍</span> التغطية: <b>جميع مناطق الإمارات</b></div><div class=\"ai-fact\"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div><div class=\"ai-fact\"><span>⏱️</span> وقت الوصول: <b>نفس اليوم</b></div><div class=\"ai-fact\"><span>⭐</span> التقييم: <b>4.8/5</b></div></div></div>",
-  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>"
+  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>",
+  "intro_answer": "صيانة عامة للمنازل في الإمارات من رفيق — فنيون متعددو التخصصات يصلون في نفس اليوم لإصلاح جميع أعطال منزلك من كهرباء وسباكة ودهان وتركيب. خدمة شاملة بسعر ثابت وضمان كامل.",
+  "hub_city_links": [
+    {
+      "city": "أبوظبي",
+      "slug": "صيانة-عامة-أبوظبي",
+      "price_from": "150",
+      "price_to": "1200",
+      "response_time": "نفس اليوم",
+      "coverage": "الريم، الخالدية، مصفح، المرور",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "صيانة-عامة-دبي",
+      "price_from": "180",
+      "price_to": "1500",
+      "response_time": "نفس اليوم",
+      "coverage": "مارينا، داونتاون، نخلة، ديرة",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "صيانة-عامة-الشارقة",
+      "price_from": "130",
+      "price_to": "1100",
+      "response_time": "يوم عمل",
+      "coverage": "التعاون، النهدة، الخان",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "صيانة-عامة-عجمان",
+      "price_from": "120",
+      "price_to": "1000",
+      "response_time": "يوم عمل",
+      "coverage": "النعيمية، الراشدية",
+      "icon": "🏗️"
+    }
+  ],
+  "service_types": [
+    {
+      "label": "صيانة كهربائية",
+      "href": "/أعمال-كهربائية/",
+      "icon": "⚡"
+    },
+    {
+      "label": "صيانة سباكة",
+      "href": "/سباكة/",
+      "icon": "🔧"
+    },
+    {
+      "label": "دهان وطلاء",
+      "href": "/دهان/",
+      "icon": "🎨"
+    },
+    {
+      "label": "تركيب وإصلاح",
+      "href": "/نجارة-وديكور/",
+      "icon": "🔨"
+    },
+    {
+      "label": "مكافحة حشرات",
+      "href": "/مكافحة-حشرات/",
+      "icon": "🐛"
+    },
+    {
+      "label": "عقود صيانة شهرية",
+      "href": "/صيانة-عامة-دبي/",
+      "icon": "📋"
+    }
+  ],
+  "city_compare_rows": [
+    {
+      "city": "أبوظبي",
+      "slug": "صيانة-عامة-أبوظبي",
+      "price_from": "150",
+      "price_to": "1200",
+      "response_time": "نفس اليوم",
+      "coverage": "جميع الأحياء",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "صيانة-عامة-دبي",
+      "price_from": "180",
+      "price_to": "1500",
+      "response_time": "نفس اليوم",
+      "coverage": "جميع الأحياء",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "صيانة-عامة-الشارقة",
+      "price_from": "130",
+      "price_to": "1100",
+      "response_time": "يوم عمل",
+      "coverage": "جميع الأحياء",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "صيانة-عامة-عجمان",
+      "price_from": "120",
+      "price_to": "1000",
+      "response_time": "يوم عمل",
+      "coverage": "جميع الأحياء",
+      "icon": "🏗️"
+    }
+  ]
 }

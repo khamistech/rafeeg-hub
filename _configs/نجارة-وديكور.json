@@ -408,5 +408,114 @@
   "wikidata": "Q878",
   "urgency_strip": "<div class=\"urgency-strip\" role=\"alert\">⚡ <strong>فنيون متاحون اليوم في الإمارات</strong> — احجز الآن واحصل على موعد نفس اليوم</div>",
   "ai_summary": "<div class=\"ai-summary\" role=\"note\" aria-label=\"ملخص سريع\"><div class=\"ai-summary-title\">📋 ملخص سريع — نجارة وديكور الإمارات 2025</div><div class=\"ai-summary-grid\"><div class=\"ai-fact\"><span>🔧</span> الخدمة: <b>نجارة وديكور</b></div><div class=\"ai-fact\"><span>💰</span> السعر: <b>من 200 درهم</b></div><div class=\"ai-fact\"><span>📍</span> التغطية: <b>جميع مناطق الإمارات</b></div><div class=\"ai-fact\"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div><div class=\"ai-fact\"><span>⏱️</span> وقت الوصول: <b>نفس اليوم</b></div><div class=\"ai-fact\"><span>⭐</span> التقييم: <b>4.8/5</b></div></div></div>",
-  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>"
+  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>",
+  "intro_answer": "نجارة وديكور في الإمارات من رفيق — نجارون محترفون لتركيب الأثاث وصناعة الخزائن المدمجة وأعمال الديكور الخشبي. نستخدم أجود أنواع الخشب ونقدم ضمان سنة على جميع الأعمال بأسعار تبدأ من 150 درهم.",
+  "hub_city_links": [
+    {
+      "city": "أبوظبي",
+      "slug": "نجارة-وديكور-أبوظبي",
+      "price_from": "150",
+      "price_to": "2000",
+      "response_time": "نفس اليوم",
+      "coverage": "الريم، الخالدية، مصفح، شاطئ الراحة",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "نجارة-وديكور-دبي",
+      "price_from": "180",
+      "price_to": "2500",
+      "response_time": "نفس اليوم",
+      "coverage": "مارينا، داونتاون، JBR، البرشاء",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "نجارة-وديكور-الشارقة",
+      "price_from": "130",
+      "price_to": "1800",
+      "response_time": "يوم عمل",
+      "coverage": "التعاون، النهدة، الخان",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "نجارة-وديكور-عجمان",
+      "price_from": "120",
+      "price_to": "1600",
+      "response_time": "يوم عمل",
+      "coverage": "النعيمية، الراشدية، المويهات",
+      "icon": "🏗️"
+    }
+  ],
+  "service_types": [
+    {
+      "label": "تركيب أثاث",
+      "href": "/نجارة-وديكور-دبي/",
+      "icon": "🪑"
+    },
+    {
+      "label": "خزائن مدمجة",
+      "href": "/نجارة-وديكور-أبوظبي/",
+      "icon": "🚪"
+    },
+    {
+      "label": "باب خشبي",
+      "href": "/نجارة-وديكور-الشارقة/",
+      "icon": "🏠"
+    },
+    {
+      "label": "أعمال ديكور خشب",
+      "href": "/نجارة-وديكور-عجمان/",
+      "icon": "🌳"
+    },
+    {
+      "label": "إصلاح أثاث",
+      "href": "/نجارة-وديكور-دبي/",
+      "icon": "🔨"
+    },
+    {
+      "label": "تفصيل مطابخ",
+      "href": "/نجارة-وديكور-أبوظبي/",
+      "icon": "🍽️"
+    }
+  ],
+  "city_compare_rows": [
+    {
+      "city": "أبوظبي",
+      "slug": "نجارة-وديكور-أبوظبي",
+      "price_from": "150",
+      "price_to": "2000",
+      "response_time": "نفس اليوم",
+      "coverage": "جميع الأحياء",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "نجارة-وديكور-دبي",
+      "price_from": "180",
+      "price_to": "2500",
+      "response_time": "نفس اليوم",
+      "coverage": "جميع الأحياء",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "نجارة-وديكور-الشارقة",
+      "price_from": "130",
+      "price_to": "1800",
+      "response_time": "يوم عمل",
+      "coverage": "جميع الأحياء",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "نجارة-وديكور-عجمان",
+      "price_from": "120",
+      "price_to": "1600",
+      "response_time": "يوم عمل",
+      "coverage": "جميع الأحياء",
+      "icon": "🏗️"
+    }
+  ]
 }

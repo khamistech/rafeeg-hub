@@ -408,5 +408,114 @@
   "wikidata": "Q878",
   "urgency_strip": "<div class=\"urgency-strip\" role=\"alert\">⚡ <strong>فنيون متاحون اليوم في الإمارات</strong> — احجز الآن واحصل على موعد نفس اليوم</div>",
   "ai_summary": "<div class=\"ai-summary\" role=\"note\" aria-label=\"ملخص سريع\"><div class=\"ai-summary-title\">📋 ملخص سريع — دهان الإمارات 2025</div><div class=\"ai-summary-grid\"><div class=\"ai-fact\"><span>🔧</span> الخدمة: <b>دهان</b></div><div class=\"ai-fact\"><span>💰</span> السعر: <b>من 150 درهم</b></div><div class=\"ai-fact\"><span>📍</span> التغطية: <b>جميع مناطق الإمارات</b></div><div class=\"ai-fact\"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div><div class=\"ai-fact\"><span>⏱️</span> وقت الوصول: <b>نفس اليوم</b></div><div class=\"ai-fact\"><span>⭐</span> التقييم: <b>4.8/5</b></div></div></div>",
-  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>"
+  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>",
+  "intro_answer": "خدمة دهان في الإمارات من رفيق — فنيو دهان محترفون يصلون في يوم عمل واحد لدهان غرفتك أو شقتك أو فيلتك بأعلى جودة. نستخدم أفضل أنواع الدهانات المقاومة للرطوبة ونقدم ضماناً على العمل بأسعار تنافسية.",
+  "hub_city_links": [
+    {
+      "city": "أبوظبي",
+      "slug": "دهان-أبوظبي",
+      "price_from": "500",
+      "price_to": "3000",
+      "response_time": "نفس اليوم",
+      "coverage": "الريم، الخالدية، مصفح، شاطئ الراحة",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "دهان-دبي",
+      "price_from": "600",
+      "price_to": "3500",
+      "response_time": "نفس اليوم",
+      "coverage": "مارينا، داونتاون، نخلة، ديرة",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "دهان-الشارقة",
+      "price_from": "450",
+      "price_to": "2800",
+      "response_time": "يوم عمل",
+      "coverage": "التعاون، النهدة، الخان، القاسمية",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "دهان-عجمان",
+      "price_from": "400",
+      "price_to": "2500",
+      "response_time": "يوم عمل",
+      "coverage": "النعيمية، الراشدية، المويهات",
+      "icon": "🏗️"
+    }
+  ],
+  "service_types": [
+    {
+      "label": "دهان شقق",
+      "href": "/دهان-دبي/",
+      "icon": "🏢"
+    },
+    {
+      "label": "دهان فلل",
+      "href": "/دهان-أبوظبي/",
+      "icon": "🏡"
+    },
+    {
+      "label": "دهان خارجي",
+      "href": "/دهان-الشارقة/",
+      "icon": "🏗️"
+    },
+    {
+      "label": "ورق جدران",
+      "href": "/ورق-حائط/",
+      "icon": "🖼️"
+    },
+    {
+      "label": "دهان بالرول",
+      "href": "/دهان-عجمان/",
+      "icon": "🪣"
+    },
+    {
+      "label": "دهان ديكوري",
+      "href": "/دهان-دبي/",
+      "icon": "✨"
+    }
+  ],
+  "city_compare_rows": [
+    {
+      "city": "أبوظبي",
+      "slug": "دهان-أبوظبي",
+      "price_from": "500",
+      "price_to": "3000",
+      "response_time": "نفس اليوم",
+      "coverage": "جميع الأحياء",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "دهان-دبي",
+      "price_from": "600",
+      "price_to": "3500",
+      "response_time": "نفس اليوم",
+      "coverage": "جميع الأحياء",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "دهان-الشارقة",
+      "price_from": "450",
+      "price_to": "2800",
+      "response_time": "يوم عمل",
+      "coverage": "جميع الأحياء",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "دهان-عجمان",
+      "price_from": "400",
+      "price_to": "2500",
+      "response_time": "يوم عمل",
+      "coverage": "جميع الأحياء",
+      "icon": "🏗️"
+    }
+  ]
 }

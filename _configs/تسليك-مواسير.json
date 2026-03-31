@@ -408,5 +408,114 @@
   "wikidata": "Q878",
   "urgency_strip": "<div class=\"urgency-strip\" role=\"alert\">⚡ <strong>فنيون متاحون اليوم في الإمارات</strong> — احجز الآن واحصل على موعد نفس اليوم</div>",
   "ai_summary": "<div class=\"ai-summary\" role=\"note\" aria-label=\"ملخص سريع\"><div class=\"ai-summary-title\">📋 ملخص سريع — تسليك مواسير الإمارات 2025</div><div class=\"ai-summary-grid\"><div class=\"ai-fact\"><span>🔧</span> الخدمة: <b>تسليك مواسير</b></div><div class=\"ai-fact\"><span>💰</span> السعر: <b>من 120 درهم</b></div><div class=\"ai-fact\"><span>📍</span> التغطية: <b>جميع مناطق الإمارات</b></div><div class=\"ai-fact\"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div><div class=\"ai-fact\"><span>⏱️</span> وقت الوصول: <b>نفس اليوم</b></div><div class=\"ai-fact\"><span>⭐</span> التقييم: <b>4.8/5</b></div></div></div>",
-  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>"
+  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>",
+  "intro_answer": "تسليك المواسير في الإمارات من رفيق — فني متخصص يصل خلال ساعة بمعدات ضغط الماء وكاميرات التفتيش لفتح أي انسداد في الصرف الصحي أو بالوعة المطبخ أو المرحاض. خدمة طوارئ متاحة 24 ساعة بأسعار تبدأ من 150 درهم.",
+  "hub_city_links": [
+    {
+      "city": "أبوظبي",
+      "slug": "تسليك-مواسير-أبوظبي",
+      "price_from": "150",
+      "price_to": "500",
+      "response_time": "< ساعة",
+      "coverage": "الريم، الخالدية، مصفح",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "تسليك-مواسير-دبي",
+      "price_from": "180",
+      "price_to": "550",
+      "response_time": "< ساعة",
+      "coverage": "مارينا، داونتاون، ديرة",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "تسليك-مواسير-الشارقة",
+      "price_from": "140",
+      "price_to": "480",
+      "response_time": "1-2 ساعة",
+      "coverage": "التعاون، النهدة، الخان",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "تسليك-مواسير-عجمان",
+      "price_from": "120",
+      "price_to": "450",
+      "response_time": "1-2 ساعة",
+      "coverage": "النعيمية، الراشدية",
+      "icon": "🏗️"
+    }
+  ],
+  "service_types": [
+    {
+      "label": "تسليك بالوعة مطبخ",
+      "href": "/تسليك-مواسير-دبي/",
+      "icon": "🍳"
+    },
+    {
+      "label": "تسليك مرحاض",
+      "href": "/تسليك-مواسير-أبوظبي/",
+      "icon": "🚽"
+    },
+    {
+      "label": "تسليك صرف حمام",
+      "href": "/تسليك-مواسير-الشارقة/",
+      "icon": "🚿"
+    },
+    {
+      "label": "تسليك بضغط الماء",
+      "href": "/تسليك-مواسير-عجمان/",
+      "icon": "💦"
+    },
+    {
+      "label": "كاميرا تفتيش مواسير",
+      "href": "/تسليك-مواسير-دبي/",
+      "icon": "📷"
+    },
+    {
+      "label": "طوارئ تسليك 24/7",
+      "href": "/تسليك-مواسير-أبوظبي/",
+      "icon": "🚨"
+    }
+  ],
+  "city_compare_rows": [
+    {
+      "city": "أبوظبي",
+      "slug": "تسليك-مواسير-أبوظبي",
+      "price_from": "150",
+      "price_to": "500",
+      "response_time": "< ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "تسليك-مواسير-دبي",
+      "price_from": "180",
+      "price_to": "550",
+      "response_time": "< ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "تسليك-مواسير-الشارقة",
+      "price_from": "140",
+      "price_to": "480",
+      "response_time": "1-2 ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "تسليك-مواسير-عجمان",
+      "price_from": "120",
+      "price_to": "450",
+      "response_time": "1-2 ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🏗️"
+    }
+  ]
 }

@@ -408,5 +408,114 @@
   "wikidata": "Q878",
   "urgency_strip": "<div class=\"urgency-strip\" role=\"alert\">⚡ <strong>فنيون متاحون اليوم في الإمارات</strong> — احجز الآن واحصل على موعد نفس اليوم</div>",
   "ai_summary": "<div class=\"ai-summary\" role=\"note\" aria-label=\"ملخص سريع\"><div class=\"ai-summary-title\">📋 ملخص سريع — أعمال كهربائية الإمارات 2025</div><div class=\"ai-summary-grid\"><div class=\"ai-fact\"><span>🔧</span> الخدمة: <b>أعمال كهربائية</b></div><div class=\"ai-fact\"><span>💰</span> السعر: <b>من 150 درهم</b></div><div class=\"ai-fact\"><span>📍</span> التغطية: <b>جميع مناطق الإمارات</b></div><div class=\"ai-fact\"><span>🛡️</span> الضمان: <b>سنة كاملة</b></div><div class=\"ai-fact\"><span>⏱️</span> وقت الوصول: <b>نفس اليوم</b></div><div class=\"ai-fact\"><span>⭐</span> التقييم: <b>4.8/5</b></div></div></div>",
-  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>"
+  "guarantee_seals": "<div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>ضمان سنة على الخدمة</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>فنيون معتمدون في الإمارات</div><div class=\"guarantee-seal\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z\"/></svg>وصول نفس اليوم</div>",
+  "intro_answer": "أعمال كهربائية في الإمارات من رفيق — كهربائيون معتمدون ومرخصون يصلون في أقل من ساعة لإصلاح الأعطال وتركيب الكهرباء وتغيير الأسلاك. نعمل 24 ساعة لخدمة الطوارئ الكهربائية بأسعار شفافة وضمان كامل.",
+  "hub_city_links": [
+    {
+      "city": "أبوظبي",
+      "slug": "أعمال-كهربائية-أبوظبي",
+      "price_from": "150",
+      "price_to": "800",
+      "response_time": "< ساعة",
+      "coverage": "الريم، الخالدية، مصفح، المرور",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "أعمال-كهربائية-دبي",
+      "price_from": "180",
+      "price_to": "900",
+      "response_time": "< ساعة",
+      "coverage": "مارينا، داونتاون، نخلة، ديرة",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "أعمال-كهربائية-الشارقة",
+      "price_from": "140",
+      "price_to": "700",
+      "response_time": "1-2 ساعة",
+      "coverage": "التعاون، النهدة، الخان",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "أعمال-كهربائية-عجمان",
+      "price_from": "120",
+      "price_to": "650",
+      "response_time": "1-2 ساعة",
+      "coverage": "النعيمية، الراشدية",
+      "icon": "🏗️"
+    }
+  ],
+  "service_types": [
+    {
+      "label": "إصلاح أعطال كهربائية",
+      "href": "/أعمال-كهربائية-دبي/",
+      "icon": "⚡"
+    },
+    {
+      "label": "تركيب كهرباء",
+      "href": "/أعمال-كهربائية-أبوظبي/",
+      "icon": "🔌"
+    },
+    {
+      "label": "تغيير لوحة كهربائية",
+      "href": "/أعمال-كهربائية-الشارقة/",
+      "icon": "🔋"
+    },
+    {
+      "label": "تركيب إضاءة",
+      "href": "/أعمال-كهربائية-عجمان/",
+      "icon": "💡"
+    },
+    {
+      "label": "تركيب مفاتيح وبرايز",
+      "href": "/أعمال-كهربائية-دبي/",
+      "icon": "🪛"
+    },
+    {
+      "label": "طوارئ كهربائية 24/7",
+      "href": "/أعمال-كهربائية-أبوظبي/",
+      "icon": "🚨"
+    }
+  ],
+  "city_compare_rows": [
+    {
+      "city": "أبوظبي",
+      "slug": "أعمال-كهربائية-أبوظبي",
+      "price_from": "150",
+      "price_to": "800",
+      "response_time": "< ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🌆"
+    },
+    {
+      "city": "دبي",
+      "slug": "أعمال-كهربائية-دبي",
+      "price_from": "180",
+      "price_to": "900",
+      "response_time": "< ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🏙️"
+    },
+    {
+      "city": "الشارقة",
+      "slug": "أعمال-كهربائية-الشارقة",
+      "price_from": "140",
+      "price_to": "700",
+      "response_time": "1-2 ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🏘️"
+    },
+    {
+      "city": "عجمان",
+      "slug": "أعمال-كهربائية-عجمان",
+      "price_from": "120",
+      "price_to": "650",
+      "response_time": "1-2 ساعة",
+      "coverage": "جميع الأحياء",
+      "icon": "🏗️"
+    }
+  ]
 }
