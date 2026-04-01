@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "خديجة الحماري",
       "text": "تركيب احترافي جداً! الفني جاء في الموعد المحدد وأنهى الشغل بدقة. ضمان المكيف شامل وفريق رفيق رائع جداً."
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "يوسف المنصوري",
       "text": "أفضل خدمة تركيب مكيفات جربتها في أبوظبي. السعر واضح، الفني معتمد، والخدمة سريعة جداً وما في فواتير إضافية."
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "ليلى الظاهري",
       "text": "تطبيق رفيق سهل جداً والفني لي ركّب المكيف بسرعة وبدقة عالية. أنصح الجميع باستخدام رفيق لتركيب المكيفات."
     }

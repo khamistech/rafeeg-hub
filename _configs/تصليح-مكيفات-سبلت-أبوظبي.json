@@ -124,17 +124,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "راشد الغيلي",
       "text": "خدمة تصليح السبليت في أبوظبي عند رفيق ممتازة. الفني متخصص ووصل بسرعة وأصلح المشكلة من جذورها"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "فاطمة الكتبي",
       "text": "سبليت بيتي في الخالدية أبوظبي كان يتوقف فجأة. رفيق أرسل فني خبير وحدد المشكلة في الكمبروسر وأصلحها"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "عبدالله المزروعي",
       "text": "فني رفيق في أبوظبي محترف ومتخصص في السبليت. أصلح تسريب الفريون والآن السبليت يبرد بكفاءة عالية"
     }

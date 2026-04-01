@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "زينب الشامسي",
       "text": "فني رفيق نظف مكيفي بخار احترافي جداً. الهواء صار نظيف تماماً والرائحة الغريبة اختفت. خدمة ممتازة والسعر معقول جداً"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "سامي الكتبي",
       "text": "تنظيف المكيف عند رفيق أفضل من غيره. الفني احترافي والأدوات نظيفة جداً. بعد التنظيف شعرت بفرق كبير في جودة الهواء"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "ليلى البلوشي",
       "text": "تطبيق رفيق سهل والفني لي جاء احترافي جداً. نظف المكيف بدقة عالية وأعطاني نصائح حلوة عن الصيانة"
     }

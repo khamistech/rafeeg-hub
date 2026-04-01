@@ -124,17 +124,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "سعد المنصوري",
       "text": "فني رفيق في الشارقة متخصص في السبليت وأسعاره تنافسية. أصلح مشكلة التسريب بسرعة وكفاءة عالية"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "هند الرميثي",
       "text": "سبليت منزلي في التعاون كان مشكلته في الفريون. رفيق أرسل فني متخصص وأصلحها بضمان كامل. ممتاز"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "بدر الكتبي",
       "text": "أفضل خدمة تصليح سبليت في الشارقة. الفني محترف والسعر مناسب والضمان واضح. شكراً رفيق"
     }

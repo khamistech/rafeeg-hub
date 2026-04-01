@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "سعيد المرزوقي",
       "text": "نقلت مكيف سبليت 2 طن مع رفيق في الشارقة. الفني جاء بالموعد وفك التركيب بعناية ثم ركبه في الغرفة الجديدة بدون أي مشكلة. خدمة احترافية جداً"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "نورة الهاشمية",
       "text": "انتقلت لشقة جديدة وأخذت مكيفي معي. رفيق فك وركب بسرعة ودقة وكان الفريون مشحوناً بشكل صحيح. الحمد لله المكيف يبرد عالي"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "طارق البلوشي",
       "text": "فنيي رفيق محترفون جداً في نقل المكيفات. عندي 3 مكيفات نقلوها في يوم واحد بدون أي تلف. أنصح الجميع"
     }

@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "فايزة الخيالي",
       "text": "فني رفيق عمل صيانة احترافية لمكيفي في دبي. فحص كل حاجة وقال نقاط الضعف قبل ما تصير مشاكل. الخدمة ممتازة والسعر معقول"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "خالد الكتبي",
       "text": "أفضل خدمة صيانة جربتها في دبي. الفني معتمد وقال نصائح مهمة وضمان 6 أشهر. ينصح به الجميع"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "هديل الحمادي",
       "text": "تطبيق رفيق سهل والفني لي جاء احترافي وسريع. صيانة المكيف صارت أسهل من خلال رفيق"
     }

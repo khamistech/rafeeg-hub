@@ -124,17 +124,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "طارق الهاشمي",
       "text": "رفيق في عجمان أرسل فني سبليت متخصص بسعر مناسب. أصلح المشكلة بسرعة وبضمان. خدمة ممتازة"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "زينب القاسمي",
       "text": "كنت أبحث عن فني سبليت موثوق في عجمان. رفيق كان الخيار الأفضل. الفني خبير والسعر تنافسي جداً"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "حسام الجابري",
       "text": "خدمة تصليح سبليت رفيق في عجمان فاقت توقعاتي. الفني محترف والضمان واضح. سأوصي به لكل أهل عجمان"
     }

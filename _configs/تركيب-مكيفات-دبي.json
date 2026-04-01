@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "نور الخيالي",
       "text": "فني رفيق جاء بالموعد وركّب المكيف بسرعة وكفاءة عالية. الخدمة ممتازة جداً والسعر واضح بدون فواتير إضافية. أنصح الجميع برفيق"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "محمد البحراني",
       "text": "ركبت مكيف سبليت عن طريق رفيق وكان أفضل تجربة. الفني معتمد والضمان 12 شهر. أفضل خدمة تكييف في دبي"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "زيتونة الشامسي",
       "text": "تطبيق رفيق سهل الاستخدام جداً واختيار الفني بسيط. الفني لي جاء احترافي وأنهى الشغل في وقته. تجربة ممتازة"
     }

@@ -124,17 +124,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "عارف الجابري",
       "text": "فني رفيق متخصص في السبليت وصل بسرعة وعرف المشكلة من أول نظرة. أصلح التسريب في ساعة واحدة. احترافية عالية"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "سعاد المنصوري",
       "text": "سبليت بيتي كان يصدر أصوات غريبة من شهور. رفيق أرسل فني متخصص وحدد المشكلة وأصلحها. ما يصدر صوت من زمان"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "طلال الرشيدي",
       "text": "تجربة رائعة مع رفيق لتصليح السبليت. الفني محترف ويعرف كل أنواع الماركات. سعر مناسب وضمان كامل على الشغل"
     }

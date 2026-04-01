@@ -124,17 +124,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "بدر الزعابي",
       "text": "اتصلت برفيق وجاء الفني خلال ساعتين. شخّص العطل بسرعة وأصلح المكيف في نفس الزيارة. سعر عادل وخدمة ممتازة"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "هند الشامسي",
       "text": "كنت أبحث عن فني موثوق لإصلاح مكيف الفيلا. رفيق أرسل فني محترف، إصلح العطل وشرح لي السبب. أنصح به بقوة"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "خلفان البلوشي",
       "text": "خدمة سريعة ومحترفة. الفني وصل في الموعد وأصلح تسريب الفريون بكفاءة عالية. سأستخدم رفيق دائماً"
     }

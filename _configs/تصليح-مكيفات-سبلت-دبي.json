@@ -124,17 +124,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "محمد الهاشمي",
       "text": "فني رفيق في دبي متخصص في السبليت ووصل بسرعة. أصلح تسريب الفريون في ساعة واحدة. سعر واضح وجودة ممتازة"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "نوال الزعابي",
       "text": "سبليت شقتي في مارينا كان مشكلته في لوحة التحكم. فني رفيق أصلحها بسرعة وبضمان. خدمة احترافية في دبي"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "خالد البلوشي",
       "text": "الفني جاء بالموعد وأصلح السبليت في نفس الزيارة. الفاتورة مطابقة للسعر المتفق عليه. أنصح برفيق بقوة"
     }

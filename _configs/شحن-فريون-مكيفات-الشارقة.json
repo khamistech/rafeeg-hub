@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "هناء الخيالي",
       "text": "فني رفيق جاء وشحن فريون مكيفي بسرعة وفريون أصلي تماماً. الخدمة ممتازة والسعر معقول جداً. أنصح كل من عنده مكيف ضعيف"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "خالد المرزوقي",
       "text": "كشفت تسريب في مكيفي عن طريق رفيق. الفني أصلح التسريب وشحن الفريون بأصلي. أفضل خدمة في الشارقة والأسعار واضحة"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "نورة الحمادي",
       "text": "تطبيق رفيق سهل جداً. اخترت الفني وجاء في الموعد. شحن الفريون وأصلحها التسريب بدقة عالية. تجربة ممتازة"
     }

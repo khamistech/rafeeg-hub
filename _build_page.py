@@ -57,7 +57,7 @@ def build_review_card(r):
         <div class="review-top">
           <img class="review-avatar" src="{r['avatar']}" alt="{r['name']}" width="44" height="44" loading="lazy">
           <div>
-            <div class="review-name" itemprop="author">{r['name']}</div>
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{r['name']}</span></span>
             <div class="review-stars">★★★★★</div>
           </div>
         </div>
@@ -237,7 +237,7 @@ def build_schema(c):
   "@context": "https://schema.org",
   "@graph": [
     {{"@type":"HomeAndConstructionBusiness","@id":"https://ar.rafeeg.ae/#organization","name":"رفيق","description":"رفيق هو تطبيق إماراتي للخدمات المنزلية، يربط أصحاب المنازل بأكثر من 4,500 فني معتمد في دبي وأبوظبي والشارقة وعجمان.","url":"https://ar.rafeeg.ae","logo":"https://ar.rafeeg.ae/wp-content/uploads/2024/06/Logo-Rafeeg-Arabic.png","telephone":"+971600500200","email":"info@rafeeg.ae","priceRange":"{price_range}","openingHours":"Mo-Su 07:00-22:00","address":{{"@type":"PostalAddress","addressLocality":"{city}","addressRegion":"{city}","addressCountry":"AE"}},"geo":{{"@type":"GeoCoordinates","latitude":"{lat}","longitude":"{lng}"}},"areaServed":[{{"@type":"City","name":"دبي"}},{{"@type":"City","name":"أبوظبي"}},{{"@type":"City","name":"الشارقة"}},{{"@type":"City","name":"عجمان"}}],"aggregateRating":{{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"135000","bestRating":"5"}},"sameAs":["https://www.instagram.com/rafeegapp","https://www.linkedin.com/company/rafeeg/","https://www.tiktok.com/@rafeeg.ae"]}},
-    {{"@type":"Service","name":"{service} في {city}","description":"خدمة {service} في {city} من مقدمي خدمة معتمدين عبر تطبيق رفيق. ضمان على الخدمة، فنيون معتمدون، أسعار شفافة.","dateModified":"{date_mod}","provider":{{"@id":"https://ar.rafeeg.ae/#organization"}},"areaServed":{{"@type":"City","name":"{city}","sameAs":"https://www.wikidata.org/wiki/{wikidata}"}},"serviceType":"{service}",{offers_block}}},
+    {{"@type":"Service","name":"{service} في {city}","description":"خدمة {service} في {city} من مقدمي خدمة معتمدين عبر تطبيق رفيق. ضمان على الخدمة، فنيون معتمدون، أسعار شفافة.","provider":{{"@id":"https://ar.rafeeg.ae/#organization"}},"areaServed":{{"@type":"City","name":"{city}","sameAs":"https://www.wikidata.org/wiki/{wikidata}"}},"serviceType":"{service}",{offers_block}}},
     {{"@type":"HowTo","name":"كيف تحجز {service} في {city} عبر رفيق","step":[{steps_json}]}},
     {breadcrumb},
     {{"@type":"FAQPage","mainEntity":[{faq_entities}]}}{extra_schemas}

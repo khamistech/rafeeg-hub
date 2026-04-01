@@ -163,17 +163,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "سلطان المطيري",
       "text": "فني رفيق جاء بالموعد وركّب المكيف بكل احتراف. التركيب نظيف والأسلاك مرتبة. الخدمة ممتازة في عجمان"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "أسماء الزعابي",
       "text": "ركبت 3 مكيفات في شقتي الجديدة عن طريق رفيق. الفني شرح كل شيء بوضوح والسعر كان مناسباً جداً"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "يوسف الحوسني",
       "text": "تجربة ممتازة مع رفيق في عجمان. الفني وصل في الوقت وأنجز التركيب بسرعة مع ضمان كامل"
     }

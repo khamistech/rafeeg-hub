@@ -145,17 +145,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "جمال العلي",
       "text": "مكيفي في دبي كان يعمل بس ما يبرد. فني رفيق اكتشف نقص الفريون وشحنه في نفس اليوم. الآن يبرد أحسن من أول"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "هناء المطيري",
       "text": "كنت أظن المكيف خربان. الفني قال الفلتر متسخ جداً ونظفه. الآن التبريد قوي جداً وفاتورة الكهرباء نزلت. شكراً رفيق"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "كريم أبو زيد",
       "text": "خدمة رفيق سريعة جداً. الفني جاء خلال ساعتين وشخص المشكلة (تسريب فريون) وصلحها في نفس اليوم. ممتاز"
     }

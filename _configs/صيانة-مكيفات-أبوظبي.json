@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "نجاح الخيالي",
       "text": "فني رفيق عمل صيانة ممتازة لمكيفي. نظف الفلاتر والملفات وقال لي الإجراءات الوقائية. الخدمة احترافية جداً والسعر معقول"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "سامي المرزوقي",
       "text": "فني رفيق قام بصيانة شاملة لمكيفي وقال نقاط الضعف قبل ما تصير مشاكل. أفضل خدمة صيانة وقعت عليها والضمان 6 أشهر"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "زينب الحمادي",
       "text": "تطبيق رفيق سهل جداً. اخترت الفني والخدمة سريعة ودقيقة. الفني عطاني نصائح مهمة عن صيانة المكيف بنفسي"
     }

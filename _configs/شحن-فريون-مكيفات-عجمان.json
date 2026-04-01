@@ -150,17 +150,17 @@
   ],
   "reviews": [
     {
-      "avatar": "https://api.example.com/avatar1.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar1.svg",
       "name": "رشيد المنصوري",
       "text": "فني رفيق جاء بسرعة وشحن الفريون بدون أي مشاكل. الفريون أصلي والضمان 6 أشهر. خدمة ممتازة في عجمان"
     },
     {
-      "avatar": "https://api.example.com/avatar2.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar2.svg",
       "name": "نورا الشامسي",
       "text": "طلبت شحن فريون لمكيفين عن طريق رفيق. الفني وصل بالموعد وأنجز الشغل بسرعة وكفاءة. أسعار معقولة"
     },
     {
-      "avatar": "https://api.example.com/avatar3.jpg",
+      "avatar": "https://hub.rafeeg.ae/assets/avatar3.svg",
       "name": "محمد الزعابي",
       "text": "تطبيق رفيق سهّل علي الحجز. الفني احترافي وأثبت أن المكيف كان يسرّب فريون وأصلحه. ممتاز جداً"
     }
