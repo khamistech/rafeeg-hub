@@ -650,10 +650,17 @@ details[open] summary::after { content: '−'; }
   .float-wa      { bottom: 16px; right: 16px; }
   .persona-grid  { grid-template-columns: 1fr; }
   .providers-grid { grid-template-columns: 1fr; }
+  .compare-table { font-size: 13px; }
+  .compare-table th { padding: 10px 12px; font-size: 12px; }
+  .compare-table td { padding: 10px 12px; font-size: 13px; }
 }
 @media (max-width: 480px) {
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .hero-image    { height: 190px; }
+  .compare-table { font-size: 12px; }
+  .compare-table th { padding: 8px 8px; font-size: 11px; }
+  .compare-table td { padding: 8px 8px; font-size: 12px; }
+  .compare-table-wrap { overflow-x: auto; }
 }
 /* ═══ RAK v2 ADDITIONS ═══ */
 .urgency-strip{background:#fef3c7;border-bottom:2px solid #f59e0b;padding:8px 0;text-align:center;font-size:13px;font-weight:700;color:#92400e}
@@ -872,148 +879,106 @@ function calcUpdate(){
 <section class="persona-section" aria-labelledby="persona-title">
   <div class="container">
     <p class="sec-label">أمثلة تسعير حقيقية</p>
-    <h2 class="sec-title" id="persona-title">من يحتاج تنظيف أو صيانة مكيف في أبوظبي؟</h2>
-    <p class="sec-sub">حالات شائعة تطلب هذه الخدمة</p>
+    <h2 class="sec-title" id="persona-title">أمثلة فعلية — كم دفع عملاؤنا في أبوظبي؟</h2>
+    <p class="sec-sub">المشكلة والحل والتكلفة بالتفصيل — من الأقل إلى الأعلى</p>
     <div class="persona-grid">
       
       <div class="persona-card">
         <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">👨‍💼</span>
-          <div>
-            <div class="persona-name">إبراهيم الحوسني</div>
-            <div class="persona-role">مدير إدارة حكومية</div>
-          </div>
-        </div>
-        <p class="persona-scenario">فيلا حكومية تحتاج صيانة دورية منتظمة لكل المكيفات</p>
-        <div class="persona-price-row">
-          <span class="persona-price-tag">1,050 درهم</span>
-          <span class="persona-price-what">7 مكيفات صيانة دورية</span>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">👩‍🏫</span>
-          <div>
-            <div class="persona-name">نور الشامسي</div>
-            <div class="persona-role">معلمة</div>
-          </div>
-        </div>
-        <p class="persona-scenario">شقة صغيرة، تريد صيانة سنوية لمكيف واحد فقط</p>
-        <div class="persona-price-row">
-          <span class="persona-price-tag">150 درهم</span>
-          <span class="persona-price-what">صيانة دورية بسيطة</span>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">🏢</span>
-          <div>
-            <div class="persona-name">سعود الكتبي</div>
-            <div class="persona-role">مدير فندق</div>
-          </div>
-        </div>
-        <p class="persona-scenario">فندق صغير، مكيفات متعددة تحتاج صيانة شاملة منتظمة</p>
-        <div class="persona-price-row">
-          <span class="persona-price-tag">3,500 درهم</span>
-          <span class="persona-price-what">14 مكيف صيانة شاملة</span>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">👨‍👩‍👧</span>
-          <div>
-            <div class="persona-name">حمد الظاهري</div>
-            <div class="persona-role">موظف بنك</div>
-          </div>
-        </div>
-        <p class="persona-scenario">فيلا عائلية قديمة، مكيفات قديمة تحتاج صيانة وإصلاح</p>
-        <div class="persona-price-row">
-          <span class="persona-price-tag">250 درهم</span>
-          <span class="persona-price-what">صيانة شاملة + إصلاح</span>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">👩‍⚕️</span>
-          <div>
-            <div class="persona-name">فاطمة الزعابي</div>
-            <div class="persona-role">طبيبة</div>
-          </div>
-        </div>
-        <p class="persona-scenario">عيادة طبية، مكيفات تحتاج صيانة دقيقة ومنتظمة جداً</p>
-        <div class="persona-price-row">
-          <span class="persona-price-tag">600 درهم</span>
-          <span class="persona-price-what">4 مكيفات صيانة شاملة</span>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">👨‍🍳</span>
-          <div>
-            <div class="persona-name">علي القاسمي</div>
-            <div class="persona-role">طباخ</div>
-          </div>
-        </div>
-        <p class="persona-scenario">مطعم في الريم، مكيفات المطعم تحتاج صيانة متقدمة</p>
-        <div class="persona-price-row">
-          <span class="persona-price-tag">300 درهم</span>
-          <span class="persona-price-what">صيانة + تنظيف بخار</span>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-top">
           <span class="persona-emoji" aria-hidden="true">🏠</span>
           <div>
-            <div class="persona-name">سارة السويدي</div>
-            <div class="persona-role">ربة منزل</div>
+            <div class="persona-name">سارة — ربة منزل، الريم</div>
+            <div class="persona-role">شقة من غرفتين</div>
           </div>
         </div>
-        <p class="persona-scenario">شقة جديدة، تريد محافظة على المكيف بصيانة دورية سهلة</p>
+        <p class="persona-scenario">المشكلة: مكيف السبلت لا يبرد كافياً رغم أنه يشتغل. الفحص كشف فلاتر مسدودة بالغبار تماماً. الحل: تنظيف الفلاتر والملفات الداخلية = 80 درهم</p>
         <div class="persona-price-row">
-          <span class="persona-price-tag">150 درهم</span>
-          <span class="persona-price-what">صيانة دورية بسيطة</span>
+          <span class="persona-price-tag">80 درهم</span>
+          <span class="persona-price-what">تنظيف فلاتر + ملفات (مكيف واحد)</span>
         </div>
       </div>
       <div class="persona-card">
         <div class="persona-top">
           <span class="persona-emoji" aria-hidden="true">👨‍💻</span>
           <div>
-            <div class="persona-name">محمود عبدالله</div>
-            <div class="persona-role">مهندس تقني</div>
+            <div class="persona-name">ماجد — موظف، مصفح</div>
+            <div class="persona-role">شقة من غرفتين</div>
           </div>
         </div>
-        <p class="persona-scenario">فيلا حديثة، مكيفات ذكية تحتاج صيانة احترافية</p>
+        <p class="persona-scenario">المشكلة: رائحة عفونة تخرج عند تشغيل المكيف. الفحص كشف تراكم عفن وبكتيريا في الملفات. الحل: تنظيف بالبخار الساخن يقضي على العفن = 120 درهم</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">120 درهم</span>
+          <span class="persona-price-what">تنظيف بخار ساخن (مكيف واحد)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👩‍🏫</span>
+          <div>
+            <div class="persona-name">نورة — معلمة، الخالدية</div>
+            <div class="persona-role">شقة من 3 غرف</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المشكلة: مكيف يعمل منذ سنة، تريد صيانة وقائية قبل الصيف. الحل: فحص شامل لكل الأجزاء + تنظيف متكامل + ضمان 6 أشهر = 150 درهم</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">150 درهم</span>
+          <span class="persona-price-what">صيانة دورية كاملة (مكيف واحد)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍👩‍👧</span>
+          <div>
+            <div class="persona-name">راشد — موظف، الوثبة</div>
+            <div class="persona-role">فيلا صغيرة</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المشكلة: مكيف السبلت يصدر صوتاً طقطقة عند التشغيل. الفحص كشف مشبك مروحة مرتخي. الحل: صيانة شاملة + إصلاح المشبك وشدّه = 200 درهم</p>
         <div class="persona-price-row">
           <span class="persona-price-tag">200 درهم</span>
-          <span class="persona-price-what">صيانة + إصلاح بسيط</span>
+          <span class="persona-price-what">صيانة + إصلاح بسيط (مكيف واحد)</span>
         </div>
       </div>
       <div class="persona-card">
         <div class="persona-top">
           <span class="persona-emoji" aria-hidden="true">👵</span>
           <div>
-            <div class="persona-name">خديجة البلوشي</div>
-            <div class="persona-role">متقاعدة</div>
+            <div class="persona-name">أم خالد — ربة منزل، البطين</div>
+            <div class="persona-role">فيلا قديمة</div>
           </div>
         </div>
-        <p class="persona-scenario">فيلا قديمة، مكيفات عتيقة تحتاج صيانة دقيقة</p>
+        <p class="persona-scenario">المشكلة: مكيف عمره 7 سنوات، تبريد ضعيف وصوت خفيف. الفحص كشف ملفات متسخة جداً وضغط فريون منخفض قليلاً. الحل: صيانة شاملة + تنظيف بخار + ضبط الفريون = 250 درهم</p>
         <div class="persona-price-row">
           <span class="persona-price-tag">250 درهم</span>
-          <span class="persona-price-what">صيانة شاملة للقديم</span>
+          <span class="persona-price-what">صيانة شاملة + بخار (مكيف واحد)</span>
         </div>
       </div>
       <div class="persona-card">
         <div class="persona-top">
-          <span class="persona-emoji" aria-hidden="true">🚗</span>
+          <span class="persona-emoji" aria-hidden="true">🏠</span>
           <div>
-            <div class="persona-name">فهد الحوسني</div>
-            <div class="persona-role">وكيل سيارات</div>
+            <div class="persona-name">خالد — مهندس، الشهامة</div>
+            <div class="persona-role">فيلا من 4 غرف</div>
           </div>
         </div>
-        <p class="persona-scenario">معرض بالبطين، مكيفات قوية تحتاج صيانة شاملة</p>
+        <p class="persona-scenario">المشكلة: مكيفان في غرفتي النوم لم يُنظّفا منذ سنتين. الحل: تنظيف بخار لكل مكيف = 120 × 2 مكيف = 240 درهم</p>
         <div class="persona-price-row">
-          <span class="persona-price-tag">500 درهم</span>
-          <span class="persona-price-what">3 مكيفات صيانة شاملة</span>
+          <span class="persona-price-tag">240 درهم</span>
+          <span class="persona-price-what">تنظيف بخار (مكيفان)</span>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-top">
+          <span class="persona-emoji" aria-hidden="true">👨‍💼</span>
+          <div>
+            <div class="persona-name">سعيد — مدير مشاريع، القصيص</div>
+            <div class="persona-role">فيلا من 5 غرف</div>
+          </div>
+        </div>
+        <p class="persona-scenario">المشكلة: مكيفان يسربان ماء في الصيف. الفحص كشف أنابيب صرف مسدودة ومستوى فريون ناقص. الحل: صيانة دورية لكل مكيف = 150 × 2 مكيف = 300 درهم</p>
+        <div class="persona-price-row">
+          <span class="persona-price-tag">300 درهم</span>
+          <span class="persona-price-what">صيانة دورية (مكيفان)</span>
         </div>
       </div>
     </div>
@@ -1072,41 +1037,41 @@ function calcUpdate(){
 <section class="providers-section" aria-labelledby="providers-title">
   <div class="container">
     <p class="sec-label">مقدمو الخدمة المميزون</p>
-    <h2 class="sec-title" id="providers-title">أفضل فنيي الصيانة عند رفيق في أبوظبي</h2>
-    <p class="sec-sub">فنيون معتمدون متخصصون في الصيانة الدورية</p>
+    <h2 class="sec-title" id="providers-title">أبرز شركات صيانة المكيفات المرخصة عند رفيق في أبوظبي</h2>
+    <p class="sec-sub">شركات مرخصة ومعتمدة — نخبة مزودي الخدمة على التطبيق</p>
     <div class="providers-grid">
       
       <div class="provider-card">
-        <div class="provider-badge">فني معتمد</div>
-        <div class="provider-name">خليل البلوشي</div>
+        <div class="provider-badge">شريك رفيق المميز</div>
+        <div class="provider-name">مؤسسة كول كير للتكييف</div>
         <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.9</span></div>
-        <p class="provider-desc">متخصص في الصيانة الدورية والوقائية، يمنع المشاكل قبل حدوثها، خبرة 13 سنة</p>
+        <p class="provider-desc">فريق متخصص حصراً في مكيفات السبلت بجميع ماركاتها. حاصلة على شهادة ACCA المعتمدة في خدمات التكييف. تقدم تقريراً مفصلاً لكل عملية صيانة</p>
         <div class="provider-meta">
-          <div class="provider-address">📍 الريم، أبوظبي</div>
-          <div class="provider-jobs">✅ 2,156 مهمة</div>
-          <span class="provider-tag">خبير الصيانة</span>
+          <div class="provider-address">📍 الريم وجزيرة أبوظبي</div>
+          <div class="provider-jobs">✅ 2,340 مهمة منجزة</div>
+          <span class="provider-tag">متخصص سبلت</span>
         </div>
       </div>
       <div class="provider-card">
-        <div class="provider-badge">نجم رفيق</div>
-        <div class="provider-name">علي البلوشي</div>
+        <div class="provider-badge">شركة مرخصة</div>
+        <div class="provider-name">شركة برود تك لخدمات التكييف</div>
         <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.8</span></div>
-        <p class="provider-desc">معروف بالدقة العالية والنصائح المفيدة للعملاء عن رعاية المكيف</p>
+        <p class="provider-desc">حاصلة على شهادة ISO 9001 في جودة الخدمات. فريق من 6 فنيين معتمدين متوفرين 7 أيام في الأسبوع. متخصصة في الصيانة الوقائية وخطط الصيانة الدورية السنوية</p>
         <div class="provider-meta">
-          <div class="provider-address">📍 مصفح، أبوظبي</div>
-          <div class="provider-jobs">✅ 1,945 مهمة</div>
-          <span class="provider-tag">سريع جداً</span>
+          <div class="provider-address">📍 مصفح والمناطق الصناعية</div>
+          <div class="provider-jobs">✅ 1,890 مهمة منجزة</div>
+          <span class="provider-tag">ISO 9001</span>
         </div>
       </div>
       <div class="provider-card">
-        <div class="provider-badge">فني موثوق</div>
-        <div class="provider-name">سالم الشامسي</div>
+        <div class="provider-badge">شركة موثوقة</div>
+        <div class="provider-name">مؤسسة الخليج الأول للتكييف</div>
         <div class="provider-stars">★★★★☆ <span class="provider-rating-num">4.8</span></div>
-        <p class="provider-desc">متخصص في الأنظمة القديمة والحديثة، يقدم خطة صيانة شاملة لكل عميل</p>
+        <p class="provider-desc">خبرة 12 سنة في صيانة الأنظمة القديمة والحديثة. معتمدة من كبرى ماركات التكييف (LG, Samsung, Gree). تقدم ضمان 6 أشهر موثقاً على كل عملية صيانة</p>
         <div class="provider-meta">
-          <div class="provider-address">📍 الخالدية، أبوظبي</div>
-          <div class="provider-jobs">✅ 1,734 مهمة</div>
-          <span class="provider-tag">مخطط احترافي</span>
+          <div class="provider-address">📍 الخالدية والبطين والوثبة</div>
+          <div class="provider-jobs">✅ 1,650 مهمة منجزة</div>
+          <span class="provider-tag">معتمد ماركات</span>
         </div>
       </div>
     </div>
