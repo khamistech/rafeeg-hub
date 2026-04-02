@@ -54,6 +54,12 @@ def build_provider_card(p):
 def build_review_card(r):
     return f"""
       <div class="review-card" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness" content="رفيق">
+        <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <meta itemprop="bestRating" content="5">
+          <meta itemprop="worstRating" content="1">
+        </div>
         <div class="review-top">
           <img class="review-avatar" src="{r['avatar']}" alt="{r['name']}" width="44" height="44" loading="lazy">
           <div>
