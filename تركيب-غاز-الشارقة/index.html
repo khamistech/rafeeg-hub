@@ -54,11 +54,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://ar.rafeeg.ae" crossorigin>
-<link rel="preload" as="image" href="https://hub.rafeeg.ae/تركيب-غاز-الشارقة/hero.jpg" fetchpriority="high">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional"></noscript>
+<link rel="preload" as="image" href="https://hub.rafeeg.ae/تركيب-غاز-الشارقة/hero.jpg" fetchpriority="high" type="image/jpeg">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap"></noscript>
 
 <style>
+/* ── Cairo fallback — eliminates CLS from font swap ──────────────────── */
+@font-face {
+  font-family: 'Cairo-fallback';
+  src: local('Arial');
+  size-adjust: 104%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: normal;
+}
 /* ── Reset & Variables ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -83,7 +92,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Cairo', 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Cairo', 'Cairo-fallback', 'Segoe UI', system-ui, sans-serif;
   font-size: 16px; color: var(--text); background: var(--white);
   direction: rtl; line-height: 1.7; -webkit-font-smoothing: antialiased;
 }
@@ -251,6 +260,8 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-image {
   position: relative; height: 380px;
   display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+  contain: layout style; /* prevent this element causing CLS outside its box */
+  background: var(--hero-bg); /* holds space with matching bg while image loads */
 }
 .hero-image::before {
   content: ''; position: absolute; bottom: -20px; left: 50%;
@@ -261,6 +272,7 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-image img {
   position: relative; height: 100%; width: auto;
   object-fit: cover; object-position: top center;
+  content-visibility: auto;
 }
 
 /* ── SECTION LABELS ───────────────────────────────────────────────────── */
@@ -779,7 +791,10 @@ details[open] summary::after { content: '−'; }
       </div>
     </div>
     <div class="hero-image" aria-hidden="true">
-      <img src="hero.jpg" alt="تركيب غاز في الشارقة — رفيق" width="340" height="380" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
+      <picture>
+        <source srcset="https://hub.rafeeg.ae/تركيب-غاز-الشارقة/hero.webp" type="image/webp">
+        <img src="https://hub.rafeeg.ae/تركيب-غاز-الشارقة/hero.jpg" alt="تركيب غاز في الشارقة — رفيق" width="340" height="380" loading="eager" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
+      </picture>
     </div>
   </section>
 </div>
@@ -1483,7 +1498,7 @@ function calcUpdate(){
   <a class="btn-whatsapp-solid" href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+تركيب+غاز+في+الشارقة" target="_blank" rel="noopener">💬 واتساب — احجز الآن</a>
   <a class="btn-green" href="https://rafeeggoogle.onelink.me/C8Hp/news">📱 حمّل التطبيق</a>
 </div>
-<script>
+<script data-cfasync="false">
 (function(){
   var sticky=document.getElementById('sticky-cta');
   var hero=document.querySelector('.hero-wrap');

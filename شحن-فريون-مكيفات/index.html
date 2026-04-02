@@ -62,11 +62,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://ar.rafeeg.ae" crossorigin>
-<link rel="preload" as="image" href="https://hub.rafeeg.ae/شحن-فريون-مكيفات/hero.jpg" fetchpriority="high">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=optional"></noscript>
+<link rel="preload" as="image" href="https://hub.rafeeg.ae/شحن-فريون-مكيفات/hero.jpg" fetchpriority="high" type="image/jpeg">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap"></noscript>
 
 <style>
+/* ── Cairo fallback — eliminates CLS from font swap ──────────────────── */
+@font-face {
+  font-family: 'Cairo-fallback';
+  src: local('Arial');
+  size-adjust: 104%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: normal;
+}
 /* ── Reset & Variables ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -91,7 +100,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Cairo', 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Cairo', 'Cairo-fallback', 'Segoe UI', system-ui, sans-serif;
   font-size: 16px; color: var(--text); background: var(--white);
   direction: rtl; line-height: 1.7; -webkit-font-smoothing: antialiased;
 }
@@ -276,6 +285,8 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-image {
   position: relative; height: 400px;
   display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+  contain: layout style;
+  background: var(--hero-bg);
 }
 .hero-image::before {
   content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
@@ -717,7 +728,10 @@ details[open] summary::after { content: '−'; }
       </div>
     </div>
     <div class="hero-image" aria-hidden="true">
-      <img src="hero.jpg" alt="شحن فريون مكيفات في الإمارات — رفيق" width="340" height="400" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
+      <picture>
+        <source srcset="https://hub.rafeeg.ae/شحن-فريون-مكيفات/hero.webp" type="image/webp">
+        <img src="https://hub.rafeeg.ae/شحن-فريون-مكيفات/hero.jpg" alt="شحن فريون مكيفات في الإمارات — رفيق" width="340" height="400" loading="eager" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:0 var(--radius) var(--radius) 0;">
+      </picture>
     </div>
   </section>
 </div>
@@ -1001,7 +1015,7 @@ details[open] summary::after { content: '−'; }
     </div>
   </div>
 </section>
-<script>
+<script data-cfasync="false">
 function calcUpdate(){
   var s=document.getElementById('calc-service').value.split(',');
   var u=parseInt(document.getElementById('calc-units').value);
@@ -1260,7 +1274,7 @@ function calcUpdate(){
     <div>
       <div class="ba-card">
         <div class="ba-img-wrap">
-          <img src="hero.jpg" alt="شحن فريون مكيفات في الإمارات — قبل وبعد خدمة رفيق" width="1024" height="400" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;border-radius:var(--radius) var(--radius) 0 0;">
+          <img src="https://hub.rafeeg.ae/شحن-فريون-مكيفات/hero.jpg" alt="شحن فريون مكيفات في الإمارات — قبل وبعد خدمة رفيق" width="1024" height="400" loading="lazy" decoding="async" style="width:100%;height:280px;object-fit:cover;display:block;border-radius:var(--radius) var(--radius) 0 0;">
           <div class="ba-img-labels">
             <span class="ba-img-label bad">قبل الخدمة</span>
             <span class="ba-img-label good">بعد الخدمة</span>
@@ -1472,7 +1486,7 @@ function calcUpdate(){
   <a class="btn-green" href="#hub-cities">📍 اختر مدينتك</a>
   <a class="btn-whatsapp-solid" href="https://wa.me/971600500200?text=أهلاً+رفيق،+أريد+حجز+خدمة+شحن+فريون+مكيفات+في+الإمارات" target="_blank" rel="noopener">💬 واتساب</a>
 </div>
-<script>
+<script data-cfasync="false">
 (function(){
   var sticky=document.getElementById('sticky-cta');
   var hero=document.getElementById('hero-top');
