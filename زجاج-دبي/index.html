@@ -246,21 +246,26 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--dark); margin-bottom: 10px; letter-spacing: -.02em;
   text-wrap: balance;
 }
-.hero-sub {
-  font-size: clamp(15px, 1.8vw, 20px);
-  font-weight: 700; color: var(--green); margin-bottom: 22px;
+.hero-sub { display: none; }
+.hero-pills {
+  list-style: none; display: flex; flex-wrap: wrap;
+  gap: 8px; margin: 12px 0 22px;
 }
-.hero-bullets {
-  list-style: none; display: flex; flex-direction: column;
-  gap: 9px; margin-bottom: 28px; align-items: flex-start;
+.hero-pills li {
+  display: flex; align-items: center; gap: 6px;
+  background: #fff; border: 1.5px solid var(--green);
+  color: var(--green); padding: 5px 13px;
+  border-radius: 20px; font-size: 13px; font-weight: 700;
 }
-.hero-bullets li { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; }
+.hero-bullets { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 22px; }
+.hero-bullets li { display: flex; align-items: center; gap: 6px; background: #fff; border: 1.5px solid var(--green); color: var(--green); padding: 5px 13px; border-radius: 20px; font-size: 13px; font-weight: 700; }
 .chk {
-  width: 20px; height: 20px; background: var(--green); border-radius: 50%;
+  width: 18px; height: 18px; background: var(--green); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 11px; font-weight: 900; flex-shrink: 0;
+  color: #fff; font-size: 10px; font-weight: 900; flex-shrink: 0;
 }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-urgency { font-size: 12px; color: var(--muted); font-weight: 600; margin-top: 10px; }
 .hero-image {
   position: relative; height: 380px;
   display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
@@ -664,8 +669,10 @@ details[open] summary::after { content: '−'; }
   .nav-list.open .dropdown { display: block; position: static; box-shadow: none; border: none; border-radius: 0; padding: 4px 0 8px 0; background: var(--grey-bg); }
   .nav-list.open .dropdown li a { padding: 9px 20px; font-size: 14px; }
   .hero          { grid-template-columns: 1fr; min-height: auto; }
-  .hero-text     { padding: 28px 20px 16px; }
+  .hero-text     { padding: 24px 20px 16px; }
   .hero-image    { height: 220px; }
+  .hero-ctas     { flex-direction: column; }
+  .hero-ctas a   { width: 100%; justify-content: center; }
   .footer-grid   { grid-template-columns: 1fr; gap: 28px; }
   .steps-grid    { grid-template-columns: repeat(2, 1fr); }
   .media-grid    { grid-template-columns: 1fr; }
@@ -781,8 +788,7 @@ details[open] summary::after { content: '−'; }
         رفيق — خدمة معتمدة
       </div>
       <h2>أعمال زجاج في دبي — من 184 درهم</h2>
-      <p class="hero-sub">فنيو رفيق المعتمدون يقدمون خدمة أعمال زجاج في دبي بجودة عالية وأسعار شفافة. وصول نفس اليوم وضمان سنة كاملة.</p>
-      <ul class="hero-bullets">
+      <ul class="hero-pills">
         <li><span class="chk" aria-hidden="true">✓</span> خدمة أعمال زجاج من فنيين معتمدين ومُقيَّمين</li>
         <li><span class="chk" aria-hidden="true">✓</span> تغطية كاملة: مارينا · داونتاون · JBR · نخلة الجميرا</li>
         <li><span class="chk" aria-hidden="true">✓</span> ضمان سنة كاملة على الخدمة</li>
@@ -793,6 +799,7 @@ details[open] summary::after { content: '−'; }
         <a class="btn-whatsapp-solid" href="https://wa.me/971600500200?text=أهلاً+رفيق،+أريد+حجز+خدمة+أعمال+زجاج+في+دبي" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> واتساب — احجز الآن</a>
         <a class="btn-green" href="https://rafeeggoogle.onelink.me/C8Hp/news"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> حمّل التطبيق الآن</a>
       </div>
+      <p class="hero-urgency">⚡ متاح اليوم — يُؤكَّد الحجز خلال دقيقتين</p>
     </div>
     <div class="hero-image" aria-hidden="true">
       <picture>
