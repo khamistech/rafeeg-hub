@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Generated: 2026-04-05 21:37 — 274 URLs -->
+  <!-- Generated: 2026-04-13 17:10 — 275 URLs -->
 
   <!-- ═══ HOMEPAGE ══════════════════════════════════════════════ -->
   <url>
@@ -493,6 +493,12 @@
     <priority>0.7</priority>
   </url>
   <!-- ═══ SUPPORTING SERVICE PAGES ═════════════════════════════ -->
+  <url>
+    <loc>https://hub.rafeeg.ae/ig-سيراميك-دبي/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://hub.rafeeg.ae/أعمال-كهربائية/</loc>
     <lastmod>2026-04-05</lastmod>
