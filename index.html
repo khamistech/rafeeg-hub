@@ -11,6 +11,20 @@
     gtag('js', new Date());
 
     gtag('config', 'G-XE3J2J10ZZ');
+    gtag('event', 'conversion', {'send_to': 'AW-1019637073/1eq6CKHD_uwBENHameYD'});
+  </script>
+  <!-- Google Ads click conversion -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') { window.location = url; }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-1019637073/1eq6CKHD_uwBENHameYD',
+      'event_callback': callback
+    });
+    return false;
+  }
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>رفيق هاب | تركيب سيراميك وصيانة مكيفات في الإمارات — أسعار وحجز فوري</title>
@@ -313,7 +327,7 @@
           </li>
         </ul>
       </nav>
-      <a class="nav-cta" href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+خدماتكم">احجز الآن</a>
+      <a class="nav-cta" href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+خدماتكم" onclick="return gtag_report_conversion(this.href)">احجز الآن</a>
       <button class="hamburger" id="hamburger" aria-label="قائمة التنقل" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -334,8 +348,8 @@
       <span class="badge">🏠 +135,000 عميل راضٍ</span>
     </div>
     <div class="hero-ctas">
-      <a href="https://ar.rafeeg.ae" class="btn-primary">📱 احجز عبر التطبيق</a>
-      <a href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+خدمة+منزلية" class="btn-wa">💬 تواصل واتساب</a>
+      <a href="https://ar.rafeeg.ae" class="btn-primary" onclick="return gtag_report_conversion(this.href)">📱 احجز عبر التطبيق</a>
+      <a href="https://wa.me/971600500200?text=أهلاً،+أريد+الاستفسار+عن+خدمة+منزلية" class="btn-wa" onclick="return gtag_report_conversion(this.href)">💬 تواصل واتساب</a>
     </div>
   </div>
 </section>
