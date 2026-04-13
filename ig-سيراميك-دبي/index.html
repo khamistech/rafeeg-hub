@@ -27,7 +27,6 @@ body {
   font-family: 'Cairo', sans-serif;
   background: #fff;
   color: var(--text);
-  padding-bottom: 76px;
   -webkit-font-smoothing: antialiased;
 }
 a { text-decoration: none; color: inherit; }
@@ -92,10 +91,22 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-app-link:hover { color: var(--green); }
 .hero-note {
-  font-size: 12px; color: var(--muted); margin-top: 20px;
-  display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px; margin-top: 20px;
 }
-.hero-note span { display: flex; align-items: center; gap: 4px; }
+.hero-note span {
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 4px 11px; border-radius: 20px;
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* ─── ROTATING SENTENCE ─── */
+.rotating-line {
+  text-align: center; padding: 20px 24px 0;
+  font-size: 15px; font-weight: 700; color: var(--dark);
+  min-height: 28px;
+}
 
 /* ─── DIVIDER ─── */
 .divider { height: 1px; background: var(--border); margin: 0 24px; }
@@ -214,20 +225,27 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-green-solid:hover { background: rgba(255,255,255,.08); }
 
-/* ─── FLOAT + STICKY ─── */
-.float-wa {
-  position: fixed; bottom: 90px; left: 20px;
-  width: 52px; height: 52px; background: var(--wa);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,.5); z-index: 300;
-  transition: transform .2s;
+/* ─── HERO IMAGE ─── */
+.hero-img {
+  width: 100%; max-width: 560px; margin: 24px auto 0;
+  border-radius: var(--r); overflow: hidden;
+  height: 260px;
 }
-.float-wa:hover { transform: scale(1.08); }
+.hero-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 15%;
+  display: block;
+}
+
+/* ─── STICKY ─── */
 .sticky {
   position: fixed; bottom: 0; left: 0; right: 0;
   background: #fff; border-top: 1px solid var(--border);
   padding: 10px 16px; display: flex; gap: 10px; z-index: 400;
+  transform: translateY(100%);
+  transition: transform .3s ease;
 }
+.sticky.visible { transform: translateY(0); }
 .sticky .btn-wa-solid { flex: 1.6; font-size: 15px; padding: 13px; }
 .sticky .btn-green-solid {
   flex: 1; font-size: 14px; padding: 13px;
@@ -238,6 +256,7 @@ a { text-decoration: none; color: inherit; }
 /* ─── MOBILE ─── */
 @media (max-width: 480px) {
   .hero { padding: 32px 20px 28px; }
+  .hero-img { height: 220px; border-radius: var(--r); }
   .stat { padding: 0 14px; }
   .stat-n { font-size: 18px; }
 }
@@ -257,7 +276,7 @@ a { text-decoration: none; color: inherit; }
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero-section">
   <span class="hero-eyebrow">تركيب سيراميك · دبي</span>
   <h1>أرضيات جديدة في دبي</h1>
   <p class="hero-price">من <strong>40 درهم/م²</strong> · وصول نفس اليوم</p>
@@ -274,11 +293,24 @@ a { text-decoration: none; color: inherit; }
   </a>
 
   <div class="hero-note">
-    <span>✓ ضمان سنة</span>
     <span>✓ معاينة مجانية</span>
+    <span>✓ ضمان سنة كاملة</span>
+    <span>✓ تقسيط بدون فوائد</span>
+    <span>✓ ٣ عروض أسعار</span>
+    <span>✓ ٤,٥٠٠+ شركة مرخصة</span>
     <span>✓ رد خلال دقيقتين</span>
   </div>
+
+  <div class="hero-img">
+    <picture>
+      <source srcset="https://hub.rafeeg.ae/تركيب-سيراميك-دبي/hero.webp" type="image/webp">
+      <img src="https://hub.rafeeg.ae/تركيب-سيراميك-دبي/hero.jpg" alt="تركيب سيراميك دبي — رفيق" width="560" height="260" loading="eager" fetchpriority="high">
+    </picture>
+  </div>
 </section>
+
+<!-- ROTATING SENTENCE -->
+<p class="rotating-line" id="rot-line"></p>
 
 <div class="divider"></div>
 
@@ -417,13 +449,6 @@ a { text-decoration: none; color: inherit; }
   </div>
 </div>
 
-<!-- FLOAT -->
-<a class="float-wa"
-  href="https://wa.me/971600500200?text=أهلاً+رفيق،+رأيت+إعلانكم+على+إنستغرام+وأريد+حجز+تركيب+سيراميك+في+دبي"
-  target="_blank" rel="noopener" aria-label="واتساب">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-</a>
-
 <!-- STICKY BAR -->
 <div class="sticky">
   <a class="btn-wa-solid"
@@ -438,6 +463,7 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 <script>
+// Calculator
 function calc() {
   var p = document.getElementById('svc').value.split(',');
   var a = +document.getElementById('area').value;
@@ -450,8 +476,33 @@ function calc() {
     encodeURIComponent('أهلاً رفيق، رأيت إعلانكم على إنستغرام. أريد حجز تركيب سيراميك في دبي. مساحة: ' + a + ' م²، التكلفة: ' + txt);
   document.getElementById('cta').classList.add('show');
 }
-// init slider gradient
+// Init slider gradient
 (function(){ var r=document.getElementById('area'); r.style.setProperty('--p',(r.value-5)/195*100+'%'); })();
+
+// Sticky bar — show only after hero scrolls out of view
+(function(){
+  var sticky = document.querySelector('.sticky');
+  var hero   = document.getElementById('hero-section');
+  var obs = new IntersectionObserver(function(entries){
+    sticky.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(hero);
+})();
+
+// Rotating sentence — pick one randomly on each page load
+(function(){
+  var lines = [
+    'الأرضية الصح تغيّر شكل البيت كله',
+    'ركّب اليوم وادفع بالتقسيط مع Tabby — بدون فوائد',
+    'السعر اللي تشوفه هو السعر اللي تدفعه — بدون مفاجآت',
+    'فنيونا يصلون نفس اليوم — ما تحتاج تنتظر',
+    'أكثر من ١٣٥,٠٠٠ صاحب منزل اختار رفيق',
+    'جودة فندقية في بيتك بأسعار شفافة',
+    'من دبي مارينا لدبي هيلز — فنيونا في كل مكان',
+    'ضمان سنة كاملة — إذا ما عجبك نعيد الكرّة'
+  ];
+  document.getElementById('rot-line').textContent = lines[Math.floor(Math.random() * lines.length)];
+})();
 </script>
 </body>
 </html>
